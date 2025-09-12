@@ -1,0 +1,2322 @@
+Source,Summary sentence,Factoids
+,"The 5G Core Network introduced in 3GPP Release 15 adopts a Service-Based Architecture (SBA), where network functions expose services via standardized APIs (primarily HTTP/2 + JSON).","""5G Core Network is introduced in 3GPP Release 15"",
+""5G Core Network adopts architecture SBA"",
+""Network Function exposes Service"",
+""Service is available via API (HTTP/2 + JSON)"",
+""API uses protocol HTTP/2"",
+""API uses format JSON"""
+,SBA enables dynamic service discovery and direct NF-to-NF communication without requiring intermediaries or brokers.,"""Service-Based Architecture (SBA) enables dynamic service discovery"",
+""Service-Based Architecture (SBA) enables direct NF-to-NF communication"",
+""Direct NF-to-NF communication does not require intermediaries or brokers""
+"
+,The SBA model decouples the service consumer from the service provider through the use of a Network Repository Function (NRF).,"""SBA model decouples service consumer from service provider"",
+""SBA model achieves decoupling via Network Repository Function (NRF)"",
+""Network Repository Function (NRF) mediates interaction between service consumer and service provider"""
+,"SBA supports horizontal scalability and modularity by treating every function (e.g., AMF, SMF, PCF) as an independent service.","""Service-Based Architecture (SBA) supports horizontal scalability"",
+""Service-Based Architecture (SBA) supports modularity"",
+""Service-Based Architecture (SBA) treats AMF as an independent service"",
+""Service-Based Architecture (SBA) treats SMF as an independent service"",
+""Service-Based Architecture (SBA) treats PCF as an independent service"""
+,"5G core and RAN functions are designed as cloud-native components that follow the principles of containerization, statelessness, and modularity.","""5G core functions are designed as cloud-native components"",
+""RAN functions are designed as cloud-native components"",
+""Cloud-native components follow the principle of containerization"",
+""Cloud-native components follow the principle of statelessness"",
+""Cloud-native components follow the principle of modularity"""
+,"Network Functions (NFs) are implemented as microservices, enabling CI/CD deployment, independent updates, and fine-grained scaling.","""Network Functions (NFs) are implemented as microservices"",
+""Microservices enable CI/CD deployment"",
+""Microservices enable independent updates"",
+""Microservices enable fine-grained scaling"""
+,"Each NF runs in isolated execution environments, typically containers orchestrated via Kubernetes or other NFVO frameworks.","""Network Function (NF) runs in isolated execution environments"",
+""Isolated execution environments are typically realized as containers"",
+""Containers are orchestrated via Kubernetes"",
+""Containers may be orchestrated via NFVO frameworks"""
+,The use of microservices and container platforms supports vendor-agnostic and hardware-agnostic deployments in hybrid cloud environments.,"""Microservices support vendor-agnostic deployments"",
+""Microservices support hardware-agnostic deployments"",
+""Container platforms support vendor-agnostic deployments"",
+""Container platforms support hardware-agnostic deployments"",
+""Vendor-agnostic deployments occur in hybrid cloud environments"",
+""Hardware-agnostic deployments occur in hybrid cloud environments"""
+,"These cloud-native features allow for slicing, multi-tenancy, and elasticity in managing network resources.","""Cloud-native features allow slicing"",
+""Cloud-native features allow multi-tenancy"",
+""Cloud-native features allow elasticity"",
+""Slicing is used in managing network resources"",
+""Multi-tenancy is used in managing network resources"",
+""Elasticity is used in managing network resources"""
+,"5G continues the Control and User Plane Separation (CUPS) principle introduced in 3GPP Rel‑14, allowing independent placement and scaling of control-plane (AMF, SMF) and user-plane (UPF) functions.","""5G continues Control and User Plane Separation (CUPS) principle"",
+""Control and User Plane Separation (CUPS) principle was introduced in 3GPP Release 14"",
+""CUPS principle allows independent placement of control-plane functions"",
+""CUPS principle allows independent scaling of control-plane functions"",
+""CUPS principle allows independent placement of user-plane functions"",
+""CUPS principle allows independent scaling of user-plane functions"",
+""Control-plane functions include AMF"",
+""Control-plane functions include SMF"",
+""User-plane functions include UPF"""
+,"CUPS enables deploying UPF close to the network edge for latency-sensitive services, while control-plane functions remain centralized.","""CUPS enables deploying UPF close to the network edge"",
+""UPF close to the network edge supports latency-sensitive services"",
+""Control-plane functions remain centralized"""
+,Separation of control and user planes enhances fault isolation and resource utilization across the network.,"""Separation of control and user planes (CUPS) enhances fault isolation"",
+""Separation of control and user planes (CUPS) enhances resource utilization"",
+""Resource utilization occurs in the network"""
+,CUPS is a prerequisite for enabling flexible and performant network slicing and multi-access edge computing (MEC).,"""CUPS is a prerequisite for flexible network slicing"",
+""CUPS is a prerequisite for performant network slicing"",
+""CUPS is a prerequisite for multi-access edge computing (MEC)"""
+,"In 5G SBA, core functions like AMF, SMF, AUSF, and UDM can operate statelessly by offloading UE context to an external Unstructured Data Storage Function (UDSF).","""5G SBA enables stateless operation of AMF"",
+""5G SBA enables stateless operation of SMF"",
+""5G SBA enables stateless operation of AUSF"",
+""5G SBA enables stateless operation of UDM"",
+""AMF offloads UE context to Unstructured Data Storage Function (UDSF)"",
+""SMF offloads UE context to Unstructured Data Storage Function (UDSF)"",
+""AUSF offloads UE context to Unstructured Data Storage Function (UDSF)"",
+""UDM offloads UE context to Unstructured Data Storage Function (UDSF)"",
+""Offloading UE context to UDSF enables stateless operation"""
+,"Stateless NFs gain elasticity and failure resilience, enabling container-based deployments and fast restarts without local state loss.","""Stateless NFs gain elasticity"",
+""Stateless NFs gain failure resilience"",
+""Stateless NFs enable container-based deployments"",
+""Stateless NFs enable fast restarts"",
+""Fast restarts occur without local state loss"""
+,"UDSF acts as a centralized, non-relational key-value store, enabling fast read/write of UE-related state.","""UDSF acts as centralized non-relational key-value store"",
+""UDSF enables fast read/write of UE-related state"",
+""Fast read/write operates on UE-related state"""
+,"Stateful NFs are tightly coupled with internal UE context, causing failure risks and scaling limitations.","""Stateful NFs are tightly coupled with internal UE context"",
+""Stateful NFs tightly coupled with internal UE context incur failure risks"",
+""Stateful NFs tightly coupled with internal UE context incur scaling limitations"""
+,NG‑RAN is split into gNB‑DU for real-time processing and gNB‑CU for centralized control and core interfacing.,"""NG-RAN is split into gNB-DU"",
+""NG-RAN is split into gNB-CU"",
+""gNB-DU performs real-time processing"",
+""gNB-CU performs centralized control"",
+""gNB-CU performs core interfacing"""
+,"gNB‑CU is functionally divided into CU‑CP (control plane) and CU‑UP (user plane), mirroring CUPS design.","""gNB-CU is functionally divided into CU-CP"",
+""gNB-CU is functionally divided into CU-UP"",
+""gNB-CU functional division mirrors CUPS design"""
+,CU‑CP connects to AMF over NG‑AP/SCTP (NG‑C link); CU‑UP transfers data to UPF via NG‑U using GTP‑U.,"""CU-CP connects to AMF"",
+""CU-CP–AMF connection uses NG-AP"",
+""CU-CP–AMF connection uses SCTP"",
+""CU-CP–AMF connection constitutes NG-C link"",
+""CU-UP transfers data to UPF""
+""Data transfer between CU-UP and UPF occurs via NG-U"",
+""Data transfer between CU-UP and UPF uses GTP-U"","
+,CUPS architecture enables horizontal scaling and placement flexibility across both RAN and core.,"""CUPS architecture enables horizontal scaling"",
+""CUPS architecture enables placement flexibility"",
+""Horizontal scaling applies across RAN"",
+""Horizontal scaling applies across core"",
+""Placement flexibility applies across RAN"",
+""Placement flexibility applies across core"""
+,"5G NR uses scalable OFDM numerology, ultra-lean design, and beamforming for diverse service support (eMBB, mMTC, URLLC).","""5G NR uses scalable OFDM numerology"",
+""5G NR uses ultra-lean design"",
+""5G NR uses beamforming"",
+""Scalable OFDM numerology supports diverse service types"",
+""Ultra-lean design supports diverse service types"",
+""Beamforming supports diverse service types"",
+""Diverse service types include eMBB"",
+""Diverse service types include mMTC"",
+""Diverse service types include URLLC"""
+,"Separating control and data functions allows independent edge deployment — CU‑UP at edge, CU‑CP centralized — for low latency.","""Separation of control and data functions allows independent edge deployment"",
+""Separation of control and data functions allows deploying CU-UP at the edge"",
+""Separation of control and data functions allows keeping CU-CP centralized"",
+""CU-UP at the edge reduces latency"",
+""Independent edge deployment enables low latency"""
+,"Functional splits enhance vendor diversity, network slicing, and multi-tenant orchestration in cloud-native environments.","""Functional splits enhance vendor diversity"",
+""Functional splits enhance network slicing"",
+""Functional splits enhance multi-tenant orchestration"",
+""Multi-tenant orchestration occurs in cloud-native environments"""
+,NRF centralizes service registry and discovery.,"""NRF centralizes service registry"",
+""NRF centralizes service discovery"""
+,"Control plane security must encompass confidentiality, integrity, authentication, segmentation, and runtime monitoring across all NF interfaces.","""Control plane security must encompass confidentiality"",
+""Control plane security must encompass integrity"",
+""Control plane security must encompass authentication"",
+""Control plane security must encompass segmentation"",
+""Control plane security must encompass runtime monitoring"",
+""Confidentiality must apply across all NF interfaces"",
+""Integrity must apply across all NF interfaces"",
+""Authentication must apply across all NF interfaces"",
+""Segmentation must apply across all NF interfaces"",
+""Runtime monitoring must apply across all NF interfaces"""
+,"AMF manages UE registration, mobility, and NAS signaling.","""AMF manages UE registration"",
+""AMF manages mobility"",
+""AMF manages NAS signaling"""
+,AMF authenticates UE using NAS and passes session control to SMF.,"""AMF authenticates UE using NAS"",
+""AMF passes session control to SMF"""
+,AMF is control-plane only; it does not handle user traffic.,"""AMF is control-plane only"",
+""AMF does not handle user traffic"""
+,AMF can redirect UEs to appropriate SMF/UPF combinations based on policies.,"""AMF redirects UEs to appropriate SMF/UPF combinations"",
+""AMF selects SMF/UPF combinations based on policies"""
+,"AMF is dependent on UDM (for subscription), AUSF (for auth), SMF (for session setup).","""AMF depends on UDM for subscription"",
+""AMF depends on AUSF for authentication"",
+""AMF depends on SMF for session setup"""
+,"AMF uses such interfaces as: N1 (UE-AMF) NAS over IP, N2 (AMF-gNB) NGAP over SCTP, N11 (AMF-SMF) SBI (HTTP/2+JSON).","""AMF uses N1 interface"",
+""N1 interface connects UE and AMF"",
+""N1 interface carries NAS over IP"",
+""AMF uses N2 interface"",
+""N2 interface connects AMF and gNB"",
+""N2 interface carries NGAP over SCTP"",
+""AMF uses N11 interface"",
+""N11 interface connects AMF and SMF"",
+""N11 interface implements SBI over HTTP/2 + JSON"""
+,"SMF handles PDU session lifecycle: setup, modification, and release.","""SMF handles PDU session lifecycle"",
+""SMF handles PDU session setup"",
+""SMF handles PDU session modification"",
+""SMF handles PDU session release"""
+,SMF allocates IP addresses and installs traffic steering rules in UPFs.,"""SMF allocates IP addresses"",
+""SMF installs traffic steering rules"",
+""Traffic steering rules are installed in UPFs"""
+,SMF enforces QoS via PCF policies.,"""SMF enforces QoS"",
+""SMF uses PCF policies to enforce QoS"""
+,"SMF connects to UPFs via PFCP, a protocol designed for fast, stateless user-plane control.","""SMF connects to UPFs"",
+""SMF–UPF connection uses PFCP"",
+""PFCP is designed for fast user-plane control"",
+""PFCP is designed for stateless user-plane control"""
+,"SMF uses the following interfaces: N11 (SMF-AMF), N4 (SMF-UPF) PFCP over UDP, and N10 (SMF-UDM).","""SMF uses N11 interface"",
+""N11 interface connects SMF and AMF"",
+""SMF uses N4 interface"",
+""N4 interface connects SMF and UPF"",
+""N4 interface uses PFCP"",
+""PFCP runs over UDP"",
+""SMF uses N10 interface"",
+""N10 interface connects SMF and UDM"""
+,"SMF is dependent on AMF, UPF, and PCF.","""SMF depends on AMF"",
+""SMF depends on UPF"",
+""SMF depends on PCF"""
+,"SMF exchanges data such as session context, QoS rules, and IP address allocation.","""SMF exchanges session context"",
+""SMF exchanges QoS rules"",
+""SMF exchanges IP address allocation"""
+,SMF uses protocols including HTTP/2 and PFCP.,"""SMF uses HTTP/2"",
+""SMF uses PFCP"""
+,UPF handles user traffic forwarding and QoS enforcement.,"""UPF handles user traffic forwarding"",
+""UPF handles QoS enforcement"""
+,UPF forwards traffic between RAN and external data networks.,"""UPF forwards traffic between RAN and external data networks"",
+""UPF connects RAN to external data networks"""
+,"UPF supports data buffering, downlink packet marking, and traffic shaping.","""UPF supports data buffering"",
+""UPF supports downlink packet marking"",
+""UPF supports traffic shaping"""
+,Multiple UPFs can be deployed regionally to support MEC and network slicing.,"""Multiple UPFs can be deployed regionally"",
+""Multiple UPFs support multi-access edge computing (MEC)"",
+""Multiple UPFs support network slicing"""
+,"UPF uses the following interfaces: N3 (UPF-gNB) GTP-U, N4 (UPF-SMF) PFCP, N6 (UPF-DN) IP forwarding.","""UPF uses N3 interface"",
+""N3 interface connects UPF and gNB"",
+""N3 interface carries GTP-U"",
+""UPF uses N4 interface"",
+""N4 interface connects UPF and SMF"",
+""N4 interface uses PFCP"",
+""UPF uses N6 interface"",
+""N6 interface connects UPF and data network (DN)"",
+""N6 interface provides IP forwarding"""
+,UPF is dependent on SMF.,"""UPF depends on SMF"""
+,UPF manages data such as PDU sessions and QoS enforcement rules.,"""UPF manages PDU sessions"",
+""UPF manages QoS enforcement rules"""
+,UPF uses protocols including PFCP and GTP-U.,"""UPF uses PFCP"",
+""UPF uses GTP-U"""
+,AUSF performs challenge–response procedures with UEs during registration.,"""AUSF performs challenge–response procedures"",
+""Challenge–response procedures involve UEs"",
+""Challenge–response procedures occur during registration"""
+,"AUSF is stateless by design and uses UDM to obtain authentication data (e.g., K, OPc, SQN).","""AUSF is stateless by design"",
+""AUSF uses UDM"",
+""AUSF obtains authentication data from UDM"",
+""Authentication data includes K"",
+""Authentication data includes OPc"",
+""Authentication data includes SQN"""
+,AUSF uses the following interfaces: N12 (AMF-AUSF) and N13 (AUSF-UDM).,"""AUSF uses N12 interface"",
+""N12 interface connects AMF and AUSF"",
+""AUSF uses N13 interface"",
+""N13 interface connects AUSF and UDM"""
+,AUSF is dependent on UDM for subscription credentials.,"""AUSF depends on UDM"",
+""AUSF obtains subscription credentials from UDM"""
+,AUSF processes authentication vectors as part of its data handling.,"""AUSF processes authentication vectors"",
+""Authentication vectors are part of AUSF data handling"""
+,UDM serves as the central database for subscriber profiles and policies.,"""UDM serves as central database"",
+""Central database stores subscriber profiles"",
+""Central database stores policies"""
+,UDM provides authentication data to AUSF and access policies to AMF.,"""UDM provides authentication data to AUSF"",
+""UDM provides access policies to AMF"""
+,"UDM stores SUPI, subscription profiles, and AM Policy Association.","""UDM stores SUPI"",
+""UDM stores subscription profiles""
+UDM stores AM Policy Association"
+,"UDM uses the following interfaces: N8 (UDM-AMF), N10 (UDM-SMF), N13 (UDM-AUSF).","""UDM uses N8 interface"",
+""N8 interface connects UDM and AMF"",
+""UDM uses N10 interface"",
+""N10 interface connects UDM and SMF"",
+""UDM uses N13 interface"",
+""N13 interface connects UDM and AUSF"""
+,"UDM manages data including subscription data, access profiles, and authentication keys.","""UDM manages subscription data"",
+""UDM manages access profiles"",
+""UDM manages authentication keys"""
+,UDM may link with the HSS in interworking scenarios for backward compatibility.,"""UDM may link with HSS"",
+""UDM–HSS linking occurs in interworking scenarios"",
+""UDM–HSS linking provides backward compatibility"""
+,PCF provides policy decisions such as QoS and charging to other network functions.,"""PCF provides policy decisions"",
+""PCF provides policy decisions to other network functions"",
+""Policy decisions include QoS"",
+""Policy decisions include charging"""
+,PCF enforces subscriber-specific policies via SMF and AMF.,"""PCF enforces subscriber-specific policies"",
+""PCF enforces *subscriber-specific policies via SMF"",
+""PCF enforces *subscriber-specific policies via AMF"""
+,PCF works with AF (Application Function) to enforce application-level QoS.,"""PCF works with AF (Application Function)"",
+""PCF and AF (Application Function) enforce application-level QoS"""
+,PCF uses the following interfaces: N7 (PCF-SMF) and N15 (PCF-AMF).,"""PCF uses N7 interface"",
+""N7 interface connects PCF and SMF"",
+""PCF uses N15 interface"",
+""N15 interface connects PCF and AMF"""
+,"PCF manages data including policy rules, network slicing information, and QoS profiles.","""PCF manages policy rules"",
+""PCF manages network slicing information"",
+""PCF manages QoS profiles"""
+,PCF may connect to UDR for policy rule storage.,"""PCF may connect to UDR"",
+""UDR stores policy rules"""
+,NRF provides service discovery and registration for the Service-Based Architecture (SBA).,"""NRF provides service discovery"",
+""NRF provides registration"",
+""Service-Based Architecture (SBA) relies on NRF"""
+,NRF enables dynamic discovery of NF services using API lookup.,"""NRF enables dynamic discovery of NF services"",
+""Dynamic discovery of NF services uses API lookup"""
+,NRF ensures service-level routing and load-aware NF selection.,"""NRF ensures service-level routing"",
+""NRF ensures load-aware NF selection"""
+,NRF uses the Nnrf interface (NF-NRF) over HTTP/2.,"""NRF uses Nnrf interface"",
+""Nnrf interface connects network functions (NFs) and NRF"",
+""Nnrf interface runs over HTTP/2"""
+,"NRF manages data such as NF profiles, service status, and availability.","""NRF manages NF profiles"",
+""NRF manages service status"",
+""NRF manages availability"""
+,NRF is a dependency for all SBA-based network functions.,"""NRF is a dependency for SBA-based network functions"""
+,UDR acts as a centralized database backend for UDM and PCF.,"""UDR acts as centralized database backend"",
+""UDR serves as backend for UDM"",
+""UDR serves as backend for PCF"""
+,UDR decouples business logic (UDM/PCF) from persistent storage.,"""UDR decouples business logic from persistent storage"",
+""Business logic includes UDM"",
+""Business logic includes PCF"""
+,UDR improves fault tolerance and scaling of data-centric functions.,"""UDR improves fault tolerance"",
+""UDR improves scaling"",
+""Fault tolerance applies to data-centric functions"",
+""Scaling applies to data-centric functions"""
+,UDR uses the N5 interface (UDM/PCF-UDR).,"""UDR uses N5 interface"",
+""N5 interface connects UDM and UDR"",
+""N5 interface connects PCF and UDR"""
+,"UDR manages data such as subscriber data, policy data, and configuration values.","""UDR manages subscriber data"",
+""UDR manages policy data"",
+""UDR manages configuration values"""
+,"PFCP is the standardized protocol for SMF-to-UPF control, operating over UDP at the N4 and Sx reference points.","""PFCP is standardized protocol for SMF-to-UPF control"",
+""PFCP operates over UDP"",
+""PFCP operates at N4 reference point"",
+""PFCP operates at Sx reference point"",
+""SMF-to-UPF control uses PFCP""
+"
+,SMF uses PFCP to install PFDs and FARs in UPF to govern user data forwarding rules.,"""SMF uses PFCP"",
+""SMF installs PFDs in UPF"",
+""SMF installs FARs in UPF"",
+""PFDs govern user data forwarding rules"",
+""FARs govern user data forwarding rules"""
+,PFCP is fundamental for enabling Control-User Plane Separation (CUPS) in 5G core.,"""PFCP is fundamental for enabling Control-User Plane Separation (CUPS)"",
+""Control-User Plane Separation (CUPS) is applied in 5G core"""
+,"PFCP includes mechanisms like Keepalive, Session, QER, and BAR to manage forwarding and buffering.","""PFCP includes Keepalive mechanism"",
+""PFCP includes Session mechanism"",
+""PFCP includes QER mechanism"",
+""PFCP includes BAR mechanism"",
+""Keepalive mechanism manages forwarding"",
+""Keepalive mechanism manages buffering"",
+""Session mechanism manages forwarding"",
+""Session mechanism manages buffering"",
+""QER mechanism manages forwarding"",
+""QER mechanism manages buffering"",
+""BAR mechanism manages forwarding"",
+""BAR mechanism manages buffering"""
+,"PFCP enables dynamic session lifecycle control by allowing SMF to initiate, modify, or tear down UPF forwarding behavior in real time.","""PFCP enables dynamic session lifecycle control"",
+""PFCP allows SMF to initiate UPF forwarding behavior in real time"",
+""PFCP allows SMF to modify UPF forwarding behavior in real time"",
+""PFCP allows SMF to tear down UPF forwarding behavior in real time"""
+,"Through rule-based provisioning, PFCP allows SMF to granularly instruct UPF on how to classify, buffer, or prioritize specific traffic flows.","""SMF uses PFCP"",
+""SMF instructs UPF"", 
+""UPF classifies Specific Traffic Flows"",
+""UPF buffers Specific Traffic Flows"",
+""UPF prioritizes Specific Traffic Flows"""
+,"PFCP sessions maintain stateful associations between SMF and UPF, ensuring coherent control across multiple user sessions.","""PFCP sessions maintain stateful associations between SMF and UPF"",
+""Stateful associations between SMF and UPF ensure coherent control across multiple user sessions"""
+,The PFCP protocol supports heartbeats and recovery procedures to detect failure conditions and maintain high-availability pathways.,"""PFCP protocol supports heartbeats"",
+""PFCP protocol supports recovery procedures"",
+""Heartbeats detect failure conditions"",
+""Recovery procedures detect failure conditions"",
+""Heartbeats maintain high-availability pathways"",
+""Recovery procedures maintain high-availability pathways""
+"
+,"By separating control and data responsibilities, PFCP allows distributed UPF instances to be managed centrally by fewer SMF nodes.","""PFCP allows central management of distributed UPF instances"",
+""Central management of distributed UPF instances is performed by fewer SMF nodes"""
+,"Advanced rule types in PFCP such as QER and BAR enable precise QoS enforcement and packet buffering, tailored to per-session policy.","""Advanced rule types in PFCP include QER"",
+""Advanced rule types in PFCP include BAR"",
+""Advanced rule types in PFCP enable precise QoS enforcement"",
+""Advanced rule types in PFCP enable packet buffering"",
+""Precise QoS enforcement is tailored to per-session policy"",
+""Packet buffering is tailored to per-session policy"""
+,PFCP supports scalable deployment by minimizing control overhead using compact rule structures and stateless UDP transport.,"""PFCP supports scalable deployment"",
+""PFCP minimizes control overhead"",
+""Control overhead is minimized using compact rule structures"",
+""Control overhead is minimized using stateless UDP transport"""
+,PFCP is specified in 3GPP TS 29.244 and relies on UDP transport for control messaging.,"""PFCP is specified in 3GPP TS 29.244"",
+""PFCP relies on UDP transport"",
+""UDP transport carries control messaging"""
+,SEPP encrypts and proxies inter-PLMN control signaling across roaming borders.,"""SEPP encrypts inter-PLMN control signaling"",
+""SEPP proxies inter-PLMN control signaling"",
+""Inter-PLMN control signaling crosses roaming borders"""
+,SEPP ensures end-to-end control-plane security via TLS/IPsec tunnels.,"""SEPP ensures end-to-end control-plane security"",
+""SEPP uses TLS/IPsec tunnels"",
+""TLS/IPsec tunnels provide end-to-end control-plane security"""
+,"N3IWF acts as a gateway for non-3GPP access, such as Wi-Fi, using IKEv2 tunnels.","""N3IWF acts as gateway for non-3GPP access"",
+""Non-3GPP access includes Wi-Fi"",
+""N3IWF uses IKEv2 tunnels"""
+,"N3IWF bridges Wi-Fi clients to the AMF securely, without requiring native RAN.","""N3IWF bridges Wi-Fi clients to AMF securely"",
+""N3IWF-mediated Wi-Fi–AMF connection does not require native RAN"""
+,W-AGF is the Wireline Access Gateway Function used for fixed/mobile network convergence.,"""W-AGF is Wireline Access Gateway Function"",
+""Wireline Access Gateway Function is used for fixed/mobile network convergence"""
+,W-AGF enables fixed wireless access (FWA) and fixed-line services to connect to the 5G Core (5GC).,"""W-AGF enables fixed wireless access (FWA)"",
+""W-AGF enables fixed-line services"",
+""Fixed wireless access (FWA) connects to 5G Core (5GC)"",
+""Fixed-line services connect to 5G Core (5GC)"""
+,"5G core employs SBA where NFs like AMF, SMF, UPF register/discover services via NRF using HTTP/2 + REST.","""5G core employs Service-Based Architecture (SBA)"",
+""NFs register services via NRF"",
+""NFs discover services via NRF"",
+""Service registration/discovery via NRF uses HTTP/2 + REST"""
+,"SBA provides modularity, enabling dynamic NF registration and vendor interoperability.","""Service-Based Architecture (SBA) provides modularity"",
+""Modularity enables dynamic NF registration"",
+""Modularity enables vendor interoperability"""
+,"NSA combines 5G NR radio with 4G EPC core, while true SA uses 5GC supporting slicing, URLLC, mMTC.","""NSA (Non-Standalone architecture) includes 5G NR radio"",
+""NSA (Non-Standalone architecture) includes 4G EPC core"",
+""SA (Standalone architecture) uses 5GC"",
+""5GC supports network slicing"",
+""5GC supports URLLC"",
+""5GC supports mMTC"""
+,"Standard SBA NFs include AMF, SMF, UPF, UDM, PCF; also roaming entities SEPP, N3IWF, W-AGF.","""Service-Based Architecture (SBA) includes AMF"",
+""Service-Based Architecture (SBA) includes SMF"",
+""Service-Based Architecture (SBA) includes UPF"",
+""Service-Based Architecture (SBA) includes UDM"",
+""Service-Based Architecture (SBA) includes PCF"",
+""Service-Based Architecture (SBA) includes SEPP"",
+""Service-Based Architecture (SBA) includes N3IWF"",
+""Service-Based Architecture (SBA) includes W-AGF"",
+""SEPP is a roaming entity"",
+""N3IWF is a roaming entity"",
+""W-AGF is a roaming entity"""
+,"AMF can operate statelessly by externalizing UE context to a Unified Data Storage Function (UDSF), enhancing horizontal scalability.","""AMF can operate statelessly"",
+""AMF externalizes UE context to Unified Data Storage Function (UDSF)"",
+""Externalizing UE context to UDSF enhances horizontal scalability"""
+,"SMF uses the N7 interface to retrieve policy decisions from PCF, enabling differentiated handling per session.","""SMF uses N7 interface"",
+""SMF retrieves policy decisions from PCF"",
+""Policy decisions enable differentiated per-session handling"""
+,UPF maintains stateful session information to perform precise flow routing and per-user QoS enforcement.,"""UPF maintains stateful session information"",
+""Stateful session information enables precise flow routing"",
+""Stateful session information enables per-user QoS enforcement"""
+,NRF supports load-aware NF instance selection by maintaining up-to-date service availability data.,"""NRF supports load-aware NF instance selection"",
+""NRF maintains up-to-date service availability data"",
+""Maintaining up-to-date service availability data enables load-aware NF instance selection"""
+,AUSF leverages HTTP/2 interfaces to securely interact with UDM for retrieving authentication keys and vectors.,"""AUSF leverages HTTP/2 interfaces"",
+""AUSF securely interacts with UDM"",
+""Secure interaction with UDM retrieves authentication keys and vectors"""
+,"UDM is a stateful front-end to subscriber data, often backed by UDR for persistence and redundancy.","""UDM is stateful front-end to subscriber data"",
+""UDM is backed by UDR"",
+""UDR provides persistence"",
+""UDR provides redundancy"""
+,"UDR acts as a persistent, central repository supporting both subscriber data (UDM) and policy data (PCF), facilitating decoupling.","""UDR acts as persistent central repository"",
+""UDR supports subscriber data for UDM"",
+""UDR supports policy data for PCF"",
+""UDR’s support for subscriber and policy data facilitates decoupling"""
+,"PCF is inherently stateless and offloads data persistence to UDR, allowing lightweight and scalable deployment.","""PCF is inherently stateless"",
+""PCF offloads data persistence to UDR"",
+""Offloading data persistence to UDR allows lightweight deployment"",
+""Offloading data persistence to UDR allows scalable deployment"""
+,NSSF enables network slicing by selecting appropriate slice instances based on policies and UE subscription data.,"""NSSF enables network slicing"",
+""NSSF selects slice instances"",
+""Slice instance selection is based on policies"",
+""Slice instance selection is based on UE subscription data"""
+,"SEPP enforces inter-PLMN security by encrypting control-plane messages using TLS/IPsec tunnels, while hiding internal NF topology.","""SEPP enforces inter-PLMN security"",
+""SliceSEPP encrypts control-plane messages"",
+""SEPP uses TLS/IPsec tunnels"",
+""SEPP hides internal NF topology"""
+,"N3IWF provides secure IPsec tunnels over Wi-Fi, allowing non-3GPP devices to attach directly to the 5G core via AMF.","""N3IWF provides secure IPsec tunnels"",
+""Secure IPsec tunnels operate over Wi-Fi"",
+""N3IWF allows non-3GPP devices to attach directly to 5G core"",
+""AMF facilitates non-3GPP device attachment to 5G core"""
+,"SBA enables all control-plane NFs to expose RESTful APIs over HTTP/2, facilitating microservice-based orchestration and interop.","""Service-Based Architecture (SBA) enables control-plane NFs to expose RESTful APIs"",
+""Control-plane NFs expose RESTful APIs over HTTP/2"",
+""Exposing RESTful APIs over HTTP/2 facilitates microservice-based orchestration"",
+""Exposing RESTful APIs over HTTP/2 facilitates interoperability""
+"
+,"The choice between stateful and stateless NF design impacts how context is managed, with stateless NFs enabling container-based scaling.","""Stateful NF design impacts context management"",
+""Stateless NF design impacts context management"",
+""Stateless NF design enables container-based scaling"""
+,"Stateless core NFs like AMF and SMF require external state repositories (e.g., UDSF, UDR) to restore context during horizontal scaling or failure recovery.","""Stateless core NFs require external state repositories"",
+""AMF requires external state repositories"",
+""SMF requires external state repositories"",
+""External state repositories include UDSF"",
+""External state repositories include UDR"",
+""External state repositories restore context during horizontal scaling"",
+""External state repositories restore context during failure recovery"""
+,NRF and NSSF are stateless; AMF and SMF are stateful and store UE context in UDSF.,"""NRF is stateless"",
+""NSSF is stateless"",
+""AMF is stateful"",
+""AMF stores UE context in UDSF"",
+""SMF is stateful"",
+""SMF stores UE context in UDSF"""
+,UDSF functions as a shared key-value store holding UE session context and security credentials.,"""UDSF functions as shared key-value store"",
+""Shared key-value store holds UE session context"",
+""Shared key-value store holds security credentials"""
+,Container-based stateless deployment enables robust horizontal scaling and failure resilience.,"""Container-based stateless deployment enables robust horizontal scaling"",
+""Container-based stateless deployment enables failure resilience"""
+,Stateless architecture maintains 3GPP compliance by preserving standard SBI interfaces and requiring only new UDSF endpoints.,"""Stateless architecture maintains 3GPP compliance"",
+""Stateless architecture preserves standard SBI interfaces"",
+""Stateless architecture requires only new UDSF endpoints"""
+,Stateful NFs like AMF and SMF can offload internal memory to UDSF to become externally state-managed without altering logical behavior.,"""AMF offloads internal memory to UDSF"",
+""SMF offloads internal memory to UDSF"",
+""Offloading internal memory to UDSF enables externally state-managed operation"",
+""Externally state-managed AMF and SMF do not alter logical behavior"""
+,"UDSF is optimized for UE-specific metadata such as SUPI, session state, and NAS keys, supporting fine-grained key-value access.","""UDSF is optimized for UE-specific metadata"",
+""UE-specific metadata includes SUPI"",
+""UE-specific metadata includes session state"",
+""UE-specific metadata includes NAS keys"",
+""UDSF supports fine-grained key-value access"""
+,"Proactive state push allows AMF to transmit UE context to dependent NFs before they are involved in a procedure, enabling smoother control plane flow.","""Proactive state push allows AMF to transmit UE context"",
+""AMF transmits UE context to dependent NFs"",
+""Transmitting UE context to dependent NFs before procedure involvement enables smoother control-plane flow"""
+,Stateless NF deployment reduces the operational burden of state synchronization across instances during autoscaling or rolling updates.,"""Stateless NF deployment reduces operational burden of state synchronization across instances"",
+""Operational burden of state synchronization occurs during autoscaling"",
+""Operational burden of state synchronization occurs during rolling updates"""
+,Kubernetes-based control plane orchestration benefits from stateless NF design by enabling auto-replacement of crashed pods without state loss.,"""Kubernetes-based control plane orchestration benefits from stateless NF design"",
+""Stateless NF design enables auto-replacement of crashed pods"",
+""Auto-replacement of crashed pods occurs without state loss"""
+,"No changes to 3GPP signaling protocols (e.g., NAS, NGAP) are required to adopt stateless control—only the UDSF interface and optional push hooks are added.","""Stateless control requires no changes to 3GPP signaling protocols (NAS, NGAP)"",
+""Stateless control adds UDSF interface"",
+""Stateless control adds optional push hooks""
+"
+,"UDSF enables centralized or distributed state storage strategies depending on network topology, aiding deployment in edge or cloud regions.","""UDSF enables centralized state storage strategies"",
+""UDSF enables distributed state storage strategies"",
+""Centralized state storage strategies depend on network topology"",
+""Distributed state storage strategies depend on network topology"",
+""Centralized state storage strategies aid deployment in edge regions"",
+""Centralized state storage strategies aid deployment in cloud regions"",
+""Distributed state storage strategies aid deployment in edge regions"",
+""Distributed state storage strategies aid deployment in cloud regions"""
+,"Stateless NF instances may exhibit lower average CPU usage than stateful ones, due to wait periods during external state retrieval.","""Stateless NF instances exhibit lower average CPU usage than stateful NF instances"",
+""Lower average CPU usage is due to wait periods during external state retrieval"",
+""Wait periods during external state retrieval occur in stateless NF instances"""
+,Queue buildup in AMF propagates to SMF and UPF as CPU spikes once state responses are processed.,"""Queue buildup in AMF propagates to SMF"",
+""Queue buildup in AMF propagates to UPF"",
+""SMF experiences CPU spikes once state responses are processed"",
+""UPF experiences CPU spikes once state responses are processed"""
+,Transactional stateless NFs increase latency and cost by performing synchronous state fetches and JSON deserialization.,"""Transactional stateless NFs increase latency"",
+""Transactional stateless NFs increase cost"",
+""Transactional stateless NFs perform synchronous state fetches"",
+""Transactional stateless NFs perform JSON deserialization"""
+,Non-blocking stateless strategies improve latency and throughput by asynchronous state access.,"""Non-blocking stateless strategies improve latency"",
+""Non-blocking stateless strategies improve throughput"",
+""Non-blocking stateless strategies use asynchronous state access"""
+,"Working in cloud environments, stateless NF designs increase billing costs because longer request times increase runtime charges.","""Stateless NF designs increase billing costs"",
+""Stateless NF designs operate in cloud environments"",
+""Stateless NF designs cause longer request times"",
+""Longer request times increase runtime charges"",
+""Increased runtime charges lead to higher billing costs"""
+,Stateless NFs allow container-based scaling but require optimized caching strategies to avoid latency and cost penalties.,"""Stateless NFs allow container-based scaling"",
+""Stateless NFs require optimized caching strategies"",
+""Optimized caching strategies avoid latency penalties"",
+""Optimized caching strategies avoid cost penalties"""
+,"Stateless NFs allow container-based scaling
+Stateless NFs require optimized caching strategies
+Optimized caching strategies avoid latency penalties
+Optimized caching strategies avoid cost penalties","""Latency spikes occur in stateless control chains"",
+""Latency spikes correlate with batched state-response arrivals"",
+""Batched state-response arrivals lead to temporary CPU contention"",
+""Temporary CPU contention occurs across NF tiers"""
+,"Quasi-local model uses fetch-and-cache strategy, storing UE state locally after initial procedures.","""Quasi-local model uses fetch-and-cache strategy"",
+""Fetch-and-cache strategy stores UE state locally"",
+""UE state is stored after initial procedures"""
+,"State metrics include volume, size, and frequency of operations; helps dimension datastore loads.","""State metrics include volume"",
+""State metrics include size"",
+""State metrics include frequency of operations"",
+""State metrics help dimension datastore loads"""
+,Quasi-local caching reduces network-wide datastore interactions during user-plane processing.,"""Quasi-local caching reduces network-wide datastore interactions"",
+""Network-wide datastore interactions occur during user-plane processing"""
+,The quasi-local model maintains a session-scoped cache that reduces repeated external lookups during procedures like registration and handover.,"""Quasi-local model maintains session-scoped cache"",
+""Session-scoped cache reduces repeated external lookups"",
+""Repeated external lookups occur during registration procedures"",
+""Repeated external lookups occur during handover procedures"""
+,Caching state at well-defined checkpoints ensures that NFs have immediate access to necessary context during bursty signaling events.,"""Caching state at well-defined checkpoints ensures immediate access to necessary context"",
+""Immediate access to necessary context is provided to NFs during bursty signaling events"""
+,The fetch‑and‑cache model minimizes control-plane latency variance by reducing dependency on synchronous state-store reads during critical flows.,"""Fetch-and-cache model minimizes control-plane latency variance"",
+""Fetch-and-cache model reduces dependency on synchronous state-store reads"",
+""Dependency on synchronous state-store reads occurs during critical flows"""
+,"Tailored cache lifetimes and eviction policies allow NFs to meet reliability requirements across diverse traffic types, including eMBB and IoT.","""Tailored cache lifetimes allow NFs to meet reliability requirements"",
+""Eviction policies allow NFs to meet reliability requirements"",
+""Reliability requirements apply across diverse traffic types"",
+""Diverse traffic types include eMBB"",
+""Diverse traffic types include IoT"","
+,"N1 is the control-plane interface for NAS signaling between UE and AMF, across both gNB and access network.","""N1 interface is control-plane interface"",
+""N1 interface carries NAS signaling"",
+""NAS signaling occurs between UE and AMF"",
+""N1 interface operates across gNB"",
+""N1 interface operates across access network"""
+,N1 NAS messages are transparently forwarded by gNB without processing.,"""gNB transparently forwards N1 NAS messages"",
+""gNB does not process N1 NAS messages"""
+,"In 3GPP access, N1 uses RRC over Uu and NGAP over N2 between UE and AMF.","""N1 interface uses RRC"",
+""RRC runs over Uu"",
+""N1 interface uses NGAP"",
+""NGAP runs over N2"",
+""N1 interface operates between UE and AMF"""
+,"In non-3GPP access, N1 includes an IPsec tunnel (NWu) to link UE to AMF securely.","""N1 interface includes IPsec tunnel (NWu)"",
+""N1 interface uses IPsec tunnel (NWu) in non-3GPP access"",
+""IPsec tunnel (NWu) links UE and AMF securely"",
+""IPsec tunnel (NWu) is used in non-3GPP access"""
+,"N1 mode denotes Standalone (SA) deployment with direct 5G Core connectivity to UE, whereas S1 mode uses NSA via 4G.","""N1 mode denotes Standalone (SA) deployment"",
+""Standalone (SA) deployment connects UE to 5G Core"",
+""S1 mode uses Non-Standalone (NSA) deployment"",
+""NSA deployment operates via 4G"""
+,"N1 interface carries NAS signaling transparently via gNB, using RRC and NGAP for core-plane UE–AMF communication.","""N1 interface carries NAS signaling"",
+""NAS signaling is carried transparently via gNB"",
+""N1 interface uses RRC for core-plane UE–AMF communication"",
+""N1 interface uses NGAP for core-plane UE–AMF communication"""
+,"Control-plane interfaces (N2, N11, N12, N14, N15) use HTTP/2 REST over SBA, while data-plane interfaces (N3, N6, N9) use UDP-based protocols.","""Control-plane interfaces use HTTP/2 REST"",
+""N2 is a Control-plane interface"",
+""N11 is a Control-plane interface"",
+""N12 is a Control-plane interface"",
+""N14 is a Control-plane interface"",
+""N15 is a Control-plane interface"",
+""HTTP/2 REST runs over Service-Based Architecture (SBA)"",
+""Data-plane interfaces use UDP-based protocols"",
+""N3 is a Data-plane interface"",
+""N6 is a Data-plane interface"",
+""N9 is a Data-plane interface"",
+""N15 is a Control-plane interface"""
+,N4 interface (SMF–UPF) employs PFCP to manage user-plane sessions and forwarding behavior.,"""N4 interface connects SMF and UPF"",
+""N4 interface employs PFCP"",
+""PFCP manages user-plane sessions"",
+""PFCP manages forwarding behavior"""
+,"Inter-NF service calls (e.g. N7, N8, N10) enable SMB workload routing and allow dynamic policy and data flow management.","""Inter-NF service calls enable SMB workload routing"",
+""Inter-NF service calls allow dynamic policy management"",
+""Inter-NF service calls allow dynamic data flow management"",
+""N7 interface is an Inter-NF service call"",
+""N8 interface is an Inter-NF service call"",
+""N10 interface is an Inter-NF service call"""
+,"Roaming-related interfaces such as N16, N27, N32 facilitate control-plane continuity across administrative domains.","""Roaming-related interfaces facilitate control-plane continuity across administrative domains"",
+""N16 interface is a roaming-related interface"",
+""N27 interface is a roaming-related interface"",
+""N32 interface is a roaming-related interface"",
+""Control-plane continuity occurs across administrative domains"""
+,NSSF selects network slices via N22 after UE–AMF registration for slice-specific NF association.,"""NSSF selects network slices"",
+""NSSF uses N22 interface"",
+""Slice-specific NF association occurs after UE–AMF registration"""
+,N9 supports cascading of UPFs for scaling and multi-hop data-plane routing.,"""N9 interface supports cascading of UPFs"",
+""Cascading of UPFs enables scaling"",
+""Cascading of UPFs enables multi-hop data-plane routing"""
+,Security features across interfaces include TLS for HTTP/2 SBA and IPsec tunneling for non-3GPP and RAN access paths.,"""Security features across interfaces include TLS for HTTP/2 SBA"",
+""Security features across interfaces include IPsec tunneling for non-3GPP access paths"",
+""Security features across interfaces include IPsec tunneling for RAN access paths"""
+,"N1 carries NAS signaling between the UE and AMF and is transparent through the gNB, forming the control link for UE registration and session setup.","""N1 carries NAS signaling"",
+""NAS signaling flows between UE and AMF"",
+""NAS signaling is transparent through gNB"",
+""N1 forms control link for UE registration and session setup"""
+,N2 connects gNB to AMF using NGAP over SCTP and enables the transmission of access signaling and mobility control messages.,"""N2 connects gNB to AMF"",
+""N2 uses NGAP over SCTP"",
+""N2 enables transmission of access signaling"",
+""N2 enables transmission of mobility control messages"""
+,"N3 transports user-plane traffic between gNB and UPF using GTP-U over UDP, supporting high-throughput PDU sessions.","""N3 transports user-plane traffic between gNB and UPF"",
+""N3 uses GTP-U over UDP"",
+""Transporting user-plane traffic uses N3"",
+""Transporting user-plane traffic uses GTP-U over UDP"",
+""Transporting user-plane traffic supports high-throughput PDU sessions"""
+,"N4 allows the SMF to control UPF behavior using PFCP, setting up and modifying forwarding rules and QoS enforcement.","""N4 allows SMF to control UPF behavior"",
+""SMF uses PFCP to set up forwarding rules"",
+""SMF uses PFCP to modify forwarding rules"",
+""PFCP enables QoS enforcement"""
+,"N5 enables application functions (AF) to communicate policy triggers to the PCF via HTTP/2, often for content-aware optimization.","""N5 interface enables application functions (AF)"",
+""Application functions (AF) communicate policy triggers to PCF"",
+""Communication of policy triggers to PCF occurs via HTTP/2"",
+""Policy triggers support content-aware optimization"""
+,"N6 links the UPF to external data networks (DN) over IP and handles routing, NAT, and service exposure for user-plane packets.","""N6 links UPF to external data networks (DN) over IP"",
+""N6 handles routing for user-plane packets"",
+""N6 handles NAT for user-plane packets"",
+""N6 handles service exposure for user-plane packets"""
+,N7 interface is used by the SMF to retrieve policy rules and QoS profiles from the PCF using RESTful HTTP APIs.,"""N7 interface is used by SMF"",
+""SMF retrieves policy rules"",
+""SMF retrieves QoS profiles"",
+""Retrieval of policy rules and QoS profiles occurs via N7 interface"",
+""N7 interface uses RESTful HTTP APIs"""
+,N8 provides the AMF access to subscriber and authentication data by querying the UDM over HTTP/2.,"""N8 interface provides AMF access to subscriber data"",
+""N8 interface provides AMF access to authentication data"",
+""AMF access to subscriber and authentication data occurs by querying UDM"",
+""Querying UDM uses HTTP/2"""
+,"N9 enables inter-UPF communication via GTP-U for distributed user-plane routing, load balancing, or service chaining.","""N9 interface enables inter-UPF communication"",
+""N9 interface uses GTP-U"",
+""Inter-UPF communication supports distributed user-plane routing"",
+""Inter-UPF communication supports load balancing"",
+""Inter-UPF communication supports service chaining"""
+,"N10 allows SMF to obtain subscriber policy data from the UDM, including PDU session authorization and QoS configuration.","""N10 interface allows SMF to obtain subscriber policy data"",
+""SMF obtains subscriber policy data from UDM"",
+""Subscriber policy data includes PDU session authorization"",
+""Subscriber policy data includes QoS configuration"""
+,"N11 connects the AMF and SMF, enabling control-plane interactions such as PDU session setup and mobility handling.","""N11 interface connects AMF and SMF"",
+""N11 interface enables control-plane interactions"",
+""Control-plane interactions include PDU session setup"",
+""Control-plane interactions include mobility handling"""
+,N12 allows the AMF to forward authentication requests to the AUSF during UE registration or security mode command procedures.,"""N12 interface allows AMF to forward authentication requests to AUSF"",
+""AMF forwards authentication requests to AUSF"",
+""Forwarding authentication requests to AUSF occurs during UE registration"",
+""Forwarding authentication requests to AUSF occurs during security mode command procedures"""
+,N13 connects AUSF to UDM for obtaining authentication vectors like AV/EAP for 5G-AKA procedures.,"""N13 interface connects AUSF and UDM"",
+""AUSF obtains authentication vectors from UDM"",
+""Authentication vectors include AV"",
+""Authentication vectors include EAP"",
+""Authentication vectors are used for 5G-AKA procedures"""
+,"N14 supports AMF-to-AMF communication for inter-region handover, UE context transfer, and mobility continuity.","""N14 supports AMF-to-AMF communication"",
+""AMF-to-AMF communication enables inter-region handover"",
+""AMF-to-AMF communication enables UE context transfer"",
+""AMF-to-AMF communication enables mobility continuity"""
+,"N15 is used by the PCF to supply policy rules directly to the AMF, influencing access and mobility behaviors.","""N15 interface is used by PCF"",
+""PCF supplies policy rules to AMF"",
+""Supplying policy rules to AMF influences access behaviors"",
+""Supplying policy rules to AMF influences mobility behavior"""
+,N16 links two SMFs (typically in roaming scenarios) to coordinate session continuity and policy across PLMN boundaries.,"""N16 links two SMFs"",
+""Linking two SMFs occurs in roaming scenarios"",
+""N16 coordinates session continuity across PLMN boundaries"",
+""N16 coordinates policy across PLMN boundaries"""
+,"N1 is the NAS signaling interface between UE and AMF, used for registration, authentication, and mobility procedures","""N1 interface carries NAS signaling between UE and AMF"",
+""N1 interface is used for registration procedures"",
+""N1 interface is used for authentication procedures"",
+""N1 interface is used for mobility procedures"""
+,"N1 signaling is bidirectional, encapsulated in RRC at the UE side and transported via NGAP through gNB to AMF.","""N1 signaling is bidirectional"",
+""N1 signaling is encapsulated in RRC at the UE side"",
+""RRC encapsulation of N1 signaling occurs at UE side"",
+""N1 signaling is transported via NGAP through gNB to AMF"",
+""NGAP through gNB transports N1 signaling to AMF"""
+,"N2 connects the gNB and AMF, using NGAP over SCTP to handle UE context and handover signaling.","N2 connects gNB and AMF
+N2 uses NGAP over SCTP
+NGAP over SCTP handles UE context
+NGAP over SCTP handles handover signaling"
+,N2 transmits messages such as Initial UE Message and UE Context Release between RAN and Core.,"""N2 transmits messages such as Initial UE Message"",
+""N2 transmits messages such as UE Context Release"",
+""Initial UE Message is transmitted between RAN and Core"",
+""UE Context Release is transmitted between RAN and Core"""
+,: N3 uses GTP-U over UDP to forward user-plane traffic between gNB and UPF after PDU session establishment.,"""N3 uses GTP-U over UDP"",
+""N3 forwards user-plane traffic between gNB and UPF"",
+""Forwarding user-plane traffic between gNB and UPF occurs after PDU session establishment"""
+,N3 is unidirectional for data flow (uplink/downlink) and not involved in control signaling.,"""N3 is unidirectional for uplink data flow"",
+""N3 is unidirectional for downlink data flow"",
+""N3 is not involved in control signaling"""
+,"N4 is the control interface between SMF and UPF, enabling session creation, QoS enforcement, and traffic routing via PFCP.","""N4 is control interface between SMF and UPF"",
+""N4 enables session creation"",
+""N4 enables QoS enforcement"",
+""N4 enables traffic routing via PFCP"""
+,"N4 manages forwarding rules through PFCP messages such as FAR, QER, and BAR to control UPF behavior dynamically.","""N4 manages forwarding rules"",
+""N4 uses PFCP message FAR"",
+""N4 uses PFCP message QER"",
+""N4 uses PFCP message BAR"",
+""Managing forwarding rules using PFCP messages enables dynamic UPF behavior control"""
+,5G supports simultaneous NAS sessions over cellular and Wi‑Fi by establishing multiple N1 control-plane connections.,"""5G supports simultaneous NAS sessions over cellular and Wi-Fi"",
+""Simultaneous NAS sessions over cellular and Wi-Fi are established by multiple N1 control-plane connections"""
+,IPsec tunnels (NWu/NWt) using IKEv2 and EAP‑5G secure NAS traffic to N3IWF/TNGF gateways.,"""IPsec tunnels use IKEv2"",
+""IPsec tunnels use EAP-5G"",
+""IPsec tunnels  secure NAS traffic to N3IWF gateways"",
+""IPsec tunnels secure NAS traffic to TNGF gateways"",
+""NWu is a IPsec tunnel"",
+""NWt is a IPsec tunnel"""
+,N1 over trusted Wi‑Fi uses IPsec with NULL encryption to avoid double encryption while preserving link-level security.,"""N1 over trusted Wi-Fi uses IPsec with NULL encryption"",
+""IPsec with NULL encryption avoids double encryption"",
+""IPsec with NULL encryption preserves link-level security"""
+,N2 control-plane messages over non-3GPP access use NGAP/SCTP between gateway functions and AMF.,"""N2 control-plane messages occur over non-3GPP access"",
+""N2 control-plane messages use NGAP/SCTP"",
+""NGAP/SCTP connects gateway functions and AMF"""
+,TWIF enables NAS signaling for legacy Wi‑Fi devices lacking EAP‑5G support by acting as a NAS proxy.,"""TWIF enables NAS signaling for legacy Wi-Fi devices lacking EAP-5G support"",
+""TWIF acts as NAS proxy"""
+,"N3 user-plane traffic between Wi‑Fi gateways and UPF uses GTP‑U over UDP, mirroring cellular data flow.","""N3 user-plane traffic between Wi-Fi gateways and UPF uses GTP-U over UDP"",
+""N3 user-plane traffic between Wi-Fi gateways and UPF mirrors cellular data flow"""
+,Service-Based Architecture (SBA) exists only between 5GC control-plane NFs via HTTP/2 REST APIs. ,"""Service-Based Architecture (SBA) exists only between 5GC control-plane NFs"",
+""Service-Based Architecture (SBA) operates via HTTP/2 REST APIs"""
+,"Interfaces N1, N2, N3, N4, N6, and N9 are executed outside the SBA domain using traditional control/user-plane protocols.","""N1 interface is executed outside SBA domain"",
+""N2 interface is executed outside SBA domain"",
+""N3 interface is executed outside SBA domain"",
+""N4 interface is executed outside SBA domain"",
+""N6 interface is executed outside SBA domain"",
+""N9 interface is executed outside SBA domain"",
+""N1 interface uses traditional control/user-plane protocols"",
+""N2 interface uses traditional control/user-plane protocols"",
+""N3 interface uses traditional control/user-plane protocols"",
+""N4 interface uses traditional control/user-plane protocols"",
+""N6 interface uses traditional control/user-plane protocols"",
+""N9 interface uses traditional control/user-plane protocols"""
+,"AMF and SMF represent separate functional domains in control-plane, enabling independent scaling and specialization.","""AMF represents a separate functional domain in the control-plane"",
+""SMF represents a separate functional domain in the control-plane"",
+""Separate functional domains in the control-plane enable independent scaling"",
+""Separate functional domains in the control-plane enable specialization"""
+,CUPS design separates control and user gateways for flexible placement and scalability in the 5G core.,"""CUPS design separates control gateways and user gateways"",
+""CUPS design enables flexible placement in the 5G core"",
+""CUPS design enables scalability in the 5G core"""
+,"SBA-capable NFs are cloud-native microservices, orchestrated via container platforms with CI/CD pipelines.","""SBA-capable NFs are cloud-native microservices"",
+""SBA-capable NFs are orchestrated via container platforms"",
+""Container platforms use CI/CD pipelines"""
+,"Control-plane APIs (e.g., Nsmf, Namf) are secured via TLS, whereas user-plane protocols (e.g., GTP‑U, PFCP) use UDP/SCTP.","""Control-plane APIs include Nsmf"",
+""Control-plane APIs include Namf"",
+""Control-plane APIs are secured via TLS"",
+""User-plane protocols include GTP-U"",
+""User-plane protocols include PFCP"",
+""User-plane protocols use UDP/SCTP"""
+,"SBA’s RESTful interfaces cannot directly carry UE or user-data-bound control messages (e.g., RRC or NAS).","""SBA’s RESTful interfaces cannot directly carry UE control messages"",
+""SBA’s RESTful interfaces cannot directly carry user-data-bound control messages"",
+""UE control messages include RRC"",
+""User-data-bound control messages include NAS"""
+,"In CUPS, user-plane functions like UPF scale and deploy separately from their control-plane counterparts (SMF, PCF).","""UPF scales separately from SMF"",
+""UPF deploys separately from SMF"",
+""UPF scales separately from PCF"",
+""UPF deploys separately from PCF"""
+,"Each Open5GS NF is configured via its own YAML file in /etc/open5gs/, specifying protocol ports, PLMN/TAC, and features.","""Open5GS NF is configured via its own YAML file in /etc/open5gs/"",
+""YAML file in /etc/open5gs/ specifies protocol ports"",
+""YAML file in /etc/open5gs/ specifies PLMN/TAC"",
+""YAML file in /etc/open5gs/ specifies features"""
+,Changing bind addresses in NF YAML requires consistent updates across RAN configurations to establish NGAP/GTP‑U links.,"""Changing bind addresses in NF YAML requires consistent updates across RAN configurations"",
+""Consistent updates across RAN configurations establish NGAP/GTP-U links"""
+,"AMF listens on NGAP SCTP port 38412; UPF listens for GTP‑U on PFCP-assigned port, both reflected in NF logs.","""AMF listens on NGAP SCTP port 38412"",
+""UPF listens for GTP-U on PFCP-assigned port"",
+""Port listening events are reflected in NF logs"""
+,Log entries such as ngap_server() and gtp_server() confirm the NF’s protocol stack initialization and port bindings.,"""ngap_server() log entry confirms NF’s protocol stack initialization"",
+""ngap_server() log entry confirms port bindings"",
+""gtp_server() log entry confirms NF’s protocol stack initialization"",
+""gtp_server() log entry confirms port bindings"""
+,SCTP INIT/ABORT messages in logs reveal SCTP handshake status between gNB and AMF.,"SCTP INIT/ABORT messages occur in logs
+SCTP INIT/ABORT messages reveal SCTP handshake status
+SCTP handshake status is between gNB and AMF"
+,Core setup creates ogstun TUN interface with IPv4/IPv6 subnets for UPF operations.,"""Core setup creates ogstun TUN interface"",
+""ogstun TUN interface provides IPv4 subnets"",
+""ogstun TUN interface provides IPv6 subnets"",
+""ogstun TUN interface supports UPF operations"""
+,IP forwarding (net.ipv4.ip_forward) must be enabled to allow UE-originated packets to route to WAN.,"""IP forwarding must be enabled to allow UE-originated packets"",
+""IP forwarding is set using net.ipv4.ip_forward"",
+""IP forwarding allows UE-originated packets"",
+""UE-originated packets route to WAN"""
+,"Firewall rules enforce subnet isolation (e.g., 10.45.0.0/16), blocking unauthorized access to NF services.","""Firewall rules enforce subnet isolation"",
+""Subnet isolation applies to 10.45.0.0/16"",
+""Subnet isolation blocks unauthorized access to NF services"""
+,"Open5GS NFs run as systemd services and can be stopped or disabled individually (e.g., open5gs-amfd).","""Open5GS NFs run as systemd services"",
+""systemd services can be stopped or disabled individually"",
+""open5gs-amfd is an example of a systemd service for an Open5GS NF"""
+,Running only subsets of NFs is supported by stopping irrelevant services and editing YAML configs accordingly.,"""Running only subsets of NFs is supported by stopping irrelevant services"",
+""Running only subsets of NFs is supported by editing YAML configs accordingly"""
+,"In Docker/Kubernetes mode, NF bind addresses, Kubernetes service IPs, and port mappings must align with core and RAN network settings.","""NF bind addresses must align with core network settings"",
+""NF bind addresses must align with RAN network settings"",
+""Kubernetes service IPs must align with core network settings"",
+""Kubernetes service IPs must align with RAN network settings"",
+""Port mappings must align with core network settings"",
+""Port mappings must align with RAN network settings"""
+,"Open5GS uses Docker manifests that configure upfPublicIP and amfif.ip/port, binding container network to host services","""Open5GS uses Docker manifests"",
+""Docker manifests configure upfPublicIP"",
+""Docker manifests configure amfif.ip/port"",
+""Configuring upfPublicIP binds container network to host services"",
+""Configuring amfif.ip/port binds container network to host services"""
+,"Open5GS uses MongoDB (e.g., mongodb://localhost/open5gs) for stateful NF data storage like NRF, PCF, and UDR.","""Open5GS uses MongoDB"",
+""MongoDB stores stateful NF data"",
+""Stateful NF data includes NRF"",
+""Stateful NF data includes PCF"",
+""Stateful NF data includes UDR"",
+""MongoDB connects using mongodb://localhost/open5gs"""
+,"To support service discovery and policy control, Open5GS PCF includes dbi configuration pointing to a MongoDB URI.","""Open5GS PCF includes dbi configuration"",
+""dbi configuration points to MongoDB URI"",
+""dbi configuration supports service discovery"",
+""dbi configuration supports policy control"""
+,"Each NF (AMF, PCF, SMF, UPF) in Open5GS can expose Prometheus metrics via an HTTP server configured under metrics: in its YAML file.","""AMF can expose Prometheus metrics via an HTTP server"",
+""PCF can expose Prometheus metrics via an HTTP server"",
+""SMF can expose Prometheus metrics via an HTTP server"",
+""UPF can expose Prometheus metrics via an HTTP server"",
+""Prometheus metrics are exposed via an HTTP server"",
+""HTTP server is configured under metrics:"",
+""metrics: is defined in the NF’s YAML file"""
+,"Metrics endpoints are individually defined per NF instance (e.g., open5gs-amfd, open5gs-smfd1, open5gs-upfd2) with distinct IP and port.","""Metrics endpoints are individually defined per NF instance"",
+""NF instances include open5gs-amfd, open5gs-smfd1, open5gs-upfd2"",
+""Metrics endpoints have distinct IP and port"""
+,Prometheus scrapes /metrics endpoints every 10 seconds using job definitions matching NF names in prometheus.yml.,"""Prometheus scrapes /metrics endpoints every 10 seconds"",
+""Prometheus uses job definitions in prometheus.yml"",
+""Job definitions match NF names"""
+,Grafana connects to Prometheus as a data source to visualize NF-specific metrics like ues_active or amf_session.,"""Grafana connects to Prometheus as a data source"",
+""Grafana visualizes NF-specific metrics"",
+""NF-specific metrics include ues_active"",
+""NF-specific metrics include amf_session"""
+,"Multiple SMF and UPF instances can be monitored in parallel, supporting slice- or region-specific deployments.","""Multiple SMF and UPF instances can be monitored in parallel"",
+""Parallel monitoring supports slice-specific deployments"",
+""Parallel monitoring supports region-specific deployments"""
+,Open5GS’s build process includes libogsmetrics to compile libprom and libmicrohttpd support for metrics output.,"""Open5GS’s build process includes libogsmetrics"",
+""libogsmetrics compiles libprom support for metrics output"",
+""libogsmetrics compiles libmicrohttpd support for metrics output"""
+,Example metrics include counters for NAS registration requests (rm_reginitreq) and memory/resource usage (process_resident_memory_bytes).,"""Example metrics include counters for NAS registration requests (rm_reginitreq)"",
+""Example metrics include memory/resource usage (process_resident_memory_bytes)"""
+,Using distinct job_name entries in Prometheus enables selective scraping and dashboarding per NF type.,"""Distinct job_name entries in Prometheus enable selective scraping"",
+""Distinct job_name entries in Prometheus enable dashboarding per NF type"""
+,"The sample config binds metrics HTTP servers to host IPs, facilitating external observability for containerized NFs.","""Sample config binds metrics HTTP servers to host IPs"",
+""Binding metrics HTTP servers to host IPs facilitates external observability"",
+""External observability applies to containerized NFs"""
+,Metrics integration demonstrates how Open5GS can operate as 'Prometheus-enabled' microservices in Kubernetes or Docker environments.,"""Metrics integration demonstrates Open5GS operating as 'Prometheus-enabled' microservices"",
+""Open5GS operates as 'Prometheus-enabled' microservices"",
+""'Prometheus-enabled' microservices run in Kubernetes environments"",
+""Prometheus-enabled' microservices run in Docker environments"""
+,Open5GS is installed via Ubuntu PPA and requires MongoDB for subscriber context storage.,"""Open5GS is installed via Ubuntu PPA"",
+""Open5GS requires MongoDB"",
+""MongoDB stores subscriber context"""
+,Hardware with Intel i5 is preferred for MongoDB compatibility over Celeron-based systems.,"""Hardware with Intel i5 is preferred for MongoDB compatibility"",
+""Hardware with Intel i5 is preferred over Celeron-based systems"""
+,"Default Open5GS configs use loopback IPs; to integrate with external RAN simulators, host LAN IPs must replace loopback addresses in NF YAML.","""Default Open5GS configs use loopback IPs"",
+""Integration with external RAN simulators requires replacing loopback addresses in NF YAML"",
+""Replacing loopback addresses in NF YAML uses host LAN IPs"""
+,PLMN ID and TAC must match across core (Open5GS) and RAN (UERANSIM/gNB) configurations for successful connectivity.,"""PLMN ID must match Open5GS core configuration"",
+""PLMN ID must match UERANSIM/gNB RAN configuration"",
+""TAC must match Open5GS core configuration"",
+""TAC must match UERANSIM/gNB RAN configuration"",
+""Matching PLMN ID and TAC across configurations ensures successful connectivity"""
+,"UERANSIM open5gs-gnb.yaml must specify linkIp, ngapIp, gtpIp, and core AMF address to enable N2 and N3 connectivity","""UERANSIM open5gs-gnb.yaml must specify linkIp"",
+""UERANSIM open5gs-gnb.yaml must specify ngapIp"",
+""UERANSIM open5gs-gnb.yaml must specify gtpIp"",
+""UERANSIM open5gs-gnb.yaml must specify core AMF address"",
+""Specifying linkIp, ngapIp, gtpIp, and core AMF address enables N2 connectivity"",
+""Specifying linkIp, ngapIp, gtpIp, and core AMF address enables N3 connectivity"""
+,UE uses gnbSearchList in UERANSIM config to locate gNB IP for network attachment.,"""UE uses gnbSearchList"",
+""gnbSearchList is defined in UERANSIM config"",
+""gnbSearchList locates gNB IP"",
+""gNB IP is used for network attachment"""
+,"Upon PDU session setup, the UE forms a TUN interface (e.g., uesimtun0) to receive IP routes via the UPF.","""UE forms TUN interface (e.g., uesimtun0)"",
+""TUN interface (uesimtun0) receives IP routes"",
+""IP routes are delivered via UPF"",
+""PDU session setup triggers UE to form TUN interface"""
+,UE external Internet access can be validated using tools like curl or ping over the TUN interface.,"""UE external Internet access can be validated using curl"",
+""UE external Internet access can be validated using ping"",
+""curl operates over TUN interface"",
+""ping operates over TUN interface"""
+,Test environments may employ TCP proxies on public IPs for multi-machine end-to-end network validation.,"""Test environments employ TCP proxies"",
+""TCP proxies operate on public IPs"",
+""TCP proxies on public IPs support multi-machine end-to-end network validation"""
+,Open5GS core services integrate with RAN simulators through manual IP alignment in both core and RAN YAML configurations.,"""Open5GS core services integrate with RAN simulators"",
+""Integration occurs through manual IP alignment"",
+""Manual IP alignment is done in core YAML configurations"",
+""Manual IP alignment is done in RAN YAML configurations"""
+,Open5GS AMF by default binds NGAP/SCTP to loopback; must set ngap.addr in amf.yaml to LAN IP to enable RAN connectivity.,"""Open5GS AMF binds NGAP/SCTP to loopback by default"",
+""Open5GS AMF must set ngap.addr in amf.yaml to LAN IP"",
+""Setting ngap.addr in amf.yaml to LAN IP enables RAN connectivity"""
+,N2 interface uses NGAP over SCTP to deliver UE NAS signaling and handover events from gNB to AMF.,"""N2 interface uses NGAP over SCTP"",
+""N2 interface delivers UE NAS signaling from gNB to AMF"",
+""N2 interface delivers handover events from gNB to AMF"""
+,"For multi-host setups (Core and RAN on separate servers), explicit IP binding is required for N2 to function across hosts.","""Multi-host setups involve Core on separate servers"",
+""Multi-host setups involve RAN on separate servers"",
+""Explicit IP binding is required for N2 to function across hosts"""
+,Running sudo systemctl restart open5gs-amfd applies the ngap.addr binding change to the AMF service.,"""sudo systemctl restart open5gs-amfd applies ngap.addr binding change"",
+""ngap.addr binding change affects AMF service"""
+,UE RAN simulation with UERANSIM requires SCTP libraries (libsctp-dev) and CMake for building the gNB module.,"""UE RAN simulation with UERANSIM requires libsctp-dev"",
+""UE RAN simulation with UERANSIM requires CMake"",
+""libsctp-dev provides SCTP libraries"",
+""CMake is used for building the gNB module"",
+""gNB module is part of UERANSIM"""
+,Proper AMF binding allows remote UERANSIM-created gNB to successfully attach and exchange NGAP over SCTP.,"""Proper AMF binding allows remote UERANSIM-created gNB to successfully attach"",
+""Remote UERANSIM-created gNB exchanges NGAP over SCTP"""
+,"N2 SCTP handshake logs confirm successful gNB-AMF connectivity, validating multi-host network setup.","""N2 SCTP handshake logs confirm successful gNB-AMF connectivity"",
+""Successful gNB-AMF connectivity validates multi-host network setup"""
+,Open5GS metrics system was added to export performance counters and gauges for monitoring active PDP contexts and NF activity.,"""Open5GS metrics system exports performance counters"",
+""Open5GS metrics system exports gauges"",
+""Performance counters monitor active PDP contexts"",
+""Gauges monitor NF activity"""
+,"Metrics in Open5GS are implemented via libprom and libpromhttp, built on top of libmicrohttpd, enabling an embedded HTTP server.","""Metrics in Open5GS are implemented via libprom"",
+""Metrics in Open5GS are implemented via libpromhttp"",
+""libprom is built on top of libmicrohttpd"",
+""libpromhttp is built on top of libmicrohttpd"",
+""Building on top of libmicrohttpd enables embedded HTTP server"""
+,"The metrics subsystem uses a generic API in lib/metrics/, with a conditional Prometheus backend and a no-op fallback.","""Metrics subsystem uses generic API in lib/metrics/"",
+""Generic API in lib/metrics/ supports conditional Prometheus backend"",
+""Generic API in lib/metrics/ supports no-op fallback"""
+,"Each NF (SMF, AMF, UPF, etc.) hosts its own /metrics endpoint, allowing individual scraping by Prometheus.","""Each NF hosts its own /metrics endpoint"",
+""SMF hosts its own /metrics endpoint"",
+""AMF hosts its own /metrics endpoint"",
+""UPF hosts its own /metrics endpoint"",
+""Hosting its own /metrics endpoint allows individual scraping by Prometheus"""
+,"Metrics definitions include counters, gauges, and potentially histograms to capture NF performance and load.","""Metrics definitions include counters"",
+""Metrics definitions include gauges"",
+""Metrics definitions include histograms"",
+""Counters, gauges, and histograms capture NF performance and load"""
+,"The HTTP metrics server is embedded in the NF process, so exposing metrics doesn’t require external exporters.","""HTTP metrics server is embedded in NF process"",
+""Exposing metrics does not require external exporters"""
+,"Prometheus scraping is enabled by building Open5GS with the Prometheus backend; otherwise, the metrics API is a stub.","""Prometheus scraping is enabled by building Open5GS with the Prometheus backend"",
+""Metrics API is a stub without the Prometheus backend"""
+,Example metrics include active session counts and internal NF resource telemetry.,"""Example metrics include active session counts"",
+""Example metrics include internal NF resource telemetry"""
+,The conditional build approach allows operators to disable metrics support by omitting libprom-related dependencies.,"""Conditional build approach allows operators to disable metrics support"",
+""Disabling metrics support occurs by omitting libprom-related dependencies"""
+,The architecture supports containerized deployments where each NF can be independently monitored.,"""The architecture supports containerized deployments"",
+""Containerized deployments allow each NF to be independently monitored"""
+,"CSPs transition from PNFs to CNFs using Kubernetes to gain vendor-agnostic, scalable infrastructure.","""CSPs transition from PNFs to CNFs"",
+""Transition to CNFs uses Kubernetes"",
+""Transition using Kubernetes enables vendor-agnostic infrastructure"",
+""Transition using Kubernetes enables scalable infrastructure"""
+,"Disaggregated network functions (RU, DU, CU‑UP, UPF) run at the edge under 5 ms RTT for optimal performance.","""Disaggregated network functions run at the edge"",
+""Disaggregated network functions run under 5 ms RTT"",
+""RU is a Disaggregated network functions"",
+""UPF is a Disaggregated network functions"",
+""DU is a Disaggregated network functions"",
+""CU-UP is a Disaggregated network functions"",
+""Running under 5 ms RTT provides optimal performance"""
+,"Control-plane NFs like AMF and SMF are deployed in centralized cloud regions, not latency-critical.","""AMF is deployed in centralized cloud regions"",
+""SMF is deployed in centralized cloud regions"",
+""Control-plane NFs deployed in centralized cloud regions are not latency-critical"""
+,"Anthos/GDC provides unified orchestration and policy across edge, private, and public 5G network deployments.","""Anthos/GDC provides unified orchestration and policy"",
+""Unified orchestration and policy applies across edge deployments"",
+""Unified orchestration and policy applies across private deployments"",
+""Unified orchestration and policy applies across public 5G network deployments"""
+,CNFs adhere to microservice design and CI/CD lifecycle models for fast feature deployment and upgrades.,"""CNFs adhere to microservice design"",
+""CNFs adhere to CI/CD lifecycle models"",
+""Microservice design and CI/CD lifecycle models enable fast feature deployment"",
+""Microservice design and CI/CD lifecycle models enable upgrades"""
+,"Edge deployment enables CSPs to host both 5G-CNFs and third-party edge applications (e.g., AR/VR) on shared infrastructure.","""Edge deployment enables CSPs to host 5G-CNFs on shared infrastructure"",
+""Edge deployment enables CSPs to host third-party edge applications on shared infrastructure"",
+""Third-party edge applications include AR/VR"""
+,"Use of hybrid clouds allows dynamic workload placement—edge for real-time tasks, cloud for batch or training.","""Hybrid clouds allow dynamic workload placement"",
+""Dynamic workload placement assigns edge to real-time tasks"",
+""Dynamic workload placement assigns cloud to batch tasks"",
+""Dynamic workload placement assigns cloud to training tasks"""
+,"Telco workloads use infrastructure-as-code pipelines for security, scaling, and orchestration across distributed sites.","""Telco workloads use Infrastructure-as-Code pipelines"",
+""Infrastructure-as-Code pipelines enable security across distributed sites"",
+""Infrastructure-as-Code pipelines enable scaling across distributed sites"",
+""Infrastructure-as-Code pipelines enable orchestration across distributed sites"""
+,Latency-aware deployment ensures UPF/CU-UP services are co-located near user for ultra-low latency applications.,"""Latency-aware deployment ensures UPF/CU-UP services are co-located near users"",
+""Co-location near users supports ultra-low latency applications"""
+,Container-based CNF approach enables feature-rich experiences while keeping costs and TCO under control.,"""Container-based CNF approach enables feature-rich experiences"",
+""Container-based CNF approach keeps costs under control"",
+""Container-based CNF approach keeps TCO under control"""
+,Telco workloads are migrating from VNFs in VMs to Kubernetes-managed CNFs deployed as Pods.,"""Telco workloads are migrating from VNFs in VMs"",
+""Telco workloads are migrating to Kubernetes-managed CNFs deployed as Pods"""
+,"Kubernetes Operators, via CRDs, support complex lifecycle tasks like upgrades and scaling for CNFs.","""Kubernetes Operators use Custom Resource Definitions (CRDs)"",
+""Kubernetes Operators support complex lifecycle tasks for CNFs"",
+""Complex lifecycle tasks include upgrades"",
+""Complex lifecycle tasks include scaling"",
+""Custom Resource Definitions (CRDs) enable upgrades of CNFs"",
+""Custom Resource Definitions (CRDs) enable scaling of CNFs"""
+,"Microservice-based CNFs run each function in separate Pods, enabling independent scaling and failure isolation.","""Microservice-based CNFs run each function in separate Pods"",
+""Separate Pods enable independent scaling"",
+""Separate Pods enable failure isolation"""
+,Monolithic CNFs simplify deployment but lack scalability granularity compared to microservice designs.,"""Monolithic CNFs simplify deployment"",
+""Monolithic CNFs lack scalability granularity"",
+""Scalability granularity is offered by microservice designs"""
+,"KNI combines Kubernetes with DPDK, SR‑IOV, and GPU networking to support telco-grade performance.","""KNI combines Kubernetes"",
+""KNI combines DPDK"",
+""KNI combines SR-IOV"",
+""KNI combines GPU networking"",
+""KNI supports telco-grade performance"""
+,Service mesh tools (Istio/Envoy) secure and manage APIs between control-plane CNFs in SBA.,"""Istio secures APIs between control-plane CNFs in SBA"",
+""Envoy secures APIs between control-plane CNFs in SBA"",
+""Service mesh tools (Istio/Envoy) manage APIs between control-plane CNFs in SBA"",
+""APIs between control-plane CNFs operate under SBA"""
+,"Operators enable Site Reliability Engineering for CNFs by automating observability, self-healing, and dynamic scaling.","""Operators enable Site Reliability Engineering for CNFs"",
+""Site Reliability Engineering for CNFs involves automating observability"",
+""Site Reliability Engineering for CNFs involves self-healing"",
+""Site Reliability Engineering for CNFs involves dynamic scaling"""
+,KNI supports edge and core deployments using unified Kubernetes control plane for CNF orchestration.,"""KNI supports edge deployments"",
+""KNI supports core deployments"",
+""Edge and core deployments use unified Kubernetes control plane"",
+""Unified Kubernetes control plane facilitates CNF orchestration"""
+,5G core CNFs are deployed in multi-tier hub-and-spoke architecture with control-plane centralized and user-plane at edge.,"""5G core CNFs are deployed in multi-tier hub-and-spoke architecture"",
+""Multi-tier hub-and-spoke architecture features centralized control-plane"",
+""Multi-tier hub-and-spoke architecture features user-plane at edge"",
+""Control-plane is centralized"",
+""User-plane is deployed at edge"""
+,"Edge CNFs (UPF/CU-UP) are co-located with RAN, while CNFs like AMF/SMF remain in central cloud.","""UPF is co-located with RAN"",
+""CU-UP is co-located with RAN"",
+""AMF remains in central cloud"",
+""SMF remains in central cloud"""
+,"Istio-based service mesh provides mTLS, secure discovery, tracing and policy across distributed CNFs.","""Istio-based service mesh provides mTLS"",
+""Istio-based service mesh provides secure discovery"",
+""Istio-based service mesh provides tracing"",
+""Istio-based service mesh provides policy enforcement"",
+""mTLS, secure discovery, tracing, and policy enforcement operate across distributed CNFs"""
+,"Logs, metrics, and traces from edge sites are aggregated centrally (e.g., via Loki) for full-stack observability.","""Logs are aggregated centrally from edge sites"",
+""Metrics are aggregated centrally from edge sites"",
+""Traces are aggregated centrally from edge sites"",
+""Central aggregation provides full-stack observability"""
+,Zero-touch provisioning and GitOps enable on-demand scaling and burst deployments of 5G CNF clusters.,"""Zero-touch provisioning enables on-demand scaling of 5G CNF clusters"",
+""Zero-touch provisioning enables burst deployments of 5G CNF clusters"",
+""GitOps enables on-demand scaling of 5G CNF clusters"",
+""GitOps enables burst deployments of 5G CNF clusters"""
+,ACM placement rules ensure CNFs are deployed to appropriate clusters based on location and capacity policies.,"""ACM placement rules ensure CNFs are deployed to appropriate clusters"",
+""CNFs deployed to appropriate clusters are based on location policies"",
+""CNFs deployed to appropriate clusters are based on capacity policies"""
+,"Network fabric layers include hub management, inter-cluster connectivity, and RAN access paths.","""Network fabric layers include hub management"",
+""Network fabric layers include inter-cluster connectivity"",
+""Network fabric layers include RAN access paths"""
+,"UPF selection is determined by SMF via NRF lookup using DNN, TAC, and cell_id metadata.","""UPF selection is determined by SMF"",
+""UPF selection is done via NRF lookup"",
+""NRF lookup uses DNN metadata"",
+""NRF lookup uses TAC metadata"",
+""NRF lookup uses cell_id metadata"""
+,"Partial edge deployment supports only UPF instances, while fully distributed bundles include SMF+UPF CNFs in remote sites.","""Partial edge deployment supports only UPF instances"",
+""Fully distributed bundles include SMF CNFs in remote sites"",
+""Fully distributed bundles include UPF CNFs in remote sites"""
+,Service mesh federation allows secure cross-cluster communication and traffic splitting across hub and edge.,"""Service mesh federation allows secure cross-cluster communication"",
+""Service mesh federation allows traffic splitting across hub and edge"""
+,Observability fabric leverages centralized policy enforcement across all distributed edge clusters.,"""Observability fabric leverages centralized policy enforcement"",
+""Centralized policy enforcement applies across distributed edge clusters"""
+,"Initial 5G deployments use NSA (RAN on 5G, control on 4G EPC); evolution to fully standalone (SA) core follows in later phases","""Initial 5G deployments use NSA"",
+""NSA combines RAN on 5G and control on 4G EPC"",
+""Evolution to fully standalone (SA) core follows in later phases"","
+,"Stateless design externalizes NF state to UDSF-likes stores, enabling resilience and container-based scalability.","""Stateless design externalizes NF state to UDSF-like stores"",
+""Externalizing NF state to UDSF-like stores enables resilience"",
+""Externalizing NF state to UDSF-like stores enables container-based scalability"""
+,"DevOps automation (CodePipeline, CloudFormation) allows NF operators to treat infrastructure as code, enabling reproducible, version-controlled deployments at scale.","""DevOps automation (CodePipeline, CloudFormation) allows NF operators to treat infrastructure as code"",
+""Treating infrastructure as code enables reproducible deployments at scale"",
+""Treating infrastructure as code enables version-controlled deployments"""
+,"UPF deployment may be hardware-based or virtualized; choice depends on SLA, performance needs, and vendor maturity.","""UPF deployment may be hardware-based"",
+""UPF deployment may be virtualized"",
+""Choice of deployment depends on SLA"",
+""Choice of deployment depends on performance needs"",
+""Choice of deployment depends on vendor maturity"""
+,Hardware UPF suits high-performance needs; virtualized UPF aids flexibility and geo-distribution.,"""UPF deployment may be hardware-based"",
+""UPF deployment may be virtualized"",
+""Choice of deployment depends on SLA"",
+""Choice of deployment depends on performance needs"",
+""Choice of deployment depends on vendor maturity"",
+""Hardware UPF suits high-performance needs"",
+""Virtualized UPF aids flexibility"",
+""Virtualized UPF aids geo-distribution"""
+,UPF steers traffic at edge using standardized APIs to route flows toward local or cloud-hosted applications.,"""UPF steers traffic at edge"",
+""UPF uses standardized APIs"",
+""Standardized APIs route flows toward local applications"",
+""Standardized APIs route flows toward cloud-hosted applications"""
+,Edge IaaS platforms host VMs and containers managed by OpenStack and other platforms.,"""Edge IaaS platforms host VMs"",
+""Edge IaaS platforms host containers"",
+""VMs are managed by OpenStack"",
+""Containers are managed by OpenStack"",
+""VMs are managed by other platforms"",
+""Containers are managed by other platforms"""
+,"Edge PaaS layers provide networking, RNIS, location, user identity, firewall, DNS, and load balancing services.","""Edge PaaS layers provide networking services"",
+""Edge PaaS layers provide RNIS services"",
+""Edge PaaS layers provide location services"",
+""Edge PaaS layers provide user identity services"",
+""Edge PaaS layers provide firewall services"",
+""Edge PaaS layers provide DNS services"",
+""Edge PaaS layers provide load balancing services"""
+,"An orchestrator deploys NFs and applications based on service requirements, policies, and resource templates mapped to location.","Orchestrator deploys NFs and applications
+Deployment is based on service requirements
+Deployment is based on policies
+Deployment is based on resource templates mapped to location"
+,"Traffic steering APIs allow flow decisions to be made dynamically per application context (e.g., video, IoT).","Tr""affic steering APIs allow dynamic flow decisions per application context"",
+D""ynamic flow decisions are made per application context"",
+A""pplication contexts include video"",
+""Application contexts include IoT"""
+,Cisco UPF implements 1:1 Active/Standby redundancy via SRP with ICSR-based state sync.,"""Cisco UPF implements 1:1 Active/Standby redundancy"",
+""1:1 Active/Standby redundancy uses SRP"",
+""SRP performs ICSR-based state synchronization"""
+,"Standby UPF assumes the same Sx/N4 address during switchover, making the transition transparent to the SMF","""Standby UPF assumes the same Sx/N4 address during switchover"",
+""Assuming the same Sx/N4 address during switchover makes the transition transparent to the SMF"""
+,Sx/N4 control-plane heartbeat monitoring with BFD triggers fast UPF switchover in failure events.,"""Sx/N4 control-plane heartbeat monitoring with BFD triggers fast UPF switchover"",
+""Fast UPF switchover occurs in failure events"""
+,Active UPF replicates IP-pool and session context to Standby during Sx/N4 association and checkpoint cycles.,"""Active UPF replicates IP-pool to Standby UPF"",
+""Active UPF replicates session context to Standby UPF"",
+""Replication occurs during Sx/N4 association"",
+""Replication occurs during checkpoint cycles"""
+,VPP health and BGP monitoring are integrated into SRP for multi-layered UPF redundancy triggering.,"""Standby UPF starts in ‘Pending-Active’"",
+""Standby UPF transitions out of ‘Pending-Active’ after SRP elections"",
+""Standby UPF transitions out of ‘Pending-Active’ after manual timeout configurations"",
+""SRP elections and manual timeout configurations finalize switchover"""
+,"Manual CLI controls (e.g., srp reset-sx-fail) allow operators to override automatic failover conditions.","""VPP health is integrated into SRP"",
+""BGP monitoring is integrated into SRP"",
+""Integration into SRP enables multi-layered UPF redundancy triggering"",
+""Multi-layered UPF redundancy triggering relies on SRP"""
+,SMF is unaware of standby UPF and always interacts with the active endpoint via stable Sx/N4 address.,"""SMF is unaware of standby UPF"",
+""SMF interacts with active UPF endpoint"",
+""Interaction occurs via stable Sx/N4 address"""
+,SRP Active/Standby redundancy is supported without dual-active scenarios due to address takeover and heartbeat control.,"""SRP Active/Standby redundancy is supported without dual-active scenarios"",
+""SRP Active/Standby redundancy relies on address takeover"",
+""SRP Active/Standby redundancy relies on heartbeat control"""
+,Proper timing between SMF heartbeat and UPF SRP timeout is crucial to avoid false session drop detection.,"""SMF heartbeat must be timed appropriately relative to UPF SRP timeout"",
+""Proper timing between SMF heartbeat and UPF SRP timeout is crucial to avoid false session drop detection"""
+,"An NF Set groups interchangeable NF instances of the same type (e.g., AMF, SMF), enabling shared context and failover capability.","""NF Set groups interchangeable NF instances of the same type"",
+""Interchangeable NF instances of the same type include AMF"",
+""Interchangeable NF instances of the same type include SMF"",
+Grouping by NF Set enables shared context"",
+""Grouping by NF Set enables failover capability"""
+,NF Sets support geo-redundancy via distributed instances and externalized session state.,"""NF Sets support geo-redundancy"",
+""Geo-redundancy is achieved via distributed instances"",
+""Geo-redundancy is achieved via externalized session state"""
+,"Stateless NFs in an NF Set externalize their state to UDSF, enabling context retrieval by any instance.","""Stateless NFs in an NF Set externalize state to UDSF"",
+""Externalizing state to UDSF enables context retrieval by any instance"""
+,"NF instances in a set can have different software versions, enabling seamless rolling upgrades.","""NF instances in an NF Set can have different software versions"",
+""Different software versions enable seamless rolling upgrades"""
+,"NF Set uses N+M redundancy, reducing overprovisioning while enabling fast failover.","""NF Set uses N+M redundancy"",
+""N+M redundancy reduces overprovisioning"",
+""N+M redundancy enables fast failover"""
+,Context-sharing in NF Sets prevents signaling storms by avoiding re-registration during failover.,"""Context-sharing in NF Sets prevents signaling storms"",
+""Context-sharing in NF Sets avoids re-registration during failover"",
+""Avoiding re-registration during failover prevents signaling storms"""
+,"An NF Set presents a single virtual interface (e.g., anycast IP) to clients despite multiple active instances","""NF Set presents single virtual interface (e.g., anycast IP)"",
+""Single virtual interface (e.g., anycast IP) is presented to clients"""
+,Disjoint UPF deployment with dual PDU sessions increases end‑to‑end availability by enabling parallel user‑plane paths,"""Disjoint UPF deployment with dual PDU sessions increases end-to-end availability"",
+""End-to-end availability is increased by enabling parallel user-plane paths"""
+,"Dual‑connectivity through two separate gNBs allows simultaneous data flows to distinct UPFs, forming a redundant user‑plane chain.","""Dual-connectivity occurs through two separate gNBs"",
+""Dual-connectivity allows simultaneous data flows"",
+""Simultaneous data flows go to distinct UPFs"",
+""Simultaneous data flows form a redundant user-plane chain"""
+,User-plane redundancy is achieved via dual UPFs; control-plane remains single-path to maintain management simplicity.,"""User-plane redundancy is achieved via dual UPFs"",
+""Control-plane remains single-path"",
+""Single-path control-plane maintains management simplicity"""
+,Mean Time To Repair (MTTR) and path redundancy are the two primary enablers of achieving telecom-grade availability targets.,"""Mean Time To Repair (MTTR) is a primary enabler of achieving telecom-grade availability targets"",
+""Path redundancy is a primary enabler of achieving telecom-grade availability targets"""
+,Redundancy strategy leverages dual PDU sessions mapped across disjoint UPFs and RAN connections for ultra-reliable industrial use cases.,"""Redundancy strategy leverages dual PDU sessions"",
+""Dual PDU sessions are mapped across disjoint UPFs and RAN connections"",
+""Mapping across disjoint UPFs and RAN connections supports ultra-reliable industrial use cases"""
+,"URLLC applications demand sub-millisecond latency and negligible packet loss, requiring stronger resilience than standard Fast ReRoute mechanisms.","""URLLC applications demand sub-millisecond latency"",
+""URLLC applications demand negligible packet loss"",
+""URLLC applications require stronger resilience"",
+""Stronger resilience exceeds standard Fast ReRoute mechanisms"""
+,Replicated packets traverse two synchronized UPFs before reaching a Protection Tunnel Egress (PTE) node for elimination.,"""Replicated packets traverse two synchronized UPFs"",
+""Replicated packets reach Protection Tunnel Egress (PTE) node"",
+""Protection Tunnel Egress (PTE) node eliminates replicated packet"""
+,Disjoint UP paths with replicated UPFs ensure session survival even if one UPF or path experiences a failure.,"""Disjoint UP paths use replicated UPFs""
+""Disjoint UP paths with replicated UPFs ensure session survival"",
+""Session survival occurs even if one UPF or path experiences a failure"","
+,Static resource allocation fails in 5G; dynamic models like MCM are needed for real-time adaptability,"""Static resource allocation fails in 5G"",
+""Dynamic models include MCM"",
+""Dynamic models are needed for real-time adaptability"""
+,"MCM integrates bandwidth allocation, traffic prioritization, encryption, and network slicing to enforce QoS.","""MCM integrates bandwidth allocation"",
+""MCM integrates traffic prioritization"",
+""MCM integrates encryption"",
+""MCM integrates network slicing"",
+""Integration of bandwidth allocation, traffic prioritization, encryption, and network slicing enforces QoS"""
+,"Target QoS metrics include sub-ms latency and bounded jitter for URLLC, plus hundreds of Mbps throughput for eMBB.","""Target QoS metrics include sub-ms latency for URLLC"",
+""Target QoS metrics include bounded jitter for URLLC"",
+""Target QoS metrics include hundreds of Mbps throughput for eMBB"",
+""Sub-ms latency is for URLLC"",
+""Bounded jitter is for URLLC"",
+""Hundreds of Mbps throughput is for eMBB"""
+,MDP/DRL-based RAN schedulers dynamically balance URLLC and eMBB performance on slot and mini-slot timescales.,"""MDP/DRL-based RAN schedulers dynamically balance URLLC performance"",
+""MDP/DRL-based RAN schedulers dynamically balance eMBB performance"",
+""Dynamic balancing of URLLC and eMBB performance occurs on slot timescales"",
+""Dynamic balancing of URLLC and eMBB performance occurs on mini-slot timescales"""
+,EDQAS/LDI schedulers at MAC layer schedule resource blocks to minimize uRLLC latency and eMBB rate loss.,"""EDQAS/LDI schedulers schedule resource blocks"",
+""EDQAS/LDI schedulers minimize uRLLC latency"",
+""EDQAS/LDI schedulers minimize eMBB rate loss"",
+""Scheduling resource blocks occurs at MAC layer"""
+,Network slices partition resources with per-slice SLA-driven enforcement across RAN and core domains.,"""Network slices partition resources"",
+""Network slices provide per-slice SLA-driven enforcement"",
+""Per-slice SLA-driven enforcement applies across RAN domains"",
+""Per-slice SLA-driven enforcement applies across core domains"""
+,Encryption overhead is modeled in resource allocation decisions to meet QoS while ensuring security.,"""Encryption overhead is modeled in resource allocation decisions"",
+""Resource allocation decisions aim to meet QoS"",
+""Resource allocation decisions ensure security"""
+,"QoS parameters considered include latency, jitter, packet loss, throughput, spectral efficiency, and energy efficiency.","""QoS parameters include latency"",
+""QoS parameters include jitter"",
+""QoS parameters include packet loss"",
+""QoS parameters include throughput"",
+""QoS parameters include spectral efficiency"",
+""QoS parameters include energy efficiency"""
+,"Increasing URLLC performance often involves puncturing eMBB traffic in real-time, trading off throughput.","""URLLC performance improvements involve puncturing eMBB traffic in real-time"",
+""Puncturing eMBB traffic in real-time trades off throughput"""
+,QoS-aware slicing leverages vertical slice models to allocate bandwidth and priority between service types.,"""QoS-aware slicing leverages vertical slice models"",
+""Vertical slice models allocate bandwidth between service types"",
+""Vertical slice models allocate priority between service types"""
+,"Dynamic resource allocation models consider fairness, availability, and service resilience during congestion.","""Dynamic resource allocation models consider fairness"",
+""Dynamic resource allocation models consider availability"",
+""Dynamic resource allocation models consider service resilience"",
+""Consideration of fairness, availability, and service resilience occurs during congestion"""
+,"URLLC requires ≤1 ms one-way latency and ≥99.999% reliability, posing stringent QoS targets.","""URLLC requires ≤ 1 ms one-way latency"",
+""URLLC requires ≥ 99.999 % reliability"",
+""Stringent QoS targets are posed by URLLC"""
+,"Even with minimal packet inspection, packet processing latency remains unpredictable due to virtual environment effects.","""Packet processing latency remains unpredictable due to virtual environment effects"",
+""Minimal packet inspection does not prevent unpredictable packet processing latency"""
+,"To support URLLC with inline security, packet processing pipelines must be architected for low jitter and deterministic behavior.","""Packet processing pipelines must be architected for low jitter"",
+""Packet processing pipelines must be architected for deterministic behavior"",
+""Architecting packet processing pipelines for low jitter and deterministic behavior supports URLLC with inline security"""
+,5G URLLC targets ≤ 1 ms user-plane latency—a ~4× reduction compared to LTE,"""5G URLLC targets mandate ≤ 1 ms user-plane latency"",
+""≤ 1 ms user-plane latency represents ≈ 4× reduction compared to LTE"""
+,"URLLC demands ultra-reliability (≥ 99.999%), with block error rates down to 10⁻⁹.","""URLLC demands ultra-reliability (≥ 99.999 %)"",
+""URLLC demands block error rates down to 10⁻⁹"",
+""Ultra-reliability (≥ 99.999 %) corresponds to block error rates down to 10⁻⁹"""
+,URLLC flows use resource reservation with preemption and mini-slots to meet sub‑ms deadlines.,"""URLLC flows use resource reservation"",
+""URLLC flows use preemption"",
+""URLLC flows use mini-slots"",
+""Use of resource reservation with preemption and mini-slots enables meeting sub-ms deadlines"""
+,"Edge computing eliminates ~100 ms transport delay, enabling end-to-end latency ≤ 1 ms.","""Edge computing eliminates ∼100 ms transport delay"",
+""Eliminating ∼100 ms transport delay enables end-to-end latency ≤ 1 ms"""
+,Flexible TTIs and robust coding techniques are used to reduce transmission latency and BER,"""Flexible TTIs are used to reduce transmission latency"",
+""Robust coding techniques are used to reduce transmission latency"",
+""Flexible TTIs are used to reduce BER"",
+""Robust coding techniques are used to reduce BER"""
+,Multiple UPFs with local breakout support disjoint user-plane paths for low-latency and resilience.,"""Multiple UPFs with local breakout support disjoint user-plane paths"",
+""Disjoint user-plane paths provide low-latency"",
+""Disjoint user-plane paths provide resilience"""
+,URLLC scheduling uses prioritized access and TTI scaling to minimize delay and jitter.,"""URLLC scheduling uses prioritized access"",
+""URLLC scheduling uses TTI scaling"",
+""Prioritized access minimizes delay and jitter"",
+""TTI scaling minimizes delay and jitter"""
+,"Reliable URLLC transmission combines mini-slots, redundancy, and HARQ optimization.","""Reliable URLLC transmission combines mini-slots"",
+""Reliable URLLC transmission combines redundancy"",
+""Reliable URLLC transmission combines HARQ optimization"""
+,Edge-deployed UPFs and MEC collaborate to enforce QoS and satisfy URLLC requirements.,"""Edge-deployed UPFs collaborate with MEC"",
+""Collaboration between Edge-deployed UPFs and MEC enforces QoS"",
+""Collaboration between Edge-deployed UPFs and MEC satisfies URLLC requirements"""
+,"URLLC flows demand ≤1 ms latency, low jitter, and ultra-high reliability; eMBB flows prioritize high throughput with moderate latency; mMTC supports up to 1 M devices/km² with low rate requirements.","""URLLC flows demand ≤ 1 ms latency"",
+""URLLC flows demand low jitter"",
+""URLLC flows demand ultra-high reliability"",
+""eMBB flows prioritize high throughput"",
+""eMBB flows prioritize moderate latency"",
+""mMTC flows support up to 1 M devices/km²"",
+""mMTC flows support low rate requirements"""
+,"QoS metrics include latency, jitter, packet loss, throughput, reliability, fairness, and energy efficiency across 5G slices.","""QoS metrics include latency"",
+""QoS metrics include jitter"",
+""QoS metrics include packet loss"",
+""QoS metrics include throughput"",
+""QoS metrics include reliability"",
+""QoS metrics include fairness"",
+""QoS metrics include energy efficiency"",
+""QoS metrics apply across 5G slices"""
+,"Traffic shaping uses DiffServ: ingress classification, metering, and marking enable per-hop QoS enforcement.","""Traffic shaping uses DiffServ"",
+""Ingress classification enables per-hop QoS enforcement"",""
+""Metering enables per-hop QoS enforcement"",
+""Marking enables per-hop QoS enforcement"""
+,URLLC scheduling uses preemption/puncturing or mini-slots at RAN to meet sub-ms latency requirements.,"""URLLC scheduling uses preemption/puncturing"",
+""URLLC scheduling uses mini-slots at RAN"",
+""Preemption/puncturing and mini-slots at RAN meet sub-ms latency requirements"""
+,mMTC devices use dynamic channel access protocols to handle high device density and sporadic traffic.,"""eMBB scheduling applies proportional fairness"",
+""eMBB scheduling applies weighted round-robin"",
+""Proportional fairness balances throughput and fairness"",
+""Weighted round-robin balances throughput and fairness"""
+,Transport-priority queuing ensures UL/DL URLLC packets are served ahead of eMBB and mMTC traffic.,"""Transport-priority queuing ensures UL/DL URLLC packets are served ahead of eMBB traffic"",
+""Transport-priority queuing ensures UL/DL URLLC packets are served ahead of mMTC traffic"""
+,Hard slicing uses dedicated resources per slice; soft slicing shares resources with prioritization—supporting mixed traffic isolation.,"""Hard slicing uses dedicated resources per slice"",
+""Soft slicing shares resources with prioritization"",
+""Hard slicing and soft slicing support mixed traffic isolation"""
+,Reliability and latency goals for URLLC are modeled via resource block reservation and robust coding at physical and transport layers.,"""Reliability and latency goals for URLLC are modeled via resource block reservation"",
+""Reliability and latency goals for URLLC are modeled via robust coding"",
+""Resource block reservation occurs at physical layer"",
+""Resource block reservation occurs at transport layer"",
+""Robust coding occurs at physical layer"",
+""Robust coding occurs at transport layer"""
+,"QoS enforcement spans RAN, transport, and core layers—ensuring consistent SLA adherence.","""QoS enforcement spans RAN"",
+""QoS enforcement spans transport"",
+""QoS enforcement spans core layers"",
+""Spanning RAN, transport, and core layers ensures consistent SLA adherence"""
+,Each QoS Flow in 5G is tagged with a unique 4-bit QFI within its PDU session.,"""QoS Flow is tagged with unique 4-bit QFI"",
+""Tagging with unique 4-bit QFI occurs within PDU session"""
+,"QoS Flows are classified as GBR or Non‑GBR, with specific QoS profiles defined.","""QoS Flows are classified as GBR"",
+""QoS Flows are classified as Non-GBR"",
+""Specific QoS profiles are defined for GBR QoS Flows"",
+""Specific QoS profiles are defined for Non-GBR QoS Flows"""
+,UPF applies Packet Detection Rules (PDRs) and UE applies QoS rules to map packets to QoS flows at NAS layer.,"""UPF applies Packet Detection Rules (PDRs)"",
+""UE applies QoS rules"",
+""Applying PDRs and QoS rules maps packets to QoS flows at the NAS layer"""
+,"Packet filters use IP addresses, ports, protocols, and Ethernet tags to classify packets.","""Packet filters use IP addresses"",
+""Packet filters use ports"",
+""Packet filters use protocols"",
+""Packet filters use Ethernet tags"",""
+""Using IP addresses, ports, protocols, and Ethernet tags enables packet classification"""
+,"SDAP sublayer maps QoS flows with given QFI to DRBs, supported by RRC-configured mapping rules.","""Kubernetes-based control plane orchestration benefits from stateless NF design"",
+""Stateless NF design enables auto-replacement of crashed pods"",
+""Auto-replacement of crashed pods occurs without state loss"""
+,Multiple QoS flows can share a DRB if their service requirements align.,"""Multiple QoS flows can share a DRB"".
+""Sharing a DRB requires aligned service requirements"""
+,"SMF configures QoS flows by distributing QoS rules and PDRs to UE (N1), gNB (N2), and UPF (N4).","""SMF configures QoS flows"",
+""SMF distributes QoS rules to UE via N1"",
+""SMF distributes PDRs to gNB via N2"",
+""SMF distributes PDRs to UPF via N4"""
+,"QoS control spans NAS classification, SDAP mapping, and GTP-U marking to enforce consistent end-to-end service quality.","""QoS control spans NAS classification"",
+""QoS control spans SDAP mapping"",
+""QoS control spans GTP-U marking"",
+""NAS classification enforces consistent end-to-end service quality"",
+""SDAP mapping enforces consistent end-to-end service quality"",
+""GTP-U marking enforces consistent end-to-end service quality"""
+,"5G mandates support for 5G‑AKA and EAP‑AKA′ for unified, access‑agnostic authentication.","""5G mandates support for 5G-AKA"",
+""5G mandates support for EAP-AKA′"",
+""5G-AKA provides unified, access-agnostic authentication"",
+""EAP-AKA′ provides unified, access-agnostic authentication"""
+,EAP‑TLS can be used as a secondary authentication method in private or enterprise deployments.,"""EAP-TLS can be used as secondary authentication method"",
+""Secondary authentication method is used in private deployments"",
+""Secondary authentication method is used in enterprise deployments"""
+,AUSF anchors the security key KSEAF during initial authentication and supplies authentication vectors.,"""AUSF anchors security key KSEAF"",
+""Anchoring security key KSEAF occurs during initial authentication"",
+""AUSF supplies authentication vectors"""
+,UDM/ARPF stores subscriber credentials and supports authentication via both AKA and EAP frameworks.,"""UDM/ARPF stores subscriber credentials"",
+""UDM/ARPF supports authentication via AKA framework"",
+""UDM/ARPF supports authentication via EAP framework"""
+,"All SBA APIs must use mutual TLS with client and server certificates, often coupled with OAuth authorization.","""All SBA APIs must use mutual TLS"",
+""Mutual TLS requires client certificates"",
+""Mutual TLS requires server certificates"",
+""All SBA APIs are often coupled with OAuth authorization"""
+,"IPsec tunnels (NWu/NWt) protect NAS signaling over non‑3GPP access, with optional NULL encryption for trusted networks.","""IPsec tunnels (NWu/NWt) protect NAS signaling"",
+""IPsec tunnels (NWu/NWt) operate over non-3GPP access"",
+""Optional NULL encryption is used for trusted networks"""
+,"SEPP secures inter‑PLMN signaling on N32 via TLS or PRINS, ensuring integrity and confidentiality.","""SEPP secures inter-PLMN signaling on N32"",
+""Securing inter-PLMN uses TLS"",
+""Securing inter-PLMN uses PRINS"",
+""Securing inter-PLMN signaling ensures integrity"",
+""Securing inter-PLMN signaling ensures confidentiality"""
+,IPUPS secures N9 GTP‑U traffic between UPFs with IPsec-based filtering to avoid tunnel spoofing.,"""IPUPS secures N9 GTP-U traffic between UPFs"",
+""IPUPS uses IPsec-based filtering"",
+""IPsec-based filtering avoids tunnel spoofing"""
+,NSSAAF enables slice‑level authentication using EAP‑based credentials for each network slice.,"""NSSAAF enables slice-level authentication"",
+""Slice-level authentication uses EAP-based credentials"",
+""EAP-based credentials are used for each network slice"""
+,"Zero‑Trust security within 5G SBA demands explicit flow definitions, strict policies, and continuous monitoring.","""Zero-Trust security demands explicit flow definitions"",
+""Zero-Trust security demands strict policies"",
+""Zero-Trust security demands continuous monitoring"""
+,"Slice management interfaces leverage OAuth for access control, combined with mTLS for secure management messaging.","""Slice management interfaces leverage OAuth"",
+""Slice management interfaces use mTLS"",
+""OAuth provides access control"",
+""mTLS secures management messaging"""
+,"UE identity is encrypted as SUCI using public-key encryption, protecting SUPI from over-the-air exposure.","""UE identity is encrypted as SUCI"",
+""Encryption as SUCI uses public-key encryption"",
+""Encryption as SUCI protects SUPI from over-the-air exposure"""
+,"New SBA functions SEAF, AUSF, UDM/ARPF, and SIDF coordinate to authenticate UE and manage key derivation.","""SIDF coordinates to authenticate UE"",
+""UDM/ARPF coordinates to authenticate UE"",
+""AUSF coordinates to authenticate UE"",
+""SEAF coordinates to authenticate UE"",
+""SEAF coordinates to manage key derivation"",
+""UDM/ARPF coordinates to manage key deriv""ation"",
+""AUSF coordinates to manage key derivation"",
+""SIDF coordinates to manage key derivation"""
+,"5G key hierarchy includes KAUSF, KSEAF, and KAMF, offering deeper security separation than 4G.","""5G key hierarchy includes KAUSF""
+""5G key hierarchy includes KSEAF"",
+""5G key hierarchy includes KAMF"",
+""5G key hierarchy offers deeper security separation than 4G"""
+,A single 5G authentication session can establish multiple security contexts across access types.,"""5G authentication session establishes multiple security contexts"",
+""Security contexts span different access types"""
+,EAP‑AKA′ is a symmetric key-based EAP method offering similar trust as 5G‑AKA but via EAP exchange.,"""EAP-AKA′ is symmetric key-based EAP method"",
+""EAP-AKA′ offers trust equivalent to 5G-AKA"",
+""Trust equivalent to 5G-AKA is delivered via EAP exchange"""
+,"SUPI encryption, SBA authentication functions, and deeper key derivation collectively enhance privacy and home‑network control in 5G.","""SUPI encryption enhances privacy"",
+""SBA authentication functions enhance privacy"",
+""Deeper key derivation enhances privacy"",
+""SUPI encryption enhances home-network control"",
+""SBA authentication functions enhance home-network control"",
+""Deeper key derivation enhances home-network control"",
+""Enhancing privacy and home-network control occurs in 5G"""
+,"5G-AKA and EAP-AKA′ are mandatory primary authentication protocols across N1, N12, and N13 interfaces.","""5G-AKA is a mandatory primary authentication protocol across N1 interface"",
+""5G-AKA is a mandatory primary authentication protocol across N12 interface"",
+""5G-AKA is a mandatory primary authentication protocol across N13 interface"",
+""EAP-AKA′ is a mandatory primary authentication protocol across N1 interface"",
+""EAP-AKA′ is a mandatory primary authentication protocol across N12 interface"",
+""EAP-AKA′ is a mandatory primary authentication protocol across N13 interface"""
+,EAP enables unified authentication regardless of whether a UE accesses via 3GPP or non-3GPP RAT.,"""EAP enables unified authentication"",
+""Unified authentication applies regardless of UE access via 3GPP RAT"",
+""Unified authentication applies regardless of UE access via non-3GPP RAT"""
+,"N1 and N2 interfaces must be protected using IPsec for non-3GPP access, and NAS integrity algorithms over 3GPP access.","""N1 interface must be protected using IPsec over non-3GPP access"",
+""N1 interface must be protected using NAS integrity algorithms over 3GPP access"",
+""N2 interface must be protected using IPsec over non-3GPP access"",
+""N2 interface must be protected using NAS integrity algorithms over 3GPP access"""
+,Control-plane interfaces to AUSF and UDM (N12/N13) require mutual TLS to enforce authentication and confidentiality.,"""N12 interface requires mutual TLS"",
+""N13 interface requires mutual TLS"",
+""Mutual TLS enforces authentication"",
+""Mutual TLS enforces confidentiality"""
+,"Even when authentication exchanges are secure, implementations must ensure serving network binding via proper key derivation to prevent impersonation.","""Authentication exchanges can be secure"",
+""Implementations must ensure serving network binding via proper key derivation"",
+""Proper key derivation for serving network binding prevents impersonation"""
+,"Non-3GPP access (e.g., Wi‑Fi) requires IPsec tunnels (e.g., NWu) to secure NAS and user-plane traffic.
+","""Non-3GPP access requires IPsec tunnels"",
+""Wi-Fi is a form of Non-3GPP access"",
+""IPsec tunnels secure NAS traffic"",
+""IPsec tunnels secure user-plane traffic"",
+""NWu is a IPsec tunnel"""
+,UE establishes an IPsec signaling SA (NWu) with the N3IWF over IKEv2 and EAP‑5G when connected via untrusted WLAN.,"""UE establishes IPsec signaling SA"",
+""IPsec signaling SA is established with N3IWF"",
+""IPsec signaling SA uses IKEv2"",
+""IPsec signaling SA uses EAP-5G"",
+""UE is connected via untrusted WLAN"",
+""NWu ensures IPsec signaling SA"""
+,"User-plane over Wi‑Fi uses separate IPsec child SA(s) after PDU session establishment, with encryption based on trust.","""User-plane over Wi-Fi uses separate IPsec child SA(s)"",
+""Separate IPsec child SA(s) are established after PDU session establishment"""
+,Trusted WLAN setups use layer‑2 authentication (802.1x via TNAP) followed by IPsec signaling SA with NULL encryption to avoid double encryption.,"""Trusted WLAN setups use layer-2 authentication"",
+""Layer-2 authentication is followed by IPsec signaling SA"",
+""Layer-2 authentication is done by 802.1x via TNAP"",
+""IPsec signaling SA employs NULL encryption"",
+""NULL encryption avoids double encryption"""
+,"Wi‑Fi only devices without USIM rely on certificate-based EAP‑TLS/EAP‑TTLS, especially in private SNPN environments.","""Wi-Fi only devices without USIM rely on certificate-based EAP-TLS"",
+""Wi-Fi only devices without USIM rely on certificate-based EAP-TTLS"",
+""Certificate-based EAP-TLS/EAP-TTLS are used in private SNPN environments"""
+,ATSSS enables steering or splitting of traffic between 3GPP and Wi‑Fi based on central policy from SMF/PCF.,"""ATSSS enables steering of traffic between 3GPP"",
+""ATSSS enables steering of traffic between Wi-Fi"",
+""ATSSS enables splitting of traffic between 3GPP"",
+""ATSSS enables splitting of traffic between Wi-Fi"",
+""Steering or splitting of traffic is based on central policy"",
+""Central policy is provided by SMF"",
+""Central policy is provided by PCF"""
+,NAS messages over Wi‑Fi rely on TCP/IP transport within IPsec tunnels to ensure message reliability and ordering.,"""NAS messages over Wi-Fi rely on TCP/IP transport"",
+""TCP/IP transport occurs within IPsec tunnels"",
+""IPsec tunnels ensure message reliability"",
+""IPsec tunnels ensure message ordering"""
+,"Integration of EAP‑5G, IKEv2, and IPsec ensures secure control and data-plane transport across Wi‑Fi links.","""Integration of EAP-5G, IKEv2, and IPsec ensures secure control-plane transport"",
+""Integration of EAP-5G, IKEv2, and IPsec ensures secure data-plane transport"",
+""Secure control-plane transport occurs across Wi-Fi links"",
+""Secure data-plane transport occurs across Wi-Fi links"""
+,"Primary authentication in industrial 5G mandates use of 5G‑AKA, EAP‑AKA, or EAP‑TLS to verify device identity.","""Primary authentication in industrial 5G mandates use of 5G-AKA"",
+""Primary authentication in industrial 5G mandates use of EAP-AKA"",
+""Primary authentication in industrial 5G mandates use of EAP-TLS"",
+""5G-AKA verifies device identity"",
+""EAP-AKA verifies device identity"",
+""EAP-TLS verifies device identity"""
+,"Secondary EAP authentication enables access to external services or slice-specific networks using alternate credentials.
+","""Secondary EAP authentication enables access to external services"",
+""Secondary EAP authentication enables access to slice-specific networks"",
+""Access to external services uses alternate credentials"",
+""Access to slice-specific networks uses alternate credentials"""
+,UDM/HSS securely stores USIM credentials and supports provisioning workflows for industrial devices.,"""UDM/HSS securely stores USIM credentials"",
+""UDM/HSS supports provisioning workflows for industrial devices"""
+,SIM provisioning in industrial environments requires secure lifecycle procedures including revocation and updates.,"""SIM provisioning in industrial environments requires secure lifecycle procedures"",
+""Secure lifecycle procedures include revocation"",
+""Secure lifecycle procedures include updates"""
+,"Industrial RAN requires IPsec tunnels (NWu/NWt) to protect NAS signaling and data-plane, with SPI protections.","""Industrial RAN requires IPsec tunnels"",
+""IPsec tunnels protect NAS signaling"",
+""IPsec tunnels protect data-plane"",
+""IPsec tunnels include SPI protections"",
+""NWu is a IPsec tunnel"",
+""NWt is a IPsec tunnel"""
+,Industrial 5G prioritizes availability and deterministic latency over confidentiality to maintain real-time control.,"""Industrial 5G prioritizes availability over confidentiality"",
+""Industrial 5G prioritizes deterministic latency over confidentiality"",
+""Prioritizing availability and deterministic latency over confidentiality supports maintaining real-time control"""
+,TSN traffic must be mapped into 5G slices with real-time scheduling and IPsec security for industrial applications.,"""TSN traffic must be mapped into 5G slices"",
+""TSN traffic mapping into 5G slices requires real-time scheduling"",
+""TSN traffic mapping into 5G slices requires IPsec security"",
+""TSN traffic mapping into 5G slices is used for industrial applications"""
+,"Industrial 5G must mitigate wireless-specific threats (e.g., jamming, spoofing) via hardened SIM provisioning and tunnel integrity.","""Industrial 5G must mitigate wireless-specific threats"",
+""Wireless-specific threats include jamming"",
+""Wireless-specific threats include spoofing"",
+""Mitigation of wireless-specific threats is achieved via hardened SIM provisioning"",
+""Mitigation of wireless-specific threats is achieved via tunnel integrity"""
+,Slice-specific EAP authentication is critical where multiple industrial operations share the same 5G infrastructure.,"""Slice-specific EAP authentication is critical for multiple industrial operations sharing the same 5G infrastructure"",
+""Multiple industrial operations share the same 5G infrastructure"""
+,"Network telemetry is collected via a monitoring interface from NFs, analyzed by NWDAF, and used to audit intent success.","""Network telemetry is collected via monitoring interface"",
+""Network Function has monitoring interface"",
+""Network telemetry is analyzed by NWDAF"",
+""Analysis of network telemetry by NWDAF is used to audit intent success"""
+,Consumer-facing interface accepts user intent defined via 3GPP TS-28.312 intent schemas.,"""Consumer-facing interface accepts user intent"",
+""User intent is defined via 3GPP TS-28.312 intent schemas"""
+,Use cases like IoT aggregation and V2X QoS demonstrate how intent drives slice creation and SLA enforcement end-to-end.,"""Use cases include IoT aggregation"",
+""Use cases include V2X QoS"",
+""IoT aggregation use case demonstrates intent-driven slice creation"",
+""V2X QoS use case demonstrates intent-driven slice creation"",
+""IoT aggregation use case demonstrates intent-driven SLA enforcement end-to-end"",
+""V2X QoS use case demonstrates intent-driven SLA enforcement end-to-end"",
+""Intent drives slice creation"",
+""Intent drives SLA enforcement end-to-end"""
+,"An intent is decoupled from execution—it specifies what (intent expectations), not how (policies/actions), aligning with a model-driven SBMA approach.","""Intent is decoupled from execution"",
+""Intent specifies intent expectations"",
+""Intent does not specify policies/actions"",
+""Decoupling of intent from execution aligns with model-driven SBMA approach"""
+,"Intent operations include create, modify, query, delete, activate, and deactivate, each managing intent lifecycle states.","""Intent operations include create"",
+""Intent operations include modify"",
+""Intent operations include query"",
+""Intent operations include delete"",
+""Intent operations include activate"",
+""Intent operations include deactivate"",
+""Intent operations manage intent lifecycle states"",""
+Managing intent lifecycle states applies to each intent operation"""
+,"Intent content includes expectations (e.g., throughput targets, area coverage) linked to context objects such as PLMN and TAC.","""Intent content includes expectations"",
+""Expectations include throughput targets"",
+""Expectations include area coverage"",
+""Intent content is linked to context objects"",
+""Context objects include PLMN"",
+""Context objects include TAC"""
+,"TR 28.912 enhances TS 28.312 with verification reports, conflict resolution, feasibility checks, AI/ML mapping, and intent‑driven SON orchestration.","""TR 28.912 enhances TS 28.312"",
+""TR 28.912 provides verification reports"",
+""TR 28.912 provides conflict resolution"",
+""TR 28.912 provides feasibility checks"",
+""TR 28.912 provides AI/ML mapping"",
+""TR 28.912 provides intent-driven SON orchestration"""
+,Intent expectations can include energy savings targets balanced against service performance metrics.,"""Intent expectations can include energy savings targets"",
+""Intent expectations can include service performance metrics"",
+""Energy savings targets are balanced against service performance metrics"""
+,"Release 19 (TR 28.914) extends intent models, including RAN-level intent autopolicies for 6G readiness.","""Release 19 (TR 28.914) extends intent models"",
+""Extended intent models include RAN-level intent autopolicies"",
+""RAN-level intent autopolicies support 6G readiness"""
+,"RadioNetworkExpectation in TS 28.312 includes attributes like coverageAreaPolygon, RAT types, target throughput, and latency thresholds","""RadioNetworkExpectation includes coverageAreaPolygon"",
+""RadioNetworkExpectation includes RAT types"",
+""RadioNetworkExpectation includes target throughput"",
+""RadioNetworkExpectation includes latency thresholds"""
+,"Network intents are high-level objectives defined as IntentTargets, IntentExpectations, and context constraints.","""Network intents are high-level objectives"",
+""Network intents are defined as IntentTargets"",
+""Network intents are defined as IntentExpectations"",
+""Network intents are defined as context constraints"""
+,"Conflict detection mechanisms identify overlapping or contradictory intents, requiring resolution rules.","""Conflict detection mechanisms identify overlapping intents"",
+""Conflict detection mechanisms identify contradictory intents"",
+""Identifying overlapping or contradictory intents requires resolution rules"""
+,"Use cases—slice provisioning, indoor positioning, and service deployment—were benchmarked for provisioning latency.","""Use cases include slice provisioning"",
+""Use cases include indoor positioning"",
+""Use cases include service deployment"",
+""Use cases were benchmarked for provisioning latency"""
+,A slice is a customer SLA-backed end-to-end logical network running on shared infrastructure with performance bounds.,"""Slice is a customer SLA-backed end-to-end logical network"",
+""End-to-end logical network runs on shared infrastructure"",
+""End-to-end logical network has performance bounds"""
+,Slices comprise both dedicated and shared resources and must be logically isolated from one another.,"""Slices comprise dedicated resources"",
+""Slices comprise shared resources"",""
+Dedicated and shared resources must be logically isolated from one another"""
+,"Business bundles allow operators to combine multiple slice types (e.g., URLLC + eMBB) under a unified SLA.","""Business bundles allow operators to combine multiple slice types under a unified SLA"",
+""Operators combine URLLC and eMBB slice types"",
+""Combination of multiple slice types occurs under unified SLA"""
+,"Generic Slice Templates define attribute domains (e.g., latency range, reliability targets) for network slices.","""Generic Slice Templates define attribute domains"",
+""Attribute domains include latency range"",
+""Attribute domains include reliability targets"",
+""Attribute domains apply to network slices"""
+,Network Slice Type instantiates a GST with specific values tailored to a vertical use case’s requirements.,"""Network Slice Type instantiates Generic Slice Template (GST)"",
+""Network Slice Type applies specific values tailored to a vertical use case’s requirements"""
+,"Slices can span RAN, Core, and Transport domains and be shared across multiple operators for roaming support.","""Slices can span RAN, Core, and Transport domains"",
+""Slices can be shared across multiple operators"",
+""Sharing slices across multiple operators supports roaming support"""
+,Operators publish standardized slice blueprints to visited PLMNs to preserve SLAs and enable slice continuity.,"""Operators publish standardized slice blueprints"",
+""Standardized slice blueprints are published to visited PLMNs"",
+""Publishing standardized slice blueprints to visited PLMNs preserves SLAs"",
+""Publishing standardized slice blueprints to visited PLMNs enables slice continuity"""
+,Slice customization is capped by GST/NEST—customers cannot exceed operator-defined attribute ranges.,"""Slice customization is capped by GST/NEST"",
+""Customers cannot exceed operator-defined attribute ranges"""
+,Use cases like V2X and industrial IoT require elasticity and strict traffic isolation from slices.,"""Use cases like V2X and industrial IoT require elasticity"",
+""Use cases like V2X and industrial IoT require strict traffic isolation from slices"""
+,"Regulatory models must handle neutrality, data sovereignty, and cross-border slicing SLAs.","""Regulatory models must handle neutrality"",
+""Regulatory models must handle data sovereignty"",
+""Regulatory models must handle cross-border slicing SLAs"""
+,Slice descriptors and SLAs are central to operator interoperability and roaming in sliced 5G environments.,"Slice descriptors are central to operator interoperability"",
+""Slice descriptors are central to roaming in sliced 5G environments"",
+""SLAs are central to operator interoperability"",
+""SLAs are central to roaming in sliced 5G environments"",
+""Operator interoperability occurs in sliced 5G environments"",
+""Roaming occurs in sliced 5G environments"""
+,"5G slicing enables dynamic per-slice traffic treatment, creating potential information asymmetries vis-à-vis regulators.","""5G slicing enables dynamic per-slice traffic treatment"",
+""Dynamic per-slice traffic treatment creates potential information asymmetries"",
+""Potential information asymmetries occur vis-à-vis regulators"""
+,"NWDAF can expose per-slice KPIs (packet loss, delay, QoS metrics) to external regulators via NEF.","""NWDAF exposes per-slice KPIs"",
+""Per-slice KPIs include packet loss"",
+""Per-slice KPIs include delay"",
+""Per-slice KPIs include QoS metrics"",
+""NWDAF exposes per-slice KPIs to external regulators"",
+""Exposure to external regulators occurs via NEF"""
+,NWDAF employs a consumer–producer model with standardized interfaces for periodic KPI and analytics distribution.,"""NWDAF employs consumer–producer model"",
+""Consumer–producer model uses standardized interfaces"",
+""Standardized interfaces support periodic KPI distribution"",
+""Standardized interfaces support analytics distribution"""
+,"Analytics functions include historical trend analysis, predictive modeling, anomaly detection, and QoS sustainability reports.","""Analytics functions include historical trend analysis"",
+""Analytics functions include predictive modeling"",
+""Analytics functions include anomaly detection"",
+""Analytics functions include QoS sustainability reports"""
+,NWDAF enables real-time regulatory monitoring of net neutrality compliance based on slice-level transparency.,"""NWDAF enables real-time regulatory monitoring of net neutrality compliance"",
+""Real-time regulatory monitoring of net neutrality compliance is based on slice-level transparency"""
+,"Deployment options include SNPN, PNI‑NPN, and hybrid models with shared RAN and TSN integration.","""Deployment options include SNPN"",
+""Deployment options include PNI-NPN"",
+""Deployment options include hybrid models"",
+""Hybrid models use shared RAN"",
+""Hybrid models use TSN integration"""
+,Security zones and VLAN-based segmentation enable dynamic isolation of traffic within slices.,"""Security zones enable dynamic isolation of traffic within slices"",
+""VLAN-based segmentation enables dynamic isolation of traffic within slices"""
+,Operator policy defines tenant-customizable parameters like coverage area and TSN support levels.,"""Operator policy defines tenant-customizable parameters"",
+""Tenant-customizable parameters include coverage area"",
+""Tenant-customizable parameters include TSN support levels"""
+,"Qualitative mapping of use-case requirements (latency, reliability) to NPN architecture types informs deployment choice.","""Use-case requirements include latency"",
+""Use-case requirements include reliability"",
+""Use-case requirements are qualitatively mapped to NPN architecture types"",
+""Qualitative mapping of use-case requirements to NPN architecture types informs deployment choice"""
+,Slice access can be geographically constrained using TAC or other location identifiers.,"""Slice access can be geographically constrained using TAC"",
+""Slice access can be geographically constrained using other location identifiers"""
+,Edge cloud and TSN functions are co-located based on geo-proximity to meet tight latency targets.,"""Edge cloud and TSN functions are co-located based on geo-proximity"",
+""Co-location based on geo-proximity enables meeting tight latency targets"""
+,Dynamic traffic-driven forwarding rules support adaptive slice isolation and performance optimization.,"""Dynamic traffic-driven forwarding rules support adaptive slice isolation"",
+""Dynamic traffic-driven forwarding rules support performance optimization"""
+,PCF enforces Maximum Slice Data Rate by rejecting SM Policy or PDU session establishment if slice budget is exceeded.,"""PCF enforces Maximum Slice Data Rate"",
+""PCF rejects SM Policy establishment"",
+""PCF rejects PDU session establishment"",
+""Rejection of SM Policy or PDU session establishment occurs if slice budget is exceeded"""
+,"With NWDAF integration, PCF uses slice usage data (volume and duration) to apply or relax constraints dynamically.","""PCF uses slice usage data"",
+""Usage data defined by volume "",
+""Usage data defined by duration"",
+""Slice usage data is provided by NWDAF integration"",
+""PCF applies or relaxes constraints dynamically"""
+,"Without NWDAF, the PCF deducts used capacity from UDR via Session-AMBR and MBR during flow provisioning.","""PCF deducts used capacity from UDR via Session-AMBR"",
+""PCF deducts used capacity from UDR via MBR"",
+""Deducting used capacity via Session-AMBR and MBR occurs during flow provisioning"""
+,"If PCF rejects due to exceeded data rate, SMF returns HTTP 403 'EXCEEDED_SLICE_DATA_RATE' to UE.","""PCF rejects flow setup due to exceeded data rate"",
+""SMF returns HTTP 403 'EXCEEDED_SLICE_DATA_RATE' to UE"""
+,Slice capacity is restored to UDR when sessions or GBR rules terminate or are modified downward.,"""Slice capacity is restored to UDR"",
+""Restoration of slice capacity to UDR occurs when sessions terminate"",
+""Restoration of slice capacity to UDR occurs when GBR rules are modified downward"""
+,Multiple PCFs can synchronously enforce slice caps using conditional UDR updates with etags.,"""Multiple PCFs can synchronously enforce slice caps"",
+""Slice cap enforcement uses conditional UDR updates with etags"""
+,Maximum Group Data Rate control is extended to VN groups similarly to slice-based rate limiting.,"""Maximum Group Data Rate control is extended to VN groups"",
+""Extension of Maximum Group Data Rate control to VN groups is similar to slice-based rate limiting"""
+,Emergency or prioritized services can bypass slice data rate limits based on operator policy or regulation.,"""Emergency services can bypass slice data rate limits"",
+""Prioritized services can bypass slice data rate limits"",
+""Bypassing slice data rate limits is based on operator policy"",
+""Bypassing slice data rate limits is based on regulation"""
+,"Slice caps apply across both GBR and non-GBR flows—Non‑GBR via Session-AMBR, GBR via MBR in PCC rules.","""Slice caps apply across non-GBR flows"",
+""Slice caps apply across GBR flows"",
+""Non-GBR flows are enforced via Session-AMBR"",
+""GBR flows are enforced via MBR in PCC rules"""
+,"Control‑plane functions are architecturally isolated from user‑plane, mitigating CP-targeted attacks without affecting UP traffic.","""Control-plane functions are architecturally isolated from user-plane"",
+""Architectural isolation mitigates CP-targeted attacks"",
+""Mitigating CP-targeted attacks occurs without affecting UP traffic"""
+,"MANO, NFVO, and VNF/VIM orchestrators are critical CP assets vulnerable to supply chain and virtualization-layer attacks.","""MANO is critical CP asset"",
+""NFVO is critical CP asset"",
+""VNF orchestrators are critical CP assets"",
+""VIM orchestrators are critical CP assets"",
+""Critical CP assets are vulnerable to supply chain attacks"",
+""Critical CP assets are vulnerable to virtualization-layer attacks"""
+,"UPF serves as the primary User‑Plane NF in 5GC, handling packet forwarding, QoS, buffering, usage reporting, and mobility anchoring.","""UPF serves as primary User-Plane NF in 5GC"",
+""UPF handles packet forwarding"",
+""UPF handles QoS"",
+""UPF handles buffering"",
+""UPF handles usage reporting"",
+""UPF handles mobility anchoring"","
+,"The UPF interconnects RAN and Data Networks, and performs reflective QoS marking and application-specific flow detection.","""UPF interconnects RAN and Data Networks"",
+""UPF performs reflective QoS marking"",
+""UPF performs application-specific flow detection"""
+,"UPF uses four reference points: N3 (gNB), N4 (SMF via PFCP), N6 (Data Network), and N9 (UPF‑to‑UPF chaining).","""UPF uses N3 reference point"",
+""N3 reference point connects UPF"",
+""N3 reference point connects gNB"",
+""UPF uses N4 reference point"",
+""N4 reference point connects UPF"",
+""N4 reference point connects SMF"",
+""UPF connected to SMF"",
+""N4 reference point uses PFCP"",
+""UPF uses N6 reference point"",
+""N6 reference point connects UPF"",
+""N6 reference point connects Data Network"",
+""UPF uses N9 reference point"",
+""N9 reference point supports UPF-to-UPF chaining"""
+,"PFCP over N4 installs forwarding (FAR), buffering (BAR), QoS (QER), usage (URR), and detection (PDR) rules in UPF.
+","""PFCP over N4 installs forwarding rules"",
+""PFCP over N4 installs buffering rules"",
+""PFCP over N4 installs QoS rules"",
+""PFCP over N4 installs usage rules"",
+""PFCP over N4 installs detection rules"",
+""PFCP over N4 install rules in UPF"""
+,GTP‑U encapsulated traffic traverses N3/N9 for user-plane data exchange between RAN and/or UPF instances.,"""GTP-U encapsulated traffic traverses N3 interface"",
+""GTP-U encapsulated traffic traverses N9 interface"",
+""Traversal of N3 and N9 facilitates user-plane data exchange"",
+""User-plane data exchange occurs between RAN and UPF instances"""
+,UPF fulfills the CUPS model by decoupling data-plane processing from control-plane SMF logic and enabling edge deployment.,"""UPF fulfills Control and User Plane Separation (CUPS) model"",
+""Control and User Plane Separation (CUPS) model decouples data-plane processing from control-plane SMF logic"",
+""Decoupling of data-plane processing from control-plane SMF logic enables edge deployment"""
+,Cloud‑native UPF architectures using microservices and Kubernetes enable elastic scaling for diverse throughput demands.,"""Cloud-native UPF architectures use microservices"",
+""Cloud-native UPF architectures use Kubernetes"",
+""Use of microservices and Kubernetes enables elastic scaling"",
+""Elastic scaling supports diverse throughput demands"""
+,Branching via N9 or uplink classification allows UPF to intelligently split or redirect traffic flows.,"""Branching via N9 allows UPF to split or redirect traffic flows intelligently"",
+""Uplink classification allows UPF to split or redirect traffic flows intelligently"""
+,"UPF supports IPv4/IPv6, NAT at N6, multi-tenancy, session anchoring, and reflective QoS for end-to-end service compliance.","""UPF supports IPv4"",
+""UPF supports IPv6"",
+""UPF supports NAT at N6"",
+""UPF supports multi-tenancy"",
+""UPF supports session anchoring"",
+""UPF supports reflective QoS"",
+""Reflective QoS enables end-to-end service compliance"""
+,"UPF is the CUPS-based user-plane NF in 5GC, enabling separation from SMF and independent scaling/deployment.","""UPF is the CUPS-based user-plane NF in 5GC"",
+""UPF enables separation from SMF"",
+""UPF enables independent scaling"",
+""UPF enables independent deployment"""
+,"CUPS allows UPF to evolve and scale independently, enabling edge deployment for low-latency use cases.","""CUPS allows UPF to evolve independently"",
+""CUPS allows UPF to scale independently"",
+""Independent evolution and scaling of UPF enables edge deployment"",
+""Edge deployment supports low-latency use cases"""
+,"UPF handles mobility anchoring, IP allocation, routing, classification, branching, buffering, and PFD-based application detection.","""UPF handles mobility anchoring"",
+""UPF handles IP allocation"",
+""UPF handles routing"",
+""UPF handles classification"",
+""UPF handles branching"",
+""""UPF handles buffering"",
+UPF handles PFD-based application detection"""
+,"Packet-level policy enforcement in UPF includes gating, redirection, traffic steering, reflective QoS marking, and rate control.","""Packet-level policy enforcement in UPF includes gating"",
+""Packet-level policy enforcement in UPF includes redirection"",
+""Packet-level policy enforcement in UPF includes traffic steering"",
+""Packet-level policy enforcement in UPF includes reflective QoS marking"",
+""Packet-level policy enforcement in UPF includes rate control"""
+,"Scientific interfaces include N3 for GTP-U, N4 for PFCP rule installation, N6 for Data Network connectivity, and N9 for UPF-to-UPF chaining.","""N3 interface uses GTP-U"",
+""N4 interface is used for PFCP rule installation"",
+""N6 interface connects Data Network"",
+""N9 interface enables UPF-to-UPF chaining"""
+,"PFCP enables UPF to install PDR, FAR, BAR, QER, and URR via N4 under SMF control.","""PFCP enables rule installation"",
+""Rule instalation enabled for UPF"",
+""Rule instalation occurs via N4"",
+""Rule instalation occurs under SMF control"",
+""Rule instalation includes PDR"",
+""Rule instalation includes FAR"",
+""Rule instalation includes BAR"",
+""Rule instalation includes QER"",
+""Rule instalation includes URR"""
+,"N9 chaining supports branching, multi-anchoring, and breakout of traffic flows in complex deployment scenarios.","""N9 chaining supports branching"",
+""N9 chaining supports multi-anchoring"",
+""N9 chaining supports breakout of traffic flows"",
+""Branching applies in complex deployment scenarios"",
+""Multi-anchoring applies in complex deployment scenarios"",
+""Breakout applies in complex deployment scenarios"""
+,Edge-deployed UPFs and cloud-native architecture support elastic scaling managed via orchestration platforms.,"""Edge-deployed UPFs support elastic scaling"",
+""Cloud-native architecture supports elastic scaling"",
+""Elastic scaling is managed via orchestration platforms"""
+,UPF supports GTP-U-level packet duplication and elimination for handover and redundancy.,"""UPF supports GTP-U-level packet duplication"",
+""UPF supports GTP-U-level packet elimination"",
+""Packet duplication and elimination are used for handover"",
+""Packet duplication and elimination are used for redundancy"""
+,GTP octet counters on N3 (GTP.In/OutDataOctetsN3) monitor transport bandwidth usage per QoS class.,"""GTP octet counters on N3 includes GTP.InDataOctetsN3"",
+""GTP octet counters on N3 includes GTP.OutDataOctetsN3"",
+""GTP.In/OutDataOctetsN3 monitor transport bandwidth usage"",
+""Transport bandwidth usage is tracked per QoS class"""
+,"Packet loss on N3 is tracked via GTP.InDataPktLossN3QoS, enabling detection of per-class service degradation.","""Packet loss on N3 is tracked via GTP.InDataPktLossN3QoS"",
+""GTP.InDataPktLossN3QoS enables detection of per-class service degradation"""
+,"Average and distribution metrics of N3 round-trip delay per DSCP (e.g., GTP.RttDelayN3DlPsaUpfMean.DSCP) support QoS-level latency modelling.","""Average and distribution metrics of N3 round-trip delay per DSCP are measured using GTP.RttDelayN3DlPsaUpfMean.DSCP"",
+""GTP.RttDelayN3DlPsaUpfMean.DSCP supports QoS-level latency modelling"""
+,N4 PFCP session metrics measure N4SessionEstabReq/Fail and N4SessionReport/ReportSucc to assess control-plane signaling performance.,"""N4 PFCP session metrics measure N4SessionEstabReq"",
+""N4 PFCP session metrics measure N4SessionEstabFail"",
+""N4 PFCP session metrics measure N4SessionReport"",
+""N4 PFCP session metrics measure N4SessionReportSucc"",
+""These metrics assess control-plane signaling performance"""
+,"N6 interface metrics (IP.N6IncLinkUsage, IP.N6OutLinkUsage) record IP-layer data volume, consistent with RFC 5136 counters.","""N6 interface metrics include IP.N6IncLinkUsage"",
+""N6 interface metrics include IP.N6OutLinkUsage"",
+""IP.N6IncLinkUsage and IP.N6OutLinkUsage record IP-layer data volume"",
+""These metrics are consistent with RFC 5136 counters"""
+,Per-QoS-class and per-slice measurements enable slice-specific SLA validation across UPF interfaces.,"""Per-QoS-class measurements enable slice-specific SLA validation"",
+""Per-slice measurements enable slice-specific SLA validation"",
+""Slice-specific SLA validation occurs across UPF interfaces"""
+,"N3, N4, and N6 measurement data provide key inputs to dynamic QoS and scaling actions in intent-driven orchestration.","""N3 measurement data provides key inputs to dynamic QoS and scaling actions"",
+""N4 measurement data provides key inputs to dynamic QoS and scaling actions"",
+""N6 measurement data provides key inputs to dynamic QoS and scaling actions"",
+""Dynamic QoS and scaling actions are used in intent-driven orchestration"""
+,Monitoring of GTP RTT and packet loss informs real-time traffic steering or re-orchestration decisions.,"""Monitoring of GTP RTT informs real-time traffic steering"",
+""Monitoring of GTP RTT informs re-orchestration decisions"",
+""Monitoring of packet loss informs real-time traffic steering"",
+""Monitoring of packet loss informs re-orchestration decisions"""
+,UPCR (UPF placement and chaining reconfiguration) addresses UPF placement in MEC environments to handle user mobility.,"""UPCR (UPF placement and chaining reconfiguration) addresses UPF placement in MEC environments"",
+""UPCR handles user mobility through UPF placement and chaining"""
+,DPC‑UPCR outperforms baseline schedulers by reducing reconfig event count and QoS violations.,"""DPC-UPCR outperforms baseline schedulers"",
+""DPC-UPCR reduces reconfiguration event count"",
+""DPC-UPCR reduces QoS violations"""
+,UPF repositioning supports proximity anchoring to minimize latency during access node handovers.,"""UPF repositioning supports proximity anchoring"",
+""Proximity anchoring minimizes latency during access node handovers"""
+,Cost-QoS trade-offs are balanced via dynamic UPF chaining instead of static placement clusters.,"""Cost-QoS trade-offs are balanced via dynamic UPF chaining"",
+""Dynamic UPF chaining is used instead of static placement clusters"""
+,User mobility patterns drive dynamic reconfiguration decisions rather than purely periodic adjustments.,"""User mobility patterns drive dynamic reconfiguration decisions"",
+""Dynamic reconfiguration decisions are preferred over purely periodic adjustments"""
+,"Scheduling parameters—e.g., latency violation rate and QoS thresholds—govern when to deploy UPF migrations.","""Scheduling parameters include latency violation rate"",
+""Scheduling parameters include QoS thresholds"",
+""Latency violation rate and QoS thresholds govern when to deploy UPF migrations"""
+,"The 5G‑PPP architecture integrates multi-domain orchestration through ETSI NFV-MANO and SDN agents across RAN, transport, core, and edge.","""5G-PPP architecture integrates multi-domain orchestration"",
+""Multi-domain orchestration is enabled through ETSI NFV-MANO"",
+""Multi-domain orchestration is enabled through SDN agents"",
+""SDN agents operate across RAN, transport, core, and edge domains"""
+,"RAN functions are split: DU/PHY/MAC run at edge for performance, while PDCP/RRC run centrally as VNFs.","""RAN functions are split"",
+""DU/PHY/MAC run at edge for performance"",
+""PDCP/RRC run centrally as VNFs"""
+,"Core network topology includes NFVI in core and edge, fronthaul/backhaul, and WLAN/small-cell components.","""Core network topology includes NFVI in core"",
+""Core network topology includes NFVI in edge"",
+""Core network topology includes fronthaul"",
+""Core network topology includes backhaul"",
+""Core network topology includes WLAN components"",
+""Core network topology includes small-cell components"""
+,CUPS architecture enables independent scaling by separating CU-CP from CU-UP and using SMF–UPF control-plane splits.,"""CUPS architecture enables independent scaling"",
+""CUPS architecture separates CU-CP from CU-UP"",
+""CUPS architecture uses SMF–UPF control-plane splits"","
+,"Edge deployment of DU, CU-UP, and UPF ensures low-latency, bandwidth-intensive data handling close to users.","""Edge deployment of DU ensures low-latency data handling"",
+""Edge deployment of CU-UP ensures low-latency data handling"",
+""Edge deployment of UPF ensures low-latency data handling"",
+""Edge deployment of DU ensures bandwidth-intensive data handling"",
+""Edge deployment of CU-UP ensures bandwidth-intensive data handling"",
+""Edge deployment of UPF ensures bandwidth-intensive data handling"",
+""Low-latency and bandwidth-intensive data handling occurs close to users"""
+,"SDN agents co-locate with domain NFs and are managed via NFVO/VNFM, enabling programmable domain control.","""SDN agents co-locate with domain NFs"",
+""SDN agents are managed via NFVO/VNFM"",
+""Management via NFVO/VNFM enables programmable domain control"""
+,"PHY and MAC layers benefit from hardware acceleration at the DU, while PDCP/RRC benefit from centralized programmability.","""PHY and MAC layers benefit from hardware acceleration at the DU"",
+""PDCP/RRC layers benefit from centralized programmability"""
+,Application-aware orchestration includes plug-in service and function managers integrated into MANO for vertical-specific services.,"""Application-aware orchestration includes plug-in service managers"",
+""Application-aware orchestration includes plug-in function managers"",
+""Plug-in service and function managers are integrated into MANO"",
+""Application-aware orchestration supports vertical-specific services"""
+,Kubernetes is used for edge orchestration to support sub‑20 ms latency use cases in IoT and real-time applications.,"""Kubernetes is used for edge orchestration"",
+""Edge orchestration with Kubernetes supports sub-20 ms latency use cases"",
+""Sub-20 ms latency use cases include IoT applications"",
+""Sub-20 ms latency use cases include real-time applications"""
+,Native Kubernetes lacks network‑aware scheduling and topology‑based placement essential for edge scenarios.,"""Native Kubernetes lacks network-aware scheduling"",
+""Native Kubernetes lacks topology-based placement"",
+""Network-aware scheduling and topology-based placement are essential for edge scenarios"""
+,"Custom edge Kubernetes deployments use virtual kubelets, multi‑cluster federation, and custom schedulers.","""Custom edge Kubernetes deployments use virtual kubelets"",
+""Custom edge Kubernetes deployments use multi-cluster federation"",
+""Custom edge Kubernetes deployments use custom schedulers"""
+,"Edge K8s implementations struggle with real-time metric processing, fault-tolerance, and container registry placement.","""Edge Kubernetes implementations struggle with real-time metric processing"",
+""Edge Kubernetes implementations struggle with fault-tolerance"",
+""Edge Kubernetes implementations struggle with container registry placement"""
+,"Edge-focused improvements include installing local metrics servers, topology-aware custom schedulers, and edge-located container registries.","""Edge-focused improvements include installing local metrics servers"",
+""Edge-focused improvements include topology-aware custom schedulers"",
+""Edge-focused improvements include edge-located container registries"""
+,Edge orchestration requires orchestration decisions based on realtime network measurements and locality knowledge.,"""Edge orchestration requires orchestration decisions based on real-time network measurements"",
+""Edge orchestration requires orchestration decisions based on locality knowledge"""
+,Placing container registries on edge nodes reduces network usage and speeds up workload deployment.,"""Placing container registries on edge nodes reduces network usage"",
+""Placing container registries on edge nodes speeds up workload deployment"""
+,Virtual kubelets enable edge nodes to publish as Kubernetes nodes without running full control plane components.,"""Virtual kubelets enable edge nodes to publish as Kubernetes nodes"",
+""Virtual kubelets operate without running full control plane components"""
+,Topology‑aware scheduling uses knowledge of node network connectivity to prioritize workload placement.,"""Topology-aware scheduling uses knowledge of node network connectivity"",
+""Knowledge of node network connectivity is used to prioritize workload placement"""
+,"Container placement spans cloud, fog, and edge domains, optimizing resource use, energy consumption, and fault tolerance.","""Container placement spans cloud domain"",
+""Container placement spans fog domain"",
+""Container placement spans edge domain"",
+""Container placement optimizes resource use"",
+""Container placement optimizes energy consumption"",
+""Container placement optimizes fault tolerance"""
+,"Migration techniques include cold, pre-copy, post-copy, and hybrid methods, each with different downtime/resource overhead profiles.","""Migration techniques include cold migration"",
+""Migration techniques include pre-copy migration"",
+""Migration techniques include post-copy migration"",
+""Migration techniques include hybrid migration"",
+""Each migration method has different downtime and resource overhead profiles"""
+,"Edge/fog placements consider latency, energy, and resource constraints in trade-off-aware optimization.","""Edge/fog placements consider latency constraints"",
+""Edge/fog placements consider energy constraints"",
+""Edge/fog placements consider resource constraints"",
+""Latency, energy, and resource constraints are balanced in trade-off-aware optimization"""
+,Fault tolerance in edge setups is supported via proactive migrations and container replication to avoid single-node failures.,"""Fault tolerance in edge setups is supported via proactive migrations"",
+""Fault tolerance in edge setups is supported via container replication"",
+""Proactive migrations and container replication help avoid single-node failures"""
+,"Energy-aware placement utilizes bin-packing to minimize the number of active fog nodes, saving power.
+","""Energy-aware placement utilizes bin-packing"",
+""Bin-packing minimizes number of active fog nodes"",
+""Minimizing active fog nodes saves power"""
+,"Placement models often include QoS constraints, formulated using MILP or knapsack to enforce latency and reliability SLAs.","""Placement models often include QoS constraints"",
+""QoS constraints are formulated using Mixed Integer Linear Programming (MILP)"",
+""QoS constraints are formulated using knapsack problem models"",
+""Formulated constraints enforce latency SLAs"",
+""Formulated constraints enforce reliability SLAs"""
+,"VNF and container placement across cloud, fog, and edge are NP-hard and directly impact latency, cost, energy, and scalability.","""VNF and container placement across cloud, fog, and edge are NP-hard"",
+""VNF and container placement directly impact latency"",
+""VNF and container placement directly impact cost"",
+""VNF and container placement directly impact energy"",
+""VNF and container placement directly impact scalability"""
+,"Edge placements prioritize low latency, energy efficiency, resource constraints, and intermittent connectivity.","""Edge placements prioritize low latency"",
+""Edge placements prioritize energy efficiency"",
+""Edge placements prioritize resource constraints"",
+""Edge placements prioritize intermittent connectivity"""
+,"Multi-objective placement models balance latency, energy, cost, resource use, fault tolerance, and QoS among VNFs/containers.","""Multi-objective placement models balance latency"",
+""Multi-objective placement models balance energy"",
+""Multi-objective placement models balance cost"",
+""Multi-objective placement models balance resource use"",
+""Multi-objective placement models balance fault tolerance"",
+""Multi-objective placement models balance QoS"",
+""Balanced objectives apply to VNFs and containers"""
+,"Optimization models like MIQCP or bin‑packing address latency and energy constraints, especially in uRLLC scenarios.","""Optimization models include MIQCP (Mixed-Integer Quadratically Constrained Programming)"",
+""Optimization models include bin-packing"",
+""MIQCP and bin-packing address latency constraints"",
+""MIQCP and bin-packing address energy constraints"",
+""Latency and energy constraints are especially relevant in uRLLC scenarios"""
+,Dynamic placement systems migrate VNFs/containers proactively to maintain SLAs in changing network states.,"""Dynamic placement systems migrate VNFs/containers proactively"",
+""Proactive migration of VNFs/containers maintains SLAs"",
+""Proactive migration responds to changing network states"""
+,"Container placement extends beyond VNFs to include microservices in MEC and private 5G environments.
+","""Container placement extends beyond VNFs"",
+""Container placement includes microservices"",
+""Microservices are placed in MEC environments"",
+""Microservices are placed in private 5G environments"""
+,Kubernetes StatefulSets provide pod identity and ordering guarantees for RAN component scaling.,"""Kubernetes StatefulSets provide pod identity guarantees"",
+""Kubernetes StatefulSets provide pod ordering guarantees"",
+""Pod identity and ordering guarantees support RAN component scaling"""
+,etcd acts as a distributed key-value store for dynamic runtime configuration between containerized RRH and BBU modules.,"""etcd acts as a distributed key-value store"",
+""etcd supports dynamic runtime configuration"",
+""Dynamic runtime configuration occurs between containerized RRH and BBU modules"""
+,Doubling the number of BBU–RRH pods linearly increases fronthaul data throughput in the containerized RAN testbed.,"""Doubling the number of BBU–RRH pods linearly increases fronthaul data throughput"",
+""Linear increase in fronthaul data throughput is observed in containerized RAN testbed"""
+,Container orchestration enables dynamic resource-driven scaling of RAN baseband functions for performance and efficiency.,"""Container orchestration enables dynamic resource-driven scaling"",
+""Dynamic scaling applies to RAN baseband functions"",
+""Dynamic scaling of RAN baseband functions improves performance"",
+""Dynamic scaling of RAN baseband functions improves efficiency"""
+,"Resource metrics (CPU, memory) from Kubernetes can trigger scaling based on observed load patterns.","""Resource metrics (CPU, memory) from Kubernetes"",
+""Kubernetes resource metrics can trigger scaling actions"",
+""Scaling actions are based on observed load patterns"""
+,"Container-based virtualization (Docker/LXC) in real-time industrial systems incurs latency jitter (≈37–102 ms), posing challenges for hard real-time constraints","""Container-based virtualization (Docker/LXC) in real-time industrial systems incurs latency jitter (≈37–102 ms)"",
+""Latency jitter poses challenges for hard real-time constraints"""
+,Soft real-time deadlines (50–100 ms) are feasible with containers when the host is RT-kernel tuned and orchestration supports deterministic latency.,"""Soft real-time deadlines (50–100 ms) are feasible with containers"",
+""Feasibility of soft real-time deadlines requires RT-kernel tuning on the host"",
+""Feasibility of soft real-time deadlines requires orchestration support for deterministic latency"""
+,"Current orchestration platforms (e.g., Kubernetes) lack real-time awareness—missing scheduling priorities and time-bound placement logic.","""Current orchestration platforms (e.g., Kubernetes) lack real-time awareness"",
+""Lack of real-time awareness includes missing scheduling priorities"",
+""Lack of real-time awareness includes missing time-bound placement logic"""
+,Industrial-grade container platforms need integration of real-time metrics in orchestration controllers to meet strict latency SLAs.,"""Industrial-grade container platforms need integration of real-time metrics in orchestration controllers"",
+""Integration of real-time metrics is required to meet strict latency SLAs"""
+,Real-time container maturity is still limited—jitter and unpredictable scheduling up to 100 ms impede hard real-time use.,"""Real-time container maturity is still limited"",
+""Jitter and unpredictable scheduling up to 100 ms"",
+""Jitter and scheduling unpredictability impede hard real-time use"""
+,"Future solution directions include real-time scheduling extensions, metrics‑driven orchestration, and explicit task-level prioritization.","""Future solution directions include real-time scheduling extensions"",
+""Future solution directions include metrics-driven orchestration"",
+""Future solution directions include explicit task-level prioritization"""
+,"Time-sensitive container requirements demand enhancements at both runtime (cgroup, RT kernel) and orchestration (placement, scaling) layers.","""Time-sensitive container requirements demand enhancements"",
+""Demand enhancements can be set up at runtime layer"",
+""Demand enhancements can be set up at orchestration layer"",
+""Runtime layer enhancements include cgroup and RT kernel"",
+""Time-sensitive container requirements demand enhancements"",
+""Orchestration layer enhancements includes placement"",
+""Orchestration layer enhancements includes scaling"""
+,"Control-plane (N2) and user-plane (N3) traffic require separate IP subnets, unless using the same VLAN.","""Control-plane traffic requires a separate IP subnet"",
+""User-plane traffic requires a separate IP subnet"",
+""User-plane traffic goes through N3"",
+""Control-plane traffic goes through N2"",
+""Separate IP subnets are not required if VLAN is the same"""
+,"Edge deployments use dedicated subnets or UE IP pools, allocated via N6 interfaces for dynamic and static addresses.","""Edge deployments use dedicated subnets"",
+""Edge deployments use UE IP pools"",
+""Dedicated subnets and UE IP pools are allocated via N6 interfaces"",
+""N6 interfaces support allocation of dynamic addresses"",
+""N6 interfaces support allocation of static addresses"","
+,Firewalls must allow routes and port access between corporate networks and UE subnets connected via N6.,"""Firewalls must allow routes between corporate networks and UE subnets"",
+""Firewalls must allow port access between corporate networks and UE subnets"",
+""UE subnets are connected via N6 interface"""
+,"Gateway routers require single static routes per network, with virtual IPs managed across redundant ASE devices.","""Gateway routers require single static routes per network"",
+""Virtual IPs are managed across redundant ASE devices"""
+,"Separate IP pools are needed for access, data, management, cluster nodes, ACS/NFS, and virtual IP services in ASE deployments.","""Separate IP pools are needed for access traffic"",
+""Separate IP pools are needed for data traffic"",
+""Separate IP pools are needed for management interfaces"",
+""Separate IP pools are needed for cluster nodes"",
+""Separate IP pools are needed for ACS/NFS services"",
+""Separate IP pools are needed for virtual IP services"",
+""IP pools are required in ASE deployments"""
+,"Proper segmentation of N2/N3/N6 subnets supports network isolation, QoS, and firewall rule enforcement.","""Proper segmentation supports network isolation"",
+""Proper segmentation supports QoS enforcement"",
+""Proper segmentation supports firewall rule enforcement"",
+""Proper segmentation detaches N2 subnets"",
+""Proper segmentation detaches N3 subnets"",
+""Proper segmentation detaches N6 subnets"""
+,"IPv6 is preferred in private 5G deployments for its address space, built-in IPsec, and autoconfiguration (SLAAC).","""IPv6 is preferred in private 5G deployments"",
+""Preference for IPv6 is due to larger address space"",
+""Preference for IPv6 is due to built-in IPsec support"",
+""Preference for IPv6 is due to autoconfiguration (SLAAC)"""
+,DHCP is used for dynamic IP assignment; static pools may serve fixed-function devices.,"""DHCP is used for dynamic IP assignment"",
+""Static IP pools may serve fixed-function devices"""
+,RFC 1918 private IPv4 ranges are used to isolate network slices and device classes in private 5G.,"""RFC 1918 private IPv4 ranges are used to isolate network slices"",
+""RFC 1918 private IPv4 ranges are used to isolate device classes"",
+""Isolation of slices and devices occurs in private 5G networks"""
+,NAT segmentation across slices enhances isolation and security in multi-slice deployments.,"""NAT segmentation across slices enhances isolation"",
+""NAT segmentation across slices enhances security"",
+""Isolation and security improvements apply to multi-slice deployments"""
+,Automated IPAM systems with monitoring capabilities are critical for conflict detection and utilization visibility.,"""Automated IPAM systems with monitoring capabilities are critical for conflict detection"",
+""Automated IPAM systems are critical for utilization visibility"""
+,Real-time alerts from IPAM aid in rogue device detection and prevent IP conflicts in private 5G environments.,"""Real-time alerts from IPAM aid in rogue device detection"",
+""Real-time alerts from IPAM prevent IP conflicts"",
+""Rogue device detection and IP conflict prevention are essential in private 5G environments"""
+,"In CUPS, SMF dynamically assigns IP chunks to UPFs; UPFs allocate individual IPs per UE and report usage back to SMF.","""SMF dynamically assigns IP chunks"",
+""IP chunks assigned to UPFs"",
+""UPFs allocate individual IPs"",
+""Individual IPs allocated per UE"",
+""UPFs report IP usage"",
+""IP usage reported to SMF"""
+,Optimal chunk size balances even load distribution against IP exhaustion and provisioning overhead.,"""Optimal chunk size balances even load distribution"",
+""Optimal chunk size balances IP exhaustion"",
+""Optimal chunk size balances provisioning overhead"""
+,"SMF triggers new IP chunk allocations when UPF usage exceeds 70%, and reclaims underutilized chunks.","""SMF triggers new IP chunk allocations"",
+""IP chunk allocations triggered when UPF usage exceeds 70%"",
+""SMF reclaims underutilized IP chunks"""
+,"Maximum UPFs per chunk-limited pool are determined by pool size divided by chunk size (e.g., 1M/65k → ~16 UPFs).","""Maximum UPFs per chunk-limited pool are determined by pool size divided by chunk size"",
+""Example calculation: 1M IPs / 65k per chunk → ~16 UPFs"""
+,DNS-based UPF selection uses TAC/RAC to bind UPF and chunk assignment in geo-aware deployments.,"""DNS-based UPF selection uses TAC"",
+""DNS-based UPF selection uses RAC"",
+""TAC/RAC bind UPF"",
+""TAC/RAC bind chunk assignment"",
+""Binding UPF enables geo-aware deployments"",
+""Binding chunk assignment enables geo-aware deployments"""
+,SMF enforces chunk throttling based on UPF’s advertised max session capacity to prevent over-allocation.,"""SMF enforces chunk throttling"",
+""Chunk throttling is based on UPF’s advertised max session capacity"",
+""Throttling prevent over-allocation"""
+,Static IP pools are split and distributed to multiple UPFs; SMF rejects requests outside defined static blocks.,"""Static IP pools are split and distributed to multiple UPFs"",
+""SMF rejects requests outside defined static blocks"""
+,DHCP-based IP allocation via UPF requires PFCP N4 NF integration with VLAN ID tagging and DHCP DORA exchange.,"""DHCP-based IP allocation via UPF requires PFCP N4 NF integration"",
+""DHCP-based allocation requires VLAN ID tagging"",
+""DHCP-based allocation requires DHCP Dora exchange"""
+,"Cisco best practice suggests hierarchical subnet design with Access, Distribution, and Core layers to improve scalability and resilience.","""Cisco best practice suggests hierarchical subnet design"",
+""Hierarchical subnet design includes Access layer"",
+""Hierarchical subnet design includes Distribution layer"",
+""Hierarchical subnet design includes Core layer"",
+""Hierarchical subnet design improve resilience"",
+""Hierarchical subnet design improve scalability"""
+,"Subnetting divides an IP space into network and host portions, ensuring uniqueness and route summarization.","""Subnetting divides an IP space into network and host portions"",
+""Subnetting ensures address uniqueness"",
+""Subnetting enables route summarization"""
+,VLSM allows subnets of varying sizes within a block—key for allocating optimal address ranges per NF/service.,"""VLSM allows subnets"",
+""Subnets could be of varying sizes within a block"",
+""VLSM is key for allocating optimal address ranges per NF/service"""
+,"Hierarchical design localizes network changes, improves fault isolation, and reduces routing table size.","""Hierarchical design localizes network changes"",
+""Hierarchical design improves fault isolation"",
+""Hierarchical design reduces routing table size"""
+,"Typical subnet sizes include /28 for NF instances and /24 for core uplinks, providing headroom for growth","""Typical subnet size /28 is used for NF instances"",
+""Typical subnet size /24 is used for core uplinks"",
+""/28 subnet sizing provides headroom for growth"",
+""/24 subnet sizing provides headroom for growth"""
+,Hierarchical and CIDR-based subnetting enhances scalability and ease of management in telecom infrastructures.,"""Hierarchical subnetting enhances scalability"",
+""Hierarchical subnetting enhances ease of management"",
+""CIDR-based subnetting enhances scalability"",
+""CIDR-based subnetting enhances ease of management"",
+""Scalability and manageability improvements apply to telecom infrastructures"""
+,"Separated subnets per network plane (control, user, management) aid in traffic isolation and QoS policy enforcement.","""Separated subnets per network plane aid in traffic isolation"",
+""Separated subnets per network plane aid in QoS policy enforcement"",
+""Network plane consists of control plane"",
+""Network plane consists of user plane"",
+""Network plane consists of management plane"""
+,"Subnet planning for UPFs defines separate IP ranges per interface: N3, N4, N6, ensuring flow isolation and QoS.","""Subnet planning for UPFs defines separate IP ranges per interface"",
+""Separate IP ranges are assigned for N3 interface"",
+""Separate IP ranges are assigned for N4 interface"",
+""Separate IP ranges are assigned for N6 interface"",
+""Separate IP ranges per interface ensure flow isolation"",
+""Separate IP ranges per interface ensure QoS enforcement"""
+,"UPFs apply DNN or slice‑based policy steering, allowing flexible access control across user data flows.","""UPFs apply DNN-based policy steering"",
+""UPFs apply slice-based policy steering"",
+""DNN or slice-based policy steering allows flexible access control across user data flows"""
+,"N3 octet counters (GTP.In/OutDataOctetsN3UPF) measure data volume between gNB and UPF, optionally per QoS or slice.","""N3 octet counters (GTP.In/OutDataOctetsN3UPF) measure data volume"",
+""Data volume is measured on liknk of gNB"",
+""Data volume is measured on liknk of UPF"",
+""Measurement can be done per QoS"",
+""Measurement can be done per slice"""
+,"Packet loss on N3 is captured as GTP.In/OutDataPktLossN3UPF, enabling per-QoS reliability tracking.","""Packet loss on N3 is captured as GTP.In/OutDataPktLossN3UPF"",
+""GTP.In/OutDataPktLossN3UPF enables per-QoS reliability tracking"""
+,Average RTT per DSCP on N3 (GTP.RttDelayN3DlPsaUpfMean.DSCP) provides microsecond-level latency metrics for QoS classes.,"""Average RTT per DSCP on N3 is measured using"", ""GTP.RttDelayN3DlPsaUpfMean.DSCP"",
+""GTP.RttDelayN3DlPsaUpfMean.DSCP provides microsecond-level latency metrics"",
+""Microsecond-level latency metrics are provided for QoS classes"""
+,Out-of-order GTP packet counts (GTP.InDataPktOutOfOrderN3UPF) help detect sequence and jitter issues on N3.,"""Out-of-order GTP packet counts (GTP.InDataPktOutOfOrderN3UPF) help detect sequence issues on N3"",
+""Out-of-order GTP packet counts (GTP.InDataPktOutOfOrderN3UPF) help detect jitter issues on N3"""
+,"N4 interface PFCP session metrics (SessionEstab, ReportSucc) reflect SMF‑UPF control-plane signaling health.","""N4 interface PFCP session metrics include SessionEstab"",
+""N4 interface PFCP session metrics include ReportSucc"",
+""SMF signals UPF"",
+""SMF takes part in Control-plane signalling"",
+""UPF takes part in Control-plane signalling"",
+""SessionEstab metric reflect control-plane signaling health"",
+""ReportSucc metric reflect control-plane signaling health"""
+,"N6 link usage counters (IP.N6IncLinkUsage, IP.N6OutLinkUsage) aggregate user-plane bandwidth data toward external networks.","""N6 link usage counters include IP.N6IncLinkUsage"",
+""N6 link usage counters include IP.N6OutLinkUsage"",
+""IP.N6IncLinkUsage and IP.N6OutLinkUsage aggregate user-plane bandwidth data"",
+""User-plane bandwidth data is toward external networks"""
+,"N9 RTT metrics (GTP.RttDelayN9*) quantify latency across chained UPFs, supporting multi-hop performance assessment.","""N9 RTT metrics (GTP.RttDelayN9)* quantify latency across chained UPFs"",
+""Latency quantification via N9 RTT metrics supports multi-hop performance assessment"""
+,N9 GTP packet/byte counters support slice-level throughput and control-plane scaling insights.,"""N9 GTP packet counters support slice-level throughput insights"",
+""N9 GTP byte counters support slice-level throughput insights"",
+""N9 GTP packet and byte counters support control-plane scaling insights"","
+,Measurement split by DSCP/QoS/S‑NSSAI enables slice-specific SLA monitoring and resource orchestration.,"""Measurement split enables slice-specific SLA monitoring"",
+""Measurement split enables resource orchestration"",
+""Measurement splits by DSCP"",
+""Measurement splits by QoS"",
+""Measurement splits by S-NSSAI"""
+,"These interface-level metrics feed QoS enforcement, auto-scaling, and anomaly detection modules in intent-driven orchestration.","""Interface-level metrics feed QoS enforcement modules"",
+""Interface-level metrics feed auto-scaling modules"",
+""Interface-level metrics feed anomaly detection modules"",
+""These modules operate within intent-driven orchestration"""
+,Throughput and latency separation in UPF enable multi-tier traffic handling (eMBB and URLLC) on same infrastructure.,"""Throughput and latency separation in UPF enable multi-tier traffic handling"",
+""Multi-tier traffic handling supports eMBB traffic"",
+""Multi-tier traffic handling supports URLLC traffic"",
+""eMBB and URLLC traffic share the same infrastructure"""
+,"Throughput, latency, packet loss, and jitter are the four key QoS metrics defining 5G service quality.","""Throughput is a key QoS metric"",
+""Latency is a key QoS metric"",
+""Packet loss is a key QoS metric"",
+""Jitter is a key QoS metric"",
+""These four metrics define 5G service quality"""
+,"Voice, autonomous vehicles, and remote medical services rely critically on low-latency and minimal packet loss.","""Voice services rely critically on low latency"",
+""Voice services rely critically on minimal packet loss"",
+""Autonomous vehicles rely critically on low latency"",
+""Autonomous vehicles rely critically on minimal packet loss"",
+""Remote medical services rely critically on low latency"",
+""Remote medical services rely critically on minimal packet loss"""
+,"UPF, AMF, SMF, PCF, and AUSF form a cohesive 5GC suite enabling scalable, reliable, and flexible network operation","""AUSF is a part of cohesive 5GC suite"",
+""PCF is a part of cohesive 5GC suite"",
+""SMF is a part of cohesive 5GC suite"",
+""AMF is a part of cohesive 5GC suite"",
+""UPF is a part of cohesive 5GC suite"",
+""5GC suite enables scalable network operation"",
+""5GC suite enables reliable network operation"",
+""5GC suite enables flexible network operation"""
+,"Scalability supports high traffic load, reliability ensures mission-critical service continuity, and flexibility enables smooth 3G/4G to 5G transition.","""Scalability supports high traffic load"",
+""Reliability ensures mission-critical service continuity"",
+""Flexibility enables smooth 3G/4G to 5G transition"""
+,A logical slicing architecture partitions 5G infrastructure into QoS-aligned logical networks for tailored service delivery.,"""Logical slicing architecture partitions 5G infrastructure"",
+""Partitioning of 5G infrastructure creates QoS-aligned logical networks"",
+""QoS-aligned logical networks enable tailored service delivery"""
+,Slice-aware mobility mechanisms are required to support seamless handover at high speeds (up to 500 km/h).,"""Slice-aware mobility mechanisms are required to support seamless handover"",
+""Seamless handover occurs at high speeds (up to 500 km/h)"""
+,"Dynamic resource allocation among slices supports flexible, demand-driven QoS fulfillment under interference variability.","""Dynamic resource allocation among slices supports flexible QoS fulfillment"",
+""Dynamic resource allocation among slices supports demand-driven QoS fulfillment"",
+""QoS fulfillment occurs under interference variability"""
+,"Network slicing introduces open challenges: slice orchestration, mobility coordination, SDN/NFV integration, and infrastructure reconfiguration.","""Network slicing introduces open challenges"",
+""Open challenges include slice orchestration"",
+""Open challenges include mobility coordination"",
+""Open challenges include SDN/NFV integration"",
+""Open challenges include infrastructure reconfiguration"""
+,5G target is ≤ 1 ms end-to-end latency with 99.99% reliability for use cases like tactile internet.,"""5G target is ≤ 1 ms end-to-end latency"",
+""5G target is 99.99% reliability"",
+""Latency and reliability targets support use cases like tactile internet"""
+,"RAN delays comprise ttx, tbsp, tmpt; LTE’s 1 ms TTI must be reduced to ≤0.25 ms.","""RAN delays comprise tmpt"",
+""RAN delays comprise tbsp"",
+""RAN delays comprise tmpt"",
+""LTE’s 1 ms TTI must be reduced to ≤ 0.25 ms"""
+,Sub‑ms TTI (0.25 ms) lowers latency at the expense of higher control overhead.,"""Sub-ms TTI (0.25 ms) lowers latency"",
+""Sub-ms TTI (0.25 ms) increases control overhead"""
+,SDN/NFV and MEC in core/backhaul reduce per-packet latency by eliminating centralized processing hops.,"""SDN/NFV is a part of core/backhaul"",
+""MEC is a part of core/backhaul"",
+""Core/backhaul reduce per-packet latency"",
+""Latency reduction occurs by eliminating centralized processing hops"""
+,Edge caching of popular content shortens backhaul dependencies and content retrieval latency.,"""Edge caching of popular content shortens backhaul dependencies"",
+""Edge caching of popular content shortens content retrieval latency"""
+,"NF resource requirements for low latency include fast CPU, low-latency I/O, and real-time orchestration responsiveness.","""NF resource requirements for low latency include fast CPU"",
+""NF resource requirements for low latency include low-latency I/O"",
+""NF resource requirements for low latency include real-time orchestration responsiveness"""
+,RAN optimization combined with transport and caching enables sub-ms latency but demands trade-off in overhead and complexity.,"""RAN optimization combined with transport and caching enables sub-ms latency"",
+""Achieving sub-ms latency demands trade-offs in overhead and complexity"""
+,"Reliable ultra-low latency requires harmonised RAN, core, transport, and caching co-design with real-time resource adaptation.","""Reliable ultra-low latency requires core, transport co-design"",
+""Reliable ultra-low latency requires RAN co-design"",
+""Reliable ultra-low latency requires transport co-design"",
+""Reliable ultra-low latency requires caching co-design"",
+""Reliable ultra-low latency requires real-time resource adaptation"""
+,An intent like ‘7 Mbps uplink / ≤ 50 ms latency’ can specify AR/VR service requirements without detailing implementation.,"""Intent ‘7 Mbps uplink / ≤ 50 ms latency’ specifies AR/VR service requirements"",
+""Intent specification does not detail implementation specifics"""
+,Impacted layers parse intents using RAN identifiers like 5QI and S‑NSSAI to scope service intents.,"""Impacted layers parse intents using RAN identifiers"",
+""RAN identifiers include 5QI and S-NSSAI"",
+""5QI and S-NSSAI are used to scope service intents"""
+,"Utility functions embedded in intents guide decision-making trade-offs, e.g., latency vs. energy.","""Utility functions embedded in intents guide decision-making trade-offs"",
+""Decision-making trade-offs include latency vs. energy"""
+,"E2E intent latency targets (e.g., 100 ms) are decomposed to domain-specific contributions (e.g., 60 ms in RAN).","""End-to-end (E2E) intent latency targets (e.g., 100 ms) are decomposed into domain-specific contributions"",
+""Domain-specific contributions include 60 ms in RAN"""
+,"MEF uses controlled natural-language DSLs (Allegro, Cantata) to express business-level intents like ‘Skype for Business → mission-critical SLA.","""MEF uses controlled natural-language DSLs""
+""Controlled natural-language DSLs express business-level intents
+Business-level intents include ‘Skype for Business → mission-critical SLA’"""
+,"Intent-to-policy mapping translates DSL intent into LSO API calls (Legato, Presto, Adagio) for network enforcement.","""Intent-to-policy mapping translates DSL intent into LSO API calls""
+""LSO API calls include Legato"",
+""LSO API calls include Adagio"",
+""LSO API calls include Presto"",
+""LSO API calls are used for network enforcement"""
+,Intent-based automation addresses scaling limitations and policy complexity by abstracting intent from implementation details.,"""Intent-based automation addresses scaling limitations"",
+""Intent-based automation addresses policy complexity"",
+""Intent-based automation abstracts intent from implementation details"""
+,The system issues SDN flow-rule updates to steer traffic along the best path matching user intent and current metrics.,"""The system issues SDN flow-rule updates"",
+""SDN flow-rule updates steer traffic along the best path"",
+""Best path matches user intent and current metrics"""
+,"Intent mapping rules define how each recognized user intent maps to network adaptation policies (delay thresholds, path priority).","""Intent mapping rules define how recognized user intent maps to network adaptation policies"",
+""Network adaptation policies include delay thresholds"",
+""Network adaptation policies include path priority"""
+,QoE is maintained through network reconfiguration even as user motion or network load changes.,"""QoE is maintained through network reconfiguration"",
+""Network reconfiguration occurs even as user motion changes"",
+""Network reconfiguration occurs even as network load changes"""
+,SDN-controlled path adaptation acts as the execution layer for intent translation in real-time streaming scenarios.,"""SDN-controlled path adaptation acts as execution layer for intent translation"",
+""SDN-controlled path adaptation is used in real-time streaming scenarios"""
+,5G networks can support IPv6-only user-plane using 464XLAT with CLAT at UE and PLAT in the network.,"""5G networks can support IPv6-only user-plane"",
+""IPv6-only user-plane support uses 464XLAT"",
+""464XLAT includes CLAT at UE"",
+""464XLAT includes PLAT in the network"""
+,IPv4-only UEs receive their address via CLAT while IPv6-only UEs are fully native on the user-plane.,"""IPv4-only UEs receive their address via CLAT"",
+""IPv6-only UEs are fully native on the user-plane"""
+,Policy configurations include static IP assignment and network translation behavior per UE capability.,"""Policy configurations include static IP assignment"",
+""Policy configurations include network translation behavior per UE capability"""
+,IPv6 firewalls should use stateful implicit-deny policies rather than NAT for security.,"""IPv6 firewalls should use stateful implicit-deny policies"",
+""IPv6 firewalls should not use NAT for security"""
+,IPSec is recommended to secure IPv6 communication channels requiring confidentiality,"""IPSec is recommended to secure IPv6 communication channels"",
+""Securing IPv6 communication channels is required for confidentiality"""
+,"Firewalls must limit IPv6 multicast scope and monitor IPv6 transition tunnels (e.g., Teredo).","""Firewalls must limit IPv6 multicast scope"",
+""Firewalls must monitor IPv6 transition tunnels"""
+,Micro-segmentation and software-defined perimeters implement zero-trust control by limiting lateral traffic flow.,"""Micro-segmentation implements zero-trust control"",
+""Software-defined perimeters implement zero-trust control"",
+""Zero-trust control limits lateral traffic flow"""
+,5G private network IPAM systems require dynamic automation and conflict resolution to support millions of connected UE and IoT devices.,"""5G private network IPAM systems require dynamic automation"",
+""5G private network IPAM systems require conflict resolution"",
+""Dynamic automation and conflict resolution support millions of connected UE and IoT devices"""
+,"IPv4 addressing is restricted to external-facing slices or middleboxes, with strict NAT at the UPF.","""IPv4 addressing is restricted to external-facing slices"",
+""IPv4 addressing is restricted to middleboxes"",
+""Strict NAT is enforced at the UPF"""
+,"IPAM subnets are isolated per slice (e.g., URLLC, mMTC) and NF zone (e.g., AMF/SMF vs UPF) to enforce QoS and isolation.","""IPAM subnets are isolated per slice""
+""IPAM subnets are isolated per NF zone"",
+""Isolation per slice and NF zone enforces QoS"",
+""Isolation per slice and NF zone enforces network isolation"""
+,Real-time IPAM monitoring should alert network managers to conflicts or rogue addresses in dense deployments.,"""Real-time IPAM monitoring should alert network managers"",
+""Alerts indicate conflicts"",
+""Alerts indicate rogue addresses"",
+""Conflicts and rogue addresses are common in dense deployments"""
+,"IPAM must support IPv6-only, dual-stack, and IPv4-translation modes for flexible slice support","""IPAM must support IPv6-only mode"",
+""IPAM must support dual-stack mode"",
+""IPAM must support IPv4-translation mode"",
+""Support for these modes enables flexible slice support"""
+,"IPv6 control-plane networks simplify policy and isolation strategies, improving compliance with operator frameworks","""IPv6 control-plane networks simplify policy strategies"",
+""IPv6 control-plane networks simplify isolation strategies"",
+""Simplified policy strategy improves compliance with operator frameworks"",
+""Isolation strategy improves compliance with operator frameworks"""
+,Operator policies mandate no public IPv4 on CP while allowing IPv4 for UPF-based NAT translation.,"""Operator policies mandate no public IPv4 on control plane (CP)"",
+""Operator policies allow IPv4 for UPF-based NAT translation"""
+,Slice-specific addressing enhances enforcement of slice-level policies and traffic segregation.,"""Slice-specific addressing enhances enforcement of slice-level policies"",
+""Slice-specific addressing enhances traffic segregation"""
+,Time synchronization in O‑RAN requires PPS and 10 MHz frequency distribution to USRPs.,"""Time synchronization in O-RAN requires PPS (Pulse Per Second)"",
+""Time synchronization in O-RAN requires 10 MHz frequency distribution"",
+""PPS and 10 MHz signals are distributed to USRPs"""
+,"Testbed servers use Ubuntu (20.04/22.04), low-latency kernels, and BIOS tuning (disable C‑states, HT, secure boot).","""Testbed servers use Ubuntu (20.04/22.04)"",
+""Testbed servers use low-latency kernels"",
+""BIOS tuning includes disabling C-states"",
+""BIOS tuning includes disabling Hyper-Threading (HT)"",
+""BIOS tuning includes disabling secure boot"""
+,Modular orchestration with support for multiple RIC and RAN stacks reduces setup complexity and ensures repeatability.,"""Modular orchestration supports multiple RIC and RAN stacks"",
+""Support for multiple RIC and RAN stacks reduces setup complexity"",
+""Support for multiple RIC and RAN stacks ensures repeatability"""
+,Hardware tuning ensures low-latency and deterministic scheduling suitable for RF-based O‑RAN operations.,"""Hardware tuning ensures low-latency"",
+""Hardware tuning ensures deterministic scheduling"",
+""Low-latency and deterministic scheduling are suitable for RF-based O-RAN operations"""
+,Testbed uses srsRAN and Open5GS on commodity hardware and USRP NI‑2944R via PCIe for 5G SA operation.,"""Testbed uses srsRAN"",
+""Testbed uses Open5GS"",
+""srsRAN and Open5GS run on commodity hardware"",
+""Testbed uses USRP NI-2944R via PCIe"",
+""srsRAN, Open5GS, and USRP NI-2944R support 5G SA operation"""
+,Backhaul uses gigabit Ethernet; upgrade to 10 Gbps is recommended for high-throughput experiments.,"""Backhaul uses gigabit Ethernet"",
+""Upgrade to 10 Gbps is recommended for high-throughput experiments"""
+,"Time sync via NTP and DNS are essential for control-plane protocols like PFCP, NGAP, HTTP2.","""Time sync via NTP is essential for control-plane protocols"",
+""DNS is essential for control-plane protocols"",
+""Control-plane protocols include NGAP"",
+""Control-plane protocols include HTTP2"",
+""Control-plane protocols include PFCP"""
+,"RF planning requires configuring USRP gains, duplex mode, SCS, and matching UE APN and compatible bands.","""RF planning requires configuring USRP gains"",
+""RF planning requires configuring duplex mode"",
+""RF planning requires configuring subcarrier spacing"",
+""RF planning requires matching UE APN"",
+""RF planning requires matching compatible bands"""
+,Some consumer UEs must be rooted or APN-modified to function reliably in 5G SA testbeds.,"""Some consumer UEs must be rooted"",
+""Some consumer UEs must be APN-modified"",
+""Rooting and APN modification ensure reliable function in 5G SA testbeds"""
+,"Open5GS logs (/var/log/open5gs) and srsRAN/ZMQ traces are critical for NGAP, GTP-U, and slice debugging.","""Open5GS logs are critical for NGAP debugging"",
+""Open5GS logs are critical for GTP-U debugging"",
+""Open5GS logs are critical for slice debugging"",
+""Open5GS logs stpred at /var/log/open5gs"",
+""srsRAN/ZMQ traces are critical for NGAP debugging"",
+""srsRAN/ZMQ traces are critical for GTP-U debugging"",
+""srsRAN/ZMQ traces are critical for slice debugging"""
+,Basic network slicing using NSSAI (SST/SD) is validated in both RAN and Core domains with packet trace inspection.,"""Basic network slicing uses NSSAI (SST/SD)"",
+""NSSAI (SST/SD) is validated in RAN domain"",
+""NSSAI (SST/SD) is validated in Core domain"",
+""Validation is performed via packet trace inspection"""
+,Consistent slice enforcement is observable in PFCP session setups and NGAP signaling for UE-slice mapping.,"""Consistent slice enforcement is observable in PFCP session setups"",
+""Consistent slice enforcement is observable in NGAP signaling"",
+""PFCP session setups and NGAP signaling support UE-slice mapping"""
+,"Consumer-grade UE variability necessitates RF tuning, root access, and APN configurations to ensure SA connectivity.","""Consumer-grade UE variability necessitates RF tuning"",
+""Consumer-grade UE variability necessitates root access"",
+""Consumer-grade UE variability necessitates APN configurations"",
+""RF tuning configurations ensure SA connectivity"",
+""Root access configurations ensure SA connectivity"",
+""APN configurations ensure SA connectivity"""
+,open5gs‑k8s provides both microservice and all‑in‑one Kubernetes manifests for Open5GS.,"""open5gs-k8s provides microservice Kubernetes manifests for Open5GS"",
+""open5gs-k8s provides all-in-one Kubernetes manifests for Open5GS"""
+,"Multus and OVS‑CNI enable distinct network attachments for N2, N3, N4, preserving plane separation.","""Multus enables distinct network attachments"",
+""OVS-CNI enables distinct network attachments"",
+""Network attachments enabled for N4"",
+""Network attachments enabled for N2"",
+""Network attachments enabled for N3"",
+""Distinct network attachments preserve control plane separation"",
+""Distinct network attachments preserve user plane separation"""
+,MongoDB statefulsets with PVCs store subscriber and NF profile data externally.,"""MongoDB statefulsets with PVCs store subscriber data externally"",
+""MongoDB statefulsets with PVCs store NF profile data externally"""
+,CLI and Python scripts automate slice and subscriber provisioning via MongoDB for multi-slice deployments.,"""CLI scripts automate slice and subscriber provisioning via MongoDB"",
+""Python scripts automate slice and subscriber provisioning via MongoDB"",
+""Slice and subscriber provisioning supports multi-slice deployments"""
+,"Init containers orchestrate proper startup ordering, ensuring dependency readiness before NF launch.","""Init containers orchestrate proper startup ordering"",
+""Proper startup ordering ensures dependency readiness before NF launch"""
+,"HPA-based autoscaling is used for 5G CNFs, while VPA is avoided due to potential service disruptions","""HPA-based autoscaling is used for 5G CNFs"",
+""VPA is avoided due to potential service disruptions"""
+,"A scale-down fuse protects critical CNFs (e.g., AMF, SMF) from being evicted during resource scaling even","""Scale-down fuse protects critical CNFs"",
+""AMF is a critical CNFs"",
+""SMF is a critical CNF"",
+""Protection from eviction occurs during resource scaling events"""
+,SCTP protocol (132) must be permitted at network and OS level to support 5G CNF control-plane communication.,"""SCTP protocol (132) must be permitted at network level"",
+""SCTP protocol (132) must be permitted at OS level"",
+""Permitting SCTP protocol (132) supports 5G CNF control-plane communication"""
+,Cluster and workload configuration consistency is essential for reliable auto-scaling in telecommunication-grade CNFs.,"""Cluster and workload configuration consistency is essential for reliable auto-scaling"",
+""Reliable auto-scaling applies to telecommunication-grade CNFs"""
+,"External DNS, internet connectivity, and time sync (PPS/NTP) are mandatory for realistic end-to-end testbed operation","""External DNS is mandatory for realistic end-to-end testbed operation"",
+""Internet connectivity is mandatory for realistic end-to-end testbed operation"",
+""Time sync (PPS/NTP) is mandatory for realistic end-to-end testbed operation"""
+,"Automated deployment uses open-source toolchains with Docker/K8s for NF instantiation, telemetry, and orchestration.","""Automated deployment uses open-source toolchains"",
+""Open-source toolchains include Docker and Kubernetes (K8s)"",
+""Docker/K8s enable NF instantiation"",
+""Docker/K8s enable telemetry"",
+""Docker/K8s enable orchestration"""
+,"KPI measurement includes latency, throughput, reliability, cross‑domain sync, collected via telemetry and ML analytics.","""KPI measurement includes latency"",
+""KPI measurement includes throughput"",
+""KPI measurement includes reliability"",
+""KPI measurement includes cross-domain sync"",
+""KPI data is collected via telemetry"",
+""KPI data is analyzed with ML analytics"""
+,Neutral-host frameworks (5GCity) allow operators to share infrastructure dynamically using slicing and multitenancy.,"""Neutral-host frameworks allow to share infrastructure dynamically"",
+""Infrastructure sharing is done by operators"",
+""Infrastructure sharing is enabled by slicing"",
+""Infrastructure sharing is enabled by multitenancy"""
+,5G-RANGE combines fixed RAN with UAVs supported by NFV for sporadic deployments in remote regions.,"""5G-RANGE combines fixed RAN with UAVs"",
+""5G-RANGE is supported by NFV"",
+""5G-RANGE enables sporadic deployments in remote regions"""
+,"End-to-end KPI validation must consider NFV stack maturity, telemetry quality, and orchestration tool chain alignment.","""End-to-end KPI validation must consider NFV stack maturity"",
+""End-to-end KPI validation must consider telemetry quality"",
+""End-to-end KPI validation must consider orchestration tool chain alignment"""
+,"Lab-to-production deployment is facilitated by standardized virtualization patterns across SDR, core, and orchestration environments.","""Lab-to-production deployment is facilitated by standardized virtualization patterns"",
+""Standardized virtualization patterns apply across SDR environments"",
+""Standardized virtualization patterns apply across core environments"",
+""Standardized virtualization patterns apply across orchestration environments"""

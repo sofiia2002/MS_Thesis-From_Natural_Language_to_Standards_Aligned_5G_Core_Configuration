@@ -1,0 +1,541 @@
+@prefix data: <http://example.org/yang/data#> .
+@prefix ex: <http://example.com/yang#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:PromptResponsePair a rdfs:Class ;
+    rdfs:label "PromptResponsePair" ;
+    rdfs:comment "A pairing of a prompt and its response for RAG/ontology alignment." .
+
+ex:5g-core-services a ex:YANGModule ;
+    ex:hasIssue ex:invalid-prefix-syntax,
+        ex:missing-revision,
+        ex:nested-list-for-single-leaf,
+        ex:string-used-instead-of-enumeration ;
+    ex:hasName "5g-core-services" ;
+    ex:hasNamespace "urn:5g-core-services" ;
+    ex:hasPrefix "5gcs" .
+
+ex:5g-core-services-rag a ex:YANGModule ;
+    ex:hasIssue ex:free-form-protocols,
+        ex:list-instead-of-leaf-list,
+        ex:prefix-quoted ;
+    ex:hasName "5g-core-services" .
+
+ex:5g-core-services-v2 a ex:YANGModule ;
+    ex:hasIssue ex:invalid-prefix-quote,
+        ex:missing-revision,
+        ex:no-enumeration-for-protocols,
+        ex:single-leaf-for-multiple-values ;
+    ex:hasName "5g-core-services" .
+
+ex:ProtocolsUseEnumeration a ex:YANGRuleWithExample ;
+    rdfs:label "Use enumeration (and leaf-list for multiple protocol values)" ;
+    ex:appliesTo "leaf, leaf-list" ;
+    ex:detectRegex "leaf-list\\s+supported-protocols\\s*{\\s*[^}]*type\\s+string\\s*;",
+        "leaf\\s+protocol\\s*{\\s*[^}]*type\\s+string\\s*;" ;
+    ex:explanation "When protocol values are finite (e.g., HTTP, HTTPS, SCTP, UDP, TCP), model them as 'enumeration'. For multiple values per service, use 'leaf-list'." ;
+    ex:fixInstruction "Replace 'type string' with 'type enumeration { enum ... }'. If multiple values are expected, declare a 'leaf-list' of that enumeration." ;
+    ex:hasBadExample "leaf protocol { type string; }" ;
+    ex:hasGoodExample "leaf-list supported-protocols { type enumeration { enum HTTP; enum HTTPS; enum SCTP; enum UDP; enum TCP; } }" ;
+    ex:preferredEnumerationList "HTTP, HTTPS, SCTP, UDP, TCP" ;
+    ex:severity "warning" .
+
+ex:RAG_EnumProtocols_01 a ex:RAGPromptResponse ;
+    ex:exampleFor ex:UseEnumerationForProtocols ;
+    ex:explanation "Avoid free-form strings for protocols; enforce a controlled vocabulary using 'enumeration'." ;
+    ex:hasBadExample """leaf-list supported-protocols {
+  type string;
+}""" ;
+    ex:hasGoodExample """leaf-list supported-protocols {
+  type enumeration {
+    enum HTTP2;
+    enum QUIC;
+    enum HTTP1_1;
+  }
+}""" ;
+    ex:hasTitle "Replace string protocols with enumeration" .
+
+ex:RAG_PrefixMustBeUnquoted a ex:RAGPromptResponse ;
+    ex:hasPrompt "Why is my YANG module not working? I wrote: prefix \"5gcs\";" ;
+    ex:hasResponse """⚠️ YANG 'prefix' values MUST NOT be enclosed in quotation marks.
+
+You wrote:
+```yang
+prefix "5gcs";
+```
+✅ It should be:
+```yang
+prefix 5gcs;
+```""" .
+
+ex:RAG_PrefixUnquoted_01 a ex:RAGPromptResponse ;
+    ex:exampleFor ex:PrefixMustBeUnquoted ;
+    ex:explanation "YANG 'prefix' values MUST NOT be enclosed in quotation marks." ;
+    ex:hasBadExample "prefix \"abc\";" ;
+    ex:hasGoodExample "prefix abc;" ;
+    ex:hasTitle "Fix quoted prefix" .
+
+ex:RAG_UseEnumerationForProtocols a ex:RAGPromptResponse ;
+    ex:hasPrompt "Is it okay to define protocols as type string in YANG?" ;
+    ex:hasResponse """⚠️ Avoid using plain strings when the set of values is known (e.g., protocols).
+
+Bad usage:
+```yang
+leaf protocol {
+  type string;
+}
+```
+✅ Use enumeration instead:
+```yang
+leaf protocol {
+  type enumeration {
+    enum HTTP2;
+    enum QUIC;
+  }
+}
+```""" .
+
+ex:RAG_UseLeafListForMultipleValues a ex:RAGPromptResponse ;
+    ex:hasPrompt "How do I define multiple protocols for a service in YANG?" ;
+    ex:hasResponse """📌 Use `leaf-list` instead of `list` when you're storing a list of single values like protocols.
+
+Bad example:
+```yang
+list supported-protocols {
+  key "protocol";
+  leaf protocol {
+    type string;
+  }
+}
+```
+✅ Better version:
+```yang
+leaf-list supported-protocols {
+  type string;
+}
+```""" .
+
+ex:UseLeafListForMultipleValues a ex:YANGRuleWithExample ;
+    rdfs:label "Use 'leaf-list' instead of 'leaf' when the value is expected to be a list of items." ;
+    ex:hasBadExample """
+list supported-protocols {
+  key "protocol";
+  leaf protocol {
+    type string;
+  }
+}
+""" ;
+    ex:hasGoodExample """
+leaf-list supported-protocols {
+  type string;
+}
+""" .
+
+ex:YANGUses a owl:Class .
+
+ex:appliesTo a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:augments a owl:ObjectProperty ;
+    rdfs:domain ex:YANGModule ;
+    rdfs:range ex:YANGAugment .
+
+ex:auto-rule-1 a ex:YANGRule ;
+    rdfs:comment "A YANG container MAY include lists using the 'list' keyword to define repeating structures." .
+
+ex:auto-rule-2 a ex:YANGRule ;
+    rdfs:comment "A YANG module MAY contain one or more containers using the 'container' keyword." .
+
+ex:auto-rule-3 a ex:YANGRule ;
+    rdfs:comment "Choices MUST contain at least one 'case' to define the alternative schema branches." .
+
+ex:auto-rule-4 a ex:YANGRule ;
+    rdfs:comment "Each YANG leaf MUST declare a type (e.g., string, int, enumeration)." .
+
+ex:auto-rule-5 a ex:YANGRule ;
+    rdfs:comment "Groupings MAY be used to define reusable sets of leaves or structures in YANG." .
+
+ex:auto-rule-6 a ex:YANGRule ;
+    rdfs:comment "YANG containers MAY include reusable structures via the 'uses' statement referencing a grouping." .
+
+ex:detectRegex a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:exampleFor a owl:ObjectProperty ;
+    rdfs:domain ex:RAGPromptResponse ;
+    rdfs:range ex:YANGRuleWithExample .
+
+ex:explanation a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:fixInstruction a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:hasBadExample a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:hasCase a owl:ObjectProperty ;
+    rdfs:domain ex:YANGChoice ;
+    rdfs:range ex:YANGCase .
+
+ex:hasChoice a owl:ObjectProperty ;
+    rdfs:domain ex:YANGContainer ;
+    rdfs:range ex:YANGChoice .
+
+ex:hasContainer a owl:ObjectProperty ;
+    rdfs:domain ex:YANGModule ;
+    rdfs:range ex:YANGContainer .
+
+ex:hasDescription a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasEnumeration a owl:ObjectProperty ;
+    rdfs:domain ex:YANGType ;
+    rdfs:range ex:YANGEnumeration .
+
+ex:hasGoodExample a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:hasGrouping a owl:ObjectProperty ;
+    rdfs:domain ex:YANGModule ;
+    rdfs:range ex:YANGGrouping .
+
+ex:hasKey a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasLeaf a owl:ObjectProperty ;
+    rdfs:domain ex:YANGContainer ;
+    rdfs:range ex:YANGLeaf .
+
+ex:hasLeafList a owl:ObjectProperty ;
+    rdfs:domain ex:YANGContainer ;
+    rdfs:range ex:YANGLeafList .
+
+ex:hasList a owl:ObjectProperty ;
+    rdfs:domain ex:YANGContainer ;
+    rdfs:range ex:YANGList .
+
+ex:hasName a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasNamespace a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasPrefix a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasRevision a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:date .
+
+ex:hasTitle a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:hasType a owl:ObjectProperty ;
+    rdfs:domain ex:YANGLeaf ;
+    rdfs:range ex:YANGType .
+
+ex:hasTypeName a owl:DatatypeProperty ;
+    rdfs:domain ex:YANGStatement ;
+    rdfs:range xsd:string .
+
+ex:hasTypedef a owl:ObjectProperty ;
+    rdfs:domain ex:YANGModule ;
+    rdfs:range ex:YANGTypedef .
+
+ex:imports a owl:ObjectProperty ;
+    rdfs:domain ex:YANGModule ;
+    rdfs:range ex:YANGImport .
+
+ex:mef-5g-sba a ex:YANGModule ;
+    ex:hasContainer ex:network-functions ;
+    ex:hasDescription "YANG module for 5G SBA service modeling." ;
+    ex:hasName "mef-5g-sba" ;
+    ex:hasNamespace "urn:mef:5g:sba" ;
+    ex:hasPrefix "sba" ;
+    ex:hasRevision "2025-09-01"^^xsd:date .
+
+ex:preferredEnumerationList a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:promptText a rdf:Property ;
+    rdfs:label "promptText" ;
+    rdfs:domain ex:PromptResponsePair ;
+    rdfs:range xsd:string .
+
+ex:responseText a rdf:Property ;
+    rdfs:label "responseText" ;
+    rdfs:domain ex:PromptResponsePair ;
+    rdfs:range xsd:string .
+
+ex:severity a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:usesGrouping a owl:ObjectProperty ;
+    rdfs:domain ex:YANGContainer ;
+    rdfs:range ex:YANGGrouping .
+
+data:PrefixMustBeUnquoted a ex:PromptResponsePair ;
+    ex:promptText "Why is my YANG module not working? I wrote: prefix \"5gcs\";" ;
+    ex:responseText """⚠️ YANG 'prefix' values MUST NOT be enclosed in quotation marks.
+
+You wrote:
+```yang
+prefix "5gcs";
+```
+✅ It should be:
+```yang
+prefix 5gcs;
+```""" .
+
+data:UseEnumerationForProtocols a ex:PromptResponsePair ;
+    ex:promptText "Is it okay to define protocols as type string in YANG?" ;
+    ex:responseText """⚠️ Avoid using plain strings when the set of values is known (e.g., protocols).
+
+Bad usage:
+```yang
+leaf protocol {
+  type string;
+}
+```
+✅ Use enumeration instead:
+```yang
+leaf protocol {
+  type enumeration {
+    enum HTTP2;
+    enum QUIC;
+  }
+}
+```""" .
+
+data:UseLeafListForMultipleValues a ex:PromptResponsePair ;
+    ex:promptText "How do I define multiple protocols for a service in YANG?" ;
+    ex:responseText """📌 Use `leaf-list` instead of `list` when you're storing a list of single values like protocols.
+
+Bad example:
+```yang
+list supported-protocols {
+  key "protocol";
+  leaf protocol {
+    type string;
+  }
+}
+```
+✅ Better version:
+```yang
+leaf-list supported-protocols {
+  type string;
+}
+```""" .
+
+ex:PrefixMustBeUnquoted a ex:YANGRuleWithExample ;
+    rdfs:label "Prefix must be an unquoted identifier",
+        "YANG 'prefix' values MUST NOT be enclosed in quotation marks." ;
+    ex:appliesTo "module",
+        "module, import" ;
+    ex:detectRegex "prefix\\s+\"[^\"]+\"\\s*;" ;
+    ex:explanation "In YANG, the 'prefix' statement requires an identifier token, not a quoted string." ;
+    ex:fixInstruction "Remove quotes around the prefix value." ;
+    ex:hasBadExample "prefix \"5gcs\";",
+        "prefix \"f5gcs\";" ;
+    ex:hasGoodExample "prefix 5gcs;",
+        "prefix f5gcs;" ;
+    ex:hasTitle "Prefix must be an unquoted identifier" ;
+    ex:severity "error" .
+
+ex:UseEnumerationForProtocols a ex:YANGRuleWithExample ;
+    rdfs:label "Use YANG 'enumeration' type when values are finite and controlled (e.g., protocols)." ;
+    ex:appliesTo "leaf or leaf-list" ;
+    ex:detectRegex "leaf-list\\s+supported-protocols\\s*{\\s*[^}]*type\\s+string\\s*;",
+        "leaf\\s+protocol\\s*{\\s*[^}]*type\\s+string\\s*;" ;
+    ex:explanation "When the set of values is finite (e.g., HTTP2, QUIC), model the leaf as an 'enumeration' rather than 'string'." ;
+    ex:fixInstruction "Replace 'type string' with 'type enumeration { enum ... }' and list allowed protocol values." ;
+    ex:hasBadExample """
+leaf protocol {
+  type string;
+}
+""",
+        """leaf protocol {
+  type string;
+}""" ;
+    ex:hasGoodExample """
+leaf protocol {
+  type enumeration {
+    enum HTTP2;
+    enum QUIC;
+  }
+}
+""",
+        """leaf protocol {
+  type enumeration {
+    enum HTTP2;
+    enum QUIC;
+    enum HTTP1_1;
+  }
+}""" ;
+    ex:hasTitle "Use enumeration for protocol values" ;
+    ex:preferredEnumerationList "HTTP2, QUIC, HTTP1_1" ;
+    ex:severity "warning" .
+
+ex:YANGAugment a owl:Class .
+
+ex:YANGCase a owl:Class .
+
+ex:YANGEnumeration a owl:Class .
+
+ex:YANGImport a owl:Class .
+
+ex:YANGLeafList a owl:Class .
+
+ex:YANGTypedef a owl:Class .
+
+ex:free-form-protocols a ex:YANGValidationIssue ;
+    rdfs:label "Protocols are defined as free-form strings instead of enumeration." ;
+    ex:violates ex:free-form-protocols-requirement .
+
+ex:free-form-protocols-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:free-form-protocols-rule ;
+    rdfs:comment "Use 'enumeration' to restrict protocol values to a controlled vocabulary." .
+
+ex:free-form-protocols-rule a ex:YANGRule ;
+    rdfs:comment "Use YANG 'enumeration' type when values are finite and controlled (e.g., protocols)." .
+
+ex:invalid-prefix-quote a ex:YANGValidationIssue ;
+    rdfs:label "Prefix is enclosed in quotes; should be a plain identifier." ;
+    ex:violates ex:invalid-prefix-quote-requirement .
+
+ex:invalid-prefix-quote-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:invalid-prefix-quote-rule ;
+    rdfs:comment "The 'prefix' keyword must use a valid identifier, not a quoted string." .
+
+ex:invalid-prefix-quote-rule a ex:YANGRule ;
+    rdfs:comment "YANG 'prefix' values MUST NOT be enclosed in quotation marks." .
+
+ex:invalid-prefix-syntax a ex:YANGValidationIssue ;
+    rdfs:label "Prefix is written with quotes; should be an identifier, not a string." ;
+    ex:violates ex:invalid-prefix-syntax-requirement .
+
+ex:invalid-prefix-syntax-requirement a ex:YANGRequirement ;
+    rdfs:comment "The 'prefix' statement MUST be a plain identifier, not quoted." .
+
+ex:list-instead-of-leaf-list a ex:YANGValidationIssue ;
+    rdfs:label "A list is used to represent multiple values of a single leaf; leaf-list should be used." ;
+    ex:violates ex:list-instead-of-leaf-list-requirement .
+
+ex:list-instead-of-leaf-list-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:list-instead-of-leaf-list-rule ;
+    rdfs:comment "Use 'leaf-list' to model repeating values of a single leaf." .
+
+ex:list-instead-of-leaf-list-rule a ex:YANGRule ;
+    rdfs:comment "Use 'leaf-list' instead of 'leaf' when the value is expected to be a list of items." .
+
+ex:missing-revision-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:missing-revision-rule ;
+    rdfs:comment "A YANG module MUST contain at least one revision statement to be valid.",
+        "Each YANG module MUST include at least one revision statement." .
+
+ex:missing-revision-rule a ex:YANGRule ;
+    rdfs:comment "A valid YANG module MUST declare a revision using the 'revision' keyword." .
+
+ex:nested-list-for-single-leaf a ex:YANGValidationIssue ;
+    rdfs:label "Using 'list' with only one leaf 'protocol'; use 'leaf-list' instead for simpler structure." ;
+    ex:violates ex:nested-list-for-single-leaf-requirement .
+
+ex:nested-list-for-single-leaf-requirement a ex:YANGRequirement ;
+    rdfs:comment "Use 'leaf-list' when only one value per list entry is needed, to avoid unnecessary complexity." .
+
+ex:network-functions a ex:YANGContainer ;
+    ex:hasList ex:nf ;
+    ex:hasName "network-functions" .
+
+ex:nf a ex:YANGList ;
+    ex:hasKey "nf-instance-id" ;
+    ex:hasLeaf ex:nf-instance-id ;
+    ex:hasName "nf" .
+
+ex:nf-instance-id a ex:YANGLeaf ;
+    ex:hasName "nf-instance-id" ;
+    ex:hasType ex:string-type .
+
+ex:no-enumeration-for-protocols a ex:YANGValidationIssue ;
+    rdfs:label "Protocols are free-form strings; should be restricted using enumeration." ;
+    ex:violates ex:no-enumeration-for-protocols-requirement .
+
+ex:no-enumeration-for-protocols-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:no-enumeration-for-protocols-rule ;
+    rdfs:comment "Use enumerations for values that have a known, fixed set of options." .
+
+ex:no-enumeration-for-protocols-rule a ex:YANGRule ;
+    rdfs:comment "Use YANG 'enumeration' type when values are finite and controlled (e.g., protocols)." .
+
+ex:prefix-quoted a ex:YANGValidationIssue ;
+    rdfs:label "Prefix is enclosed in quotes; should be an unquoted identifier." ;
+    ex:violates ex:prefix-quoted-requirement .
+
+ex:prefix-quoted-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:prefix-quoted-rule ;
+    rdfs:comment "The 'prefix' statement must use an unquoted identifier." .
+
+ex:prefix-quoted-rule a ex:YANGRule ;
+    rdfs:comment "YANG 'prefix' values MUST NOT be enclosed in quotation marks." .
+
+ex:single-leaf-for-multiple-values a ex:YANGValidationIssue ;
+    rdfs:label "Used a single leaf to hold multiple protocol values; should use 'leaf-list'." ;
+    ex:violates ex:single-leaf-for-multiple-values-requirement .
+
+ex:single-leaf-for-multiple-values-requirement a ex:YANGRequirement ;
+    ex:derivedFromRule ex:single-leaf-for-multiple-values-rule ;
+    rdfs:comment "If multiple values are needed for a field, a 'leaf-list' should be used." .
+
+ex:single-leaf-for-multiple-values-rule a ex:YANGRule ;
+    rdfs:comment "Use 'leaf-list' instead of 'leaf' when the value is expected to be a list of items." .
+
+ex:string-type a ex:YANGType ;
+    ex:hasTypeName "string" .
+
+ex:string-used-instead-of-enumeration a ex:YANGValidationIssue ;
+    rdfs:label "Protocols are declared as string; enumeration should be used for strict value control." ;
+    ex:violates ex:string-used-instead-of-enumeration-requirement .
+
+ex:string-used-instead-of-enumeration-requirement a ex:YANGRequirement ;
+    rdfs:comment "Use 'enumeration' types instead of free-form strings when the allowed values are known and finite." .
+
+ex:YANGChoice a owl:Class .
+
+ex:YANGGrouping a owl:Class .
+
+ex:YANGList a owl:Class .
+
+ex:missing-revision a ex:YANGValidationIssue ;
+    rdfs:label "Missing required 'revision' statement in YANG module.",
+        "Missing required 'revision' statement." ;
+    ex:violates ex:missing-revision-requirement .
+
+ex:YANGLeaf a owl:Class .
+
+ex:YANGType a owl:Class .
+
+ex:YANGRuleWithExample a owl:Class .
+
+ex:RAGPromptResponse a owl:Class .
+
+ex:YANGContainer a owl:Class .
+
+ex:YANGStatement a owl:Class .
+
+ex:YANGModule a owl:Class .
+
+ex:YANGRequirement a owl:Class .
+
+ex:YANGValidationIssue a owl:Class .
+
+ex:YANGRule a owl:Class .
+
