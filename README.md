@@ -18,7 +18,6 @@
 * [Usage: end‑to‑end run](#usage-end-to-end-run)
 * [Design & architecture](#design--architecture)
 * [Results & evaluation](#results--evaluation)
-* [Roadmap / TODO](#roadmap--todo)
 * [Contributing](#contributing)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
